@@ -315,8 +315,6 @@ tbody td{padding:.5rem .85rem;border-bottom:1px solid var(--border);color:var(--
 .btn-danger:hover{opacity:.9}
 .btn-sm{padding:.3rem .7rem;font-size:.76rem}
 .btn-xs{padding:.2rem .55rem;font-size:.72rem}
-.livedata-range{border:1px solid var(--border);background:var(--bg);color:var(--text2);cursor:pointer;border-radius:6px;transition:all .15s}
-.livedata-range.active,.livedata-range:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.08)}
 .chart-toggle-btn.active{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
 .btn-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
 
@@ -891,6 +889,314 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .empty-state .empty-icon{font-size:2.5rem;margin-bottom:.75rem;opacity:.5}
 .empty-state .empty-text{font-size:1rem;font-weight:600;color:var(--text2);margin-bottom:.3rem}
 .empty-state .empty-sub{font-size:.82rem}
+
+/* ─── DASHBOARD MODE TOGGLES ─── */
+.dash-mode-btn{border-radius:20px!important;font-size:.73rem!important;padding:.3rem 1rem!important}
+.dash-mode-btn.active{background:var(--accent)!important;border-color:var(--accent)!important;color:var(--accent-text)!important}
+.dash-view{display:none}
+.dash-view.active{display:block;animation:fadeUp .35s ease}
+
+/* ─── FINTECH DASHBOARD ─── */
+#dash-fintech{--ft-bg:#f0f2f5;--ft-card:#ffffff;--ft-text:#1a1a2e;--ft-text2:#6b7280;--ft-accent:#2563eb;--ft-accent2:#3b82f6;--ft-accent3:#60a5fa;--ft-success:#10b981;--ft-danger:#ef4444;--ft-warning:#f59e0b;--ft-border:#e5e7eb;--ft-shadow:0 4px 24px rgba(0,0,0,0.06);font-family:'Outfit',sans-serif;color:var(--ft-text);padding:0}
+#dash-fintech *{box-sizing:border-box}
+#dash-fintech .ft-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+#dash-fintech .ft-card{background:var(--ft-card);border-radius:20px;padding:1.25rem;box-shadow:var(--ft-shadow);border:1px solid var(--ft-border);transition:all .3s}
+#dash-fintech .ft-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(37,99,235,0.1)}
+#dash-fintech .ft-card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+#dash-fintech .ft-card-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ft-text2)}
+#dash-fintech .ft-card-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+#dash-fintech .ft-card-val{font-size:1.65rem;font-weight:700;line-height:1.2}
+#dash-fintech .ft-card-sub{font-size:.75rem;color:var(--ft-text2);margin-top:.25rem;display:flex;align-items:center;gap:.3rem}
+#dash-fintech .ft-card-sub .up{color:var(--ft-success)}
+#dash-fintech .ft-card-sub .down{color:var(--ft-danger)}
+#dash-fintech .ft-progress{height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;margin-top:.5rem}
+#dash-fintech .ft-progress-fill{height:100%;border-radius:3px;transition:width .8s ease}
+#dash-fintech .ft-row{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1.25rem}
+#dash-fintech .ft-chart-card{background:var(--ft-card);border-radius:20px;padding:1.25rem;box-shadow:var(--ft-shadow);border:1px solid var(--ft-border)}
+#dash-fintech .ft-chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+#dash-fintech .ft-chart-title{font-weight:700;font-size:.9rem}
+#dash-fintech .ft-chart-body{position:relative;height:260px}
+#dash-fintech .ft-table-wrap{overflow:auto;border-radius:12px}
+#dash-fintech .ft-table{width:100%;border-collapse:collapse;font-size:.8rem}
+#dash-fintech .ft-table th{padding:.6rem .75rem;text-align:left;font-weight:600;color:var(--ft-text2);background:#f8fafc;border-bottom:2px solid var(--ft-border);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+#dash-fintech .ft-table td{padding:.55rem .75rem;border-bottom:1px solid var(--ft-border);color:var(--ft-text)}
+#dash-fintech .ft-table tr:hover{background:#f8fafc}
+#dash-fintech .ft-badge{display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .55rem;border-radius:20px;font-size:.68rem;font-weight:600}
+#dash-fintech .ft-badge.active{background:#dbeafe;color:#2563eb}
+#dash-fintech .ft-badge.pending{background:#fef3c7;color:#d97706}
+#dash-fintech .ft-badge.cancelled{background:#fee2e2;color:#dc2626}
+#dash-fintech .ft-company{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff;flex-shrink:0}
+#dash-fintech .ft-graphic{position:relative;height:80px;overflow:hidden;margin-top:.5rem}
+#dash-fintech .ft-graphic svg{width:100%;height:100%}
+#dash-fintech .ft-bar-group{display:flex;align-items:flex-end;gap:4px;height:60px;margin-top:.5rem}
+#dash-fintech .ft-bar-item{flex:1;border-radius:4px 4px 0 0;min-height:4px;transition:all .3s}
+#dash-fintech .ft-bar-item:hover{opacity:.8}
+#dash-fintech .ft-success-ring{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;margin:0 auto .4rem}
+@media(max-width:900px){#dash-fintech .ft-grid{grid-template-columns:1fr 1fr}#dash-fintech .ft-row{grid-template-columns:1fr}}
+@media(max-width:600px){#dash-fintech .ft-grid{grid-template-columns:1fr}}
+
+/* ─── FITNESS DASHBOARD ─── */
+#dash-fitness{--fn-bg:#0a0a0f;--fn-card:#12121a;--fn-card2:#1a1a2e;--fn-text:#ffffff;--fn-text2:#9ca3af;--fn-accent:#a855f7;--fn-accent2:#c084fc;--fn-glow:#a855f740;--fn-yellow:#eab308;--fn-border:rgba(168,85,247,0.15);--fn-shadow:0 8px 40px rgba(168,85,247,0.1);font-family:'Outfit',sans-serif;color:var(--fn-text);padding:0}
+#dash-fitness *{box-sizing:border-box}
+#dash-fitness .fn-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+#dash-fitness .fn-card{background:var(--fn-card);border-radius:16px;padding:1.25rem;border:1px solid var(--fn-border);transition:all .3s;position:relative;overflow:hidden}
+#dash-fitness .fn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--fn-accent),transparent);opacity:.5}
+#dash-fitness .fn-card:hover{transform:translateY(-3px);box-shadow:var(--fn-shadow);border-color:rgba(168,85,247,0.3)}
+#dash-fitness .fn-card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+#dash-fitness .fn-card-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--fn-text2)}
+#dash-fitness .fn-card-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(168,85,247,0.12);color:var(--fn-accent)}
+#dash-fitness .fn-card-val{font-size:1.65rem;font-weight:700;line-height:1.2;color:#fff}
+#dash-fitness .fn-card-sub{font-size:.75rem;color:var(--fn-text2);margin-top:.25rem;display:flex;align-items:center;gap:.3rem}
+#dash-fitness .fn-card-sub .up{color:var(--fn-yellow)}
+#dash-fitness .fn-card-sub .down{color:#ef4444}
+#dash-fitness .fn-row{display:grid;grid-template-columns:3fr 2fr;gap:1rem;margin-bottom:1.25rem}
+#dash-fitness .fn-row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+#dash-fitness .fn-chart-card{background:var(--fn-card);border-radius:16px;padding:1.25rem;border:1px solid var(--fn-border)}
+#dash-fitness .fn-chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+#dash-fitness .fn-chart-title{font-weight:700;font-size:.85rem;color:var(--fn-text);display:flex;align-items:center;gap:.4rem}
+#dash-fitness .fn-chart-title i{color:var(--fn-accent)}
+#dash-fitness .fn-chart-body{position:relative;height:200px}
+#dash-fitness .fn-chart-body.tall{height:280px}
+#dash-fitness .fn-chart-body.short{height:140px}
+#dash-fitness .fn-toggle{display:flex;gap:3px;padding:2px;background:rgba(255,255,255,0.05);border-radius:8px}
+#dash-fitness .fn-toggle button{padding:.25rem .6rem;border:none;border-radius:6px;background:transparent;color:var(--fn-text2);cursor:pointer;font-size:.72rem;font-weight:500;transition:all .2s}
+#dash-fitness .fn-toggle button.active{background:rgba(168,85,247,0.25);color:var(--fn-accent)}
+#dash-fitness .fn-cal-wrap{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:.5rem}
+#dash-fitness .fn-cal-day{text-align:center;padding:.35rem 0;border-radius:8px;font-size:.75rem;color:var(--fn-text2);cursor:pointer;transition:all .2s}
+#dash-fitness .fn-cal-day:hover{background:rgba(168,85,247,0.1);color:#fff}
+#dash-fitness .fn-cal-day.active{background:var(--fn-accent);color:#fff;font-weight:600;box-shadow:0 0 12px var(--fn-glow)}
+#dash-fitness .fn-cal-day.today{border:1px solid var(--fn-accent);color:var(--fn-accent)}
+#dash-fitness .fn-cal-day.other{opacity:.3}
+#dash-fitness .fn-cal-day.fn-sat{color:var(--fn-yellow)}
+#dash-fitness .fn-cal-day.fn-sun{color:#ef4444}
+#dash-fitness .fn-cal-label{font-size:.65rem;font-weight:600;color:var(--fn-text2);text-transform:uppercase;letter-spacing:.04em;text-align:center;padding:.2rem 0}
+#dash-fitness .fn-workout-item{display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--fn-border);margin-bottom:.4rem;transition:all .2s}
+#dash-fitness .fn-workout-item:hover{background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.3)}
+#dash-fitness .fn-workout-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+#dash-fitness .fn-workout-info{flex:1;min-width:0}
+#dash-fitness .fn-workout-name{font-size:.82rem;font-weight:600;color:#fff}
+#dash-fitness .fn-workout-meta{font-size:.68rem;color:var(--fn-text2);margin-top:1px}
+#dash-fitness .fn-workout-stat{text-align:right;font-size:.72rem;font-weight:600;color:var(--fn-accent)}
+#dash-fitness .fn-neon-btn{background:linear-gradient(135deg,var(--fn-accent),#7c3aed);border:none;color:#fff;padding:.35rem 1rem;border-radius:8px;font-weight:600;font-size:.72rem;cursor:pointer;transition:all .3s;box-shadow:0 0 20px var(--fn-glow)}
+#dash-fitness .fn-neon-btn:hover{box-shadow:0 0 40px var(--fn-glow);transform:scale(1.04)}
+#dash-fitness .fn-circular{width:100%;display:flex;justify-content:center;padding:.5rem 0}
+#dash-fitness .fn-circular canvas{max-height:200px}
+@media(max-width:900px){#dash-fitness .fn-grid{grid-template-columns:1fr 1fr}#dash-fitness .fn-row,#dash-fitness .fn-row2{grid-template-columns:1fr}}
+@media(max-width:600px){#dash-fitness .fn-grid{grid-template-columns:1fr}}
+/* ─── EXCEL-STYLE FORMATTING RIBBON ─── */
+/* ─── FORMATTING TOOLBAR ─── */
+.fmt-bar{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.75rem;overflow:hidden}
+.fmt-bar-inner{display:flex;align-items:stretch;overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:4px 0;gap:0;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.fmt-bar-inner::-webkit-scrollbar{height:4px}
+.fmt-bar-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.fmt-sec{display:flex;flex-direction:column;align-items:center;padding:2px 8px;flex-shrink:0;gap:2px}
+.fmt-sec-label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;font-weight:700;text-align:center;width:100%;padding-bottom:1px}
+.fmt-sec-body{display:flex;align-items:center;gap:2px}
+.fmt-bar-div{width:1px;background:var(--border);align-self:stretch;margin:4px 2px;flex-shrink:0}
+/* Toolbar button */
+.fmt-b{width:30px;height:28px;border-radius:5px;border:1px solid transparent;background:transparent;color:var(--text2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;transition:all .1s;position:relative;gap:2px;flex-shrink:0}
+.fmt-b:hover{background:var(--bg3);border-color:var(--border2);color:var(--text)}
+.fmt-b.active{background:rgba(var(--accent-rgb),.1);border-color:rgba(var(--accent-rgb),.3);color:var(--accent);box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}
+.fmt-b-label{width:auto;padding:0 10px;font-size:.7rem;font-weight:500;gap:4px}
+.fmt-b-sub{font-size:.45rem;opacity:.5;position:absolute;bottom:1px;right:3px;line-height:1}
+/* Select in toolbar */
+.fmt-sel{background:var(--bg3);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:.7rem;padding:2px 4px;outline:none;cursor:pointer;max-width:80px;height:26px;transition:border-color .12s}
+.fmt-sel:hover{border-color:var(--border2)}
+.fmt-sel:focus{border-color:var(--accent)}
+.fmt-sel option{background:var(--bg2);color:var(--text)}
+.fmt-sel.sz{max-width:42px;text-align:center}
+/* Color picker in toolbar */
+.fmt-color-pick{width:22px;height:22px;border-radius:4px;border:1px solid var(--border2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;position:relative;font-size:.72rem;color:var(--text2);background:var(--bg3);flex-shrink:0}
+.fmt-color-pick:hover{border-color:var(--accent)}
+.fmt-color-pick input[type=color]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;top:0;left:0}
+/* Dropdown wrapper */
+.fmt-dd-wrap{position:relative;display:inline-flex;align-items:center}
+/* Excel Table */
+.excel-table-wrap{overflow:auto;border-radius:var(--radius);border:1px solid var(--border);max-height:520px;background:var(--bg)}
+.excel-table{width:100%;border-collapse:collapse;font-size:.8rem;table-layout:auto;min-width:100%}
+.excel-table th{background:var(--bg3);color:var(--text);font-weight:700;padding:.5rem .65rem;border:1px solid var(--border2);text-align:center;position:sticky;top:0;z-index:2;white-space:nowrap;user-select:none;font-size:.78rem}
+.excel-table th .th-filter{display:inline-block;margin-left:4px;cursor:pointer;font-size:.65rem;color:var(--text3);opacity:.5}
+.excel-table th .th-filter:hover{opacity:1;color:var(--accent)}
+.col-action-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:none;background:transparent;color:var(--text3);cursor:pointer;border-radius:3px;font-size:.65rem;line-height:1;margin-left:1px;vertical-align:middle;opacity:.35;transition:all .12s}
+.col-action-btn:hover{opacity:1;background:var(--bg2);color:var(--text)}
+.excel-table th:hover .col-action-btn{opacity:.65}
+.excel-dd-item .fa-solid{width:16px;text-align:center;font-size:.72rem}
+.excel-dd-item.danger{color:var(--danger)}
+.excel-dd-item.danger:hover{background:rgba(var(--danger-rgb),.12)!important;color:var(--danger)}
+.excel-dd-divider{height:1px;background:var(--border);margin:4px 0}
+.rename-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;font-size:1.05rem;font-weight:700;color:var(--text)}
+.rename-body{display:flex;flex-direction:column;gap:.65rem}
+.rename-field label{display:block;font-size:.78rem;color:var(--text2);margin-bottom:.35rem;font-weight:500}
+.rename-field label i{width:16px;text-align:center;margin-right:4px}
+.rename-field input{width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text);font-size:.85rem;outline:none;transition:border .2s,box-shadow .2s;box-sizing:border-box}
+.rename-field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.12)}
+.rename-field input::placeholder{color:var(--text3)}
+.rename-actions{display:flex;gap:.65rem;justify-content:flex-end;margin-top:.35rem}
+.rename-actions .btn{padding:.5rem 1rem;font-size:.8rem}
+.excel-table td{padding:.35rem .55rem;border:1px solid var(--border2);color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums;transition:background .15s}
+.excel-table td.num{text-align:right;font-family:var(--mono);font-size:.78rem}
+.excel-table td.center{text-align:center}
+.excel-table td.txt{text-align:left}
+.excel-table tr.banded td{background:rgba(var(--accent-rgb),.03)}
+.excel-table tr:hover td{background:rgba(var(--accent-rgb),.08)!important}
+.excel-table td.null-cell{background:rgba(var(--danger-rgb),.1)!important;color:var(--danger);font-style:italic;text-align:center}
+.excel-table td.cf-high{background:#1b5e20!important;color:#fff!important;font-weight:600}
+.excel-table td.cf-mid{background:#f9a825!important;color:#000!important;font-weight:500}
+.excel-table td.cf-low{background:#b71c1c!important;color:#fff!important;font-weight:600}
+.excel-table td.cf-heat-0{background:#ffebee}
+.excel-table td.cf-heat-1{background:#ffcdd2}
+.excel-table td.cf-heat-2{background:#ef9a9a}
+.excel-table td.cf-heat-3{background:#e57373}
+.excel-table td.cf-heat-4{background:#ef5350}
+.excel-table td.cf-heat-5{background:#f44336}
+.excel-table td.cf-heat-6{background:#e53935}
+.excel-table td.cf-heat-7{background:#d32f2f}
+.excel-table td.cf-heat-8{background:#c62828}
+.excel-table td.cf-heat-9{background:#b71c1c}
+.excel-table tr.frozen td{background:var(--bg3)!important;font-weight:500}
+/* Cell style presets */
+.cell-heading{background:#1a237e!important;color:#fff!important;font-weight:700!important}
+.cell-good{background:#c8e6c9!important;color:#1b5e20!important}
+.cell-bad{background:#ffcdd2!important;color:#b71c1c!important}
+.cell-neutral{background:#fff9c4!important;color:#f57f17!important}
+.cell-accent1{background:rgba(var(--accent-rgb),.12)!important;color:var(--accent)!important}
+.cell-accent2{background:var(--bg3)!important;color:var(--text2)!important}
+/* Find bar */
+.excel-find{display:flex;gap:.4rem;align-items:center;padding:.35rem .5rem;background:var(--bg2);border:1px solid var(--border);border-radius:6px;margin-bottom:.5rem;flex-wrap:wrap}
+.excel-find input{flex:1;min-width:120px;padding:.3rem .5rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);color:var(--text);font-size:.78rem;outline:none}
+.excel-find input:focus{border-color:var(--accent)}
+.excel-find .match-count{font-size:.72rem;color:var(--text3);padding:0 .3rem}
+/* Badge for column type badges in table header */
+.col-type-badge{font-size:.6rem;padding:1px 5px;border-radius:3px;margin-left:3px;font-weight:500;font-family:var(--mono)}
+.col-type-badge.num{background:rgba(var(--info-rgb),.15);color:var(--tag-info)}
+.col-type-badge.cur{background:rgba(var(--success-rgb),.15);color:var(--tag-success)}
+.col-type-badge.pct{background:rgba(var(--warning-rgb),.15);color:var(--tag-warning)}
+.col-type-badge.date{background:rgba(var(--accent-rgb),.15);color:var(--tag-purple)}
+.col-type-badge.str{background:rgba(var(--info-rgb),.08);color:var(--text3)}
+/* Toast for excel actions */
+.excel-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--accent);color:var(--accent-text);padding:.5rem 1.2rem;border-radius:8px;font-weight:600;font-size:.82rem;box-shadow:0 4px 20px rgba(0,0,0,.3);animation:toastIn .3s ease;pointer-events:none}
+/* Excel dropdowns */
+.excel-dropdown{position:absolute;z-index:1000;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);box-shadow:0 8px 32px rgba(0,0,0,.45);min-width:200px;max-width:300px;padding:.35rem;display:none;margin-top:4px}
+.excel-dropdown.show{display:block}
+.excel-dd-header{padding:.35rem .5rem;font-size:.72rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--border);margin-bottom:4px}
+.excel-dd-item{display:flex;align-items:center;gap:.5rem;padding:.4rem .5rem;border-radius:4px;cursor:pointer;font-size:.78rem;color:var(--text2);transition:all .12s}
+.excel-dd-item:hover{background:var(--bg3);color:var(--text)}
+.excel-dd-item.active{background:rgba(var(--accent-rgb),.12);color:var(--accent)}
+.excel-dd-item .dd-preview{display:flex;gap:2px;align-items:center;min-width:24px;justify-content:center}
+.excel-dd-item .dd-swatch{width:18px;height:14px;border-radius:2px;display:inline-block}
+.excel-dd-item .dd-swatch.high{background:#1b5e20}
+.excel-dd-item .dd-swatch.mid{background:#f9a825}
+.excel-dd-item .dd-swatch.low{background:#b71c1c}
+.excel-dd-item .heat-preview{width:40px;height:14px;border-radius:2px;background:linear-gradient(90deg,#ffebee,#ffcdd2,#ef9a9a,#e57373,#ef5350,#f44336,#e53935,#d32f2f,#c62828,#b71c1c);display:inline-block}
+.excel-dd-item .table-preview{display:flex;flex-direction:column;gap:1px;min-width:28px}
+.excel-dd-item .table-preview .tp-row{display:flex;gap:1px}
+.excel-dd-item .table-preview .tp-cell{width:8px;height:6px;border-radius:1px;background:var(--border2)}
+.excel-dd-item .table-preview .tp-cell.hdr{background:var(--text)}
+.excel-dd-item .table-preview .tp-cell.accent{background:var(--accent)}
+.excel-dd-item .table-preview .tp-cell.light{background:var(--bg3)}
+.excel-dd-item .table-preview .tp-cell.dark{background:var(--text3)}
+.excel-dd-item .table-preview .tp-cell.green{background:#1b5e20}
+.excel-dd-item .table-preview .tp-cell.gold{background:#1a237e}
+.excel-dd-footer{display:flex;gap:.4rem;padding:.35rem .5rem;border-top:1px solid var(--border);margin-top:4px;justify-content:flex-end}
+.excel-dd-footer button{padding:.3rem .7rem;border-radius:4px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:.72rem;cursor:pointer;font-weight:500}
+.excel-dd-footer button:hover{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.excel-dd-search{padding:.3rem .5rem}
+.excel-dd-search input{width:100%;padding:.3rem .5rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);color:var(--text);font-size:.75rem;outline:none;box-sizing:border-box}
+.excel-dd-search input:focus{border-color:var(--accent)}
+.excel-dd-list{max-height:200px;overflow-y:auto;padding:.2rem 0}
+.excel-dd-list label{display:flex;align-items:center;gap:.4rem;padding:.25rem .5rem;font-size:.75rem;color:var(--text2);cursor:pointer;border-radius:3px;transition:all .1s}
+.excel-dd-list label:hover{background:var(--bg3)}
+.excel-dd-list input[type=checkbox]{accent-color:var(--accent);margin:0}
+/* Column selection mode */
+.excel-table th.col-selected{outline:2px solid var(--accent)!important;outline-offset:-1px;position:relative;z-index:3}
+.excel-table td.col-active{outline:1px solid rgba(var(--accent-rgb),.4)!important;outline-offset:-1px}
+.col-mode-badge{display:inline-block;font-size:.6rem;padding:0 6px;border-radius:3px;background:rgba(var(--accent-rgb),.12);color:var(--accent);font-weight:600;margin-left:5px;text-transform:uppercase;letter-spacing:.02em}
+/* Formatting status chips */
+.fmt-chips{display:flex;gap:4px;align-items:center;padding:.3rem .5rem;margin-bottom:.5rem;flex-wrap:wrap;min-height:28px}
+.fmt-chips-label{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;margin-right:4px}
+.fmt-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.15);color:var(--accent);font-size:.68rem;font-weight:500;transition:all .15s}
+.fmt-chip i{font-size:.65rem;opacity:.8}
+/* Formatting upload zone */
+.fmt-upload-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:2.5rem 1rem;border:2px dashed var(--border2);border-radius:var(--radius);background:var(--bg2);cursor:pointer;transition:all .2s;margin:1rem 0;text-align:center}
+.fmt-upload-zone:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.04)}
+.fmt-upload-icon{font-size:2.2rem;color:var(--text3);margin-bottom:4px}
+.fmt-upload-zone:hover .fmt-upload-icon{color:var(--accent)}
+.fmt-upload-title{font-size:.95rem;font-weight:600;color:var(--text2)}
+.fmt-upload-sub{font-size:.78rem;color:var(--text3);max-width:360px;line-height:1.4}
+.fmt-upload-btn{padding:.5rem 1.5rem;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-size:.82rem;cursor:pointer;font-weight:500;transition:all .15s;margin-top:4px}
+.fmt-upload-btn:hover{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.fmt-sample-btn{padding:.4rem 1rem;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text3);font-size:.75rem;cursor:pointer;font-weight:400;transition:all .15s}
+.fmt-sample-btn:hover{background:var(--bg3);color:var(--text2);border-color:var(--border2)}
+/* Responsive: small desktop / tablet */
+@media(max-width:1024px){
+  .fmt-bar-inner{gap:0}
+  .fmt-sec{padding:2px 5px}
+  .fmt-b{width:28px;height:26px;font-size:.74rem}
+  .fmt-b-label{padding:0 7px;font-size:.68rem}
+  .fmt-sel{max-width:66px;font-size:.68rem}
+  .fmt-sel.sz{max-width:36px}
+  .fmt-color-pick{width:20px;height:20px;font-size:.65rem}
+}
+
+/* Responsive: mobile */
+@media(max-width:768px){
+  .fmt-bar{border-radius:6px}
+  .fmt-bar-inner{flex-wrap:wrap;padding:3px;gap:1px;overflow:visible;white-space:normal}
+  .fmt-sec{border-bottom:1px solid var(--border);padding:3px 6px;width:100%;flex-direction:row;gap:4px}
+  .fmt-sec:last-child{border-bottom:none}
+  .fmt-sec-label{width:auto;min-width:34px;font-size:.6rem;padding-bottom:0}
+  .fmt-sec-body{flex-wrap:wrap;gap:2px}
+  .fmt-bar-div{display:none}
+  .fmt-b{width:28px;height:26px;font-size:.75rem}
+  .fmt-b-label{padding:0 8px;font-size:.68rem}
+  .fmt-sel{max-width:74px;font-size:.7rem;height:24px}
+  .fmt-sel.sz{max-width:40px}
+  .fmt-color-pick{width:20px;height:20px}
+  /* Chips */
+  .fmt-chips{padding:.2rem .3rem;gap:3px}
+  .fmt-chip{font-size:.62rem;padding:1px 5px}
+  .fmt-chips-label{font-size:.58rem}
+  /* Upload zone */
+  .fmt-upload-zone{padding:1.5rem .75rem}
+  .fmt-upload-icon{font-size:1.6rem}
+  .fmt-upload-title{font-size:.82rem}
+  .fmt-upload-sub{font-size:.7rem}
+  .fmt-upload-btn{padding:.4rem 1rem;font-size:.75rem}
+  .fmt-sample-btn{padding:.3rem .8rem;font-size:.68rem}
+  /* Table */
+  .excel-table-wrap{max-height:380px}
+  .excel-table{font-size:.7rem}
+  .excel-table th,.excel-table td{padding:.2rem .3rem}
+  .col-type-badge{display:none}
+  /* Find bar */
+  .excel-find{padding:.25rem}
+  .excel-find input{font-size:.7rem}
+  /* Status bar */
+  #excelStatus{font-size:.65rem;padding:.25rem .4rem}
+  .hide-mobile{display:none!important}
+  /* Dropdowns */
+  .excel-dropdown{min-width:160px;max-width:260px;font-size:.72rem}
+}
+
+/* Responsive: small mobile */
+@media(max-width:480px){
+  .fmt-bar-inner{gap:0}
+  .fmt-sec{padding:2px 4px;gap:2px}
+  .fmt-sec-label{min-width:28px;font-size:.55rem}
+  .fmt-b{width:24px;height:22px;font-size:.68rem}
+  .fmt-b-label{padding:0 5px;font-size:.62rem}
+  .fmt-sel{max-width:58px;font-size:.65rem;height:22px}
+  .fmt-sel.sz{max-width:32px}
+  .fmt-color-pick{width:18px;height:18px;font-size:.6rem}
+  .fmt-upload-zone{padding:1rem .5rem;gap:5px}
+  .fmt-upload-icon{font-size:1.3rem}
+  .fmt-upload-title{font-size:.75rem}
+  .fmt-upload-sub{font-size:.65rem}
+  .excel-table{font-size:.65rem}
+  .excel-table th,.excel-table td{padding:.15rem .2rem}
+  .excel-table-wrap{max-height:300px}
+  #excelFindBar .match-count{display:none}
+}
 </style>
 </head>
 <body>
@@ -1053,7 +1359,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   <div class="sidebar-label">Data</div>
   <div class="sidebar-item" onclick="switchPanel('upload')"><span class="icon"><i class="fa-solid fa-upload"></i></span> Upload / Load</div>
   <div class="sidebar-item" onclick="switchPanel('clean')"><span class="icon"><i class="fa-solid fa-broom"></i></span> Data Cleaning</div>
-  <div class="sidebar-item" onclick="switchPanel('livedata')"><span class="icon"><i class="fa-solid fa-satellite-dish"></i></span> Live Data</div>
+  <div class="sidebar-item" onclick="switchPanel('formatting')"><span class="icon"><i class="fa-solid fa-palette"></i></span> Formatting</div>
 
   <div class="sidebar-section">
     <div class="sidebar-label">Analysis</div>
@@ -1374,97 +1680,269 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   </div>
 </div>
 
-<!-- ══════════════════════════════ LIVE DATA PANEL ══════════════════════════════ -->
-<div class="panel" id="panel-livedata">
+<!-- ══════════════════════════════ EXCEL FORMATTING PANEL ══════════════════════════════ -->
+<div class="panel" id="panel-formatting">
   <div class="section-hdr">
-    <div class="section-title"><span class="dot"></span> Live Stock Data</div>
-  </div>
-
-  <div style="margin-bottom:1.25rem">
-    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
-      <div class="search-icon"><i class="fa-solid fa-link" style="color:var(--text3);font-size:.85rem"></i></div>
-      <input id="groww-url" type="text" placeholder="Paste Groww stock link, e.g. groww.in/stocks/reliance-industries-ltd" style="flex:1;min-width:220px;padding:.65rem 1rem;border:2px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:.88rem;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')fetchLiveData()">
-      <button class="btn btn-primary" onclick="fetchLiveData()" style="padding:.65rem 1.1rem"><i class="fa-solid fa-satellite-dish"></i> Live Data</button>
+    <div class="section-title"><span class="dot"></span> Excel-Style Formatter</div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn btn-sm" onclick="document.getElementById('fmt-file-input').click()"><i class="fas fa-upload"></i> Upload</button>
+      <button class="btn btn-sm btn-primary" onclick="excelAutoClean()"><i class="fas fa-wand-magic-sparkles"></i> Auto Format</button>
+      <button class="btn btn-sm" onclick="excelExportFormatted()"><i class="fas fa-download"></i> Export</button>
     </div>
   </div>
 
-  <div id="livedata-status" class="empty-state" style="padding:2.5rem 1rem">
-    <div class="empty-icon" style="font-size:3rem"><i class="fa-solid fa-chart-line"></i></div>
-    <div class="empty-text" style="font-size:1.05rem">Enter a Groww stock link above</div>
-    <div class="empty-sub" style="font-size:.82rem;margin-top:.5rem">Charts, statistics, and 30-day prediction will appear here</div>
+  <input type="file" id="fmt-file-input" accept=".csv,.xlsx,.xls,.json" style="display:none" onchange="loadFile(this)"/>
+
+  <div id="fmt-no-data">
+    <div class="fmt-upload-zone" onclick="document.getElementById('fmt-file-input').click()">
+      <div class="fmt-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div class="fmt-upload-title">Drop dataset here or click to browse</div>
+      <div class="fmt-upload-sub">CSV, Excel (.xlsx / .xls), JSON &nbsp;·&nbsp; Auto-formats on load</div>
+      <button class="fmt-upload-btn" onclick="event.stopPropagation();document.getElementById('fmt-file-input').click()">Browse Files</button>
+      <button class="fmt-sample-btn" onclick="event.stopPropagation();loadSample('ecommerce')"><i class="fa-solid fa-flask"></i> Try Sample Data</button>
+    </div>
   </div>
 
-  <div id="livedata-results" style="display:none">
-    <div id="stock-header" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:1.25rem;flex-wrap:wrap">
-      <div style="width:48px;height:48px;border-radius:12px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent)"><i class="fa-solid fa-building"></i></div>
-      <div style="flex:1;min-width:140px">
-        <div id="livedata-company" style="font-size:1.05rem;font-weight:700;color:var(--text)">—</div>
-        <div style="display:flex;align-items:center;gap:.4rem;margin-top:2px">
-          <span id="livedata-symbol" style="font-size:.78rem;color:var(--text3);font-weight:600;letter-spacing:.5px">—</span>
-          <span style="font-size:.7rem;color:var(--text3)">NSE</span>
+  <div id="fmt-content" style="display:none">
+
+    <!-- ═══ FORMATTING TOOLBAR ═══ -->
+    <div class="fmt-bar" id="excelRibbon">
+      <div class="fmt-bar-inner">
+        <!-- Font -->
+        <div class="fmt-sec">
+          <span class="fmt-sec-label">Font</span>
+          <div class="fmt-sec-body">
+            <select id="exFont" class="fmt-sel" onchange="excelApplyFont()">
+              <option value="'Outfit',sans-serif">Outfit</option>
+              <option value="'JetBrains Mono',monospace">JetBrains Mono</option>
+              <option value="Arial,sans-serif">Arial</option>
+              <option value="'Segoe UI',sans-serif">Segoe UI</option>
+              <option value="Georgia,serif">Georgia</option>
+              <option value="'Courier New',monospace">Courier New</option>
+            </select>
+            <select id="exSize" class="fmt-sel sz" onchange="excelApplyFont()">
+              <option>8</option><option>9</option><option>10</option><option selected>11</option>
+              <option>12</option><option>14</option><option>16</option><option>18</option>
+              <option>20</option><option>24</option><option>28</option><option>36</option>
+            </select>
+            <button class="fmt-b active" id="exBold" onclick="excelToggleBold()" title="Bold (Ctrl+B)"><i class="fa-solid fa-bold"></i></button>
+            <button class="fmt-b" id="exItalic" onclick="excelToggleItalic()" title="Italic (Ctrl+I)"><i class="fa-solid fa-italic"></i></button>
+            <button class="fmt-b" id="exUnderline" onclick="excelToggleUnderline()" title="Underline (Ctrl+U)"><i class="fa-solid fa-underline"></i></button>
+            <div class="fmt-color-pick" title="Text color">
+              <i class="fa-solid fa-a"></i>
+              <input type="color" id="exTextColor" value="#ffffff" onchange="excelTextColor(this.value)">
+            </div>
+            <div class="fmt-color-pick" title="Fill color">
+              <i class="fa-solid fa-fill-drip"></i>
+              <input type="color" id="exFillColor" value="#1a1a1a" onchange="excelFillColor(this.value)">
+            </div>
+            <button class="fmt-b" onclick="excelBorders()" title="Borders"><i class="fa-solid fa-border-all"></i></button>
+          </div>
         </div>
-      </div>
-      <div id="stock-price-area" style="text-align:right;min-width:120px">
-        <div id="livedata-price" style="font-size:1.6rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums">—</div>
-        <div id="livedata-change" style="font-size:.82rem;font-weight:600">—</div>
-      </div>
-      <div style="display:flex;gap:1.2rem;flex-wrap:wrap;padding-left:.5rem;border-left:1px solid var(--border)">
-        <div><div class="stock-meta-label">Day Range</div><div id="livedata-dayrange" class="stock-meta-val">—</div></div>
-        <div><div class="stock-meta-label">52W Range</div><div id="livedata-52wrange" class="stock-meta-val">—</div></div>
-        <div><div class="stock-meta-label">Volume</div><div id="livedata-volume" class="stock-meta-val">—</div></div>
+
+        <div class="fmt-bar-div"></div>
+
+        <!-- Alignment -->
+        <div class="fmt-sec">
+          <span class="fmt-sec-label">Align</span>
+          <div class="fmt-sec-body">
+            <button class="fmt-b active" id="exAlignLeft" onclick="excelSetAlign('left')" title="Align left"><i class="fa-solid fa-align-left"></i></button>
+            <button class="fmt-b" id="exAlignCenter" onclick="excelSetAlign('center')" title="Center"><i class="fa-solid fa-align-center"></i></button>
+            <button class="fmt-b" id="exAlignRight" onclick="excelSetAlign('right')" title="Align right"><i class="fa-solid fa-align-right"></i></button>
+            <button class="fmt-b active" id="exWrap" onclick="excelToggleWrap()" title="Wrap text"><i class="fa-solid fa-bars-staggered"></i></button>
+            <button class="fmt-b" id="exMerge" onclick="excelMergeCenter()" title="Merge & center"><i class="fa-solid fa-object-group"></i></button>
+          </div>
+        </div>
+
+        <div class="fmt-bar-div"></div>
+
+        <!-- Number -->
+        <div class="fmt-sec">
+          <span class="fmt-sec-label">Number</span>
+          <div class="fmt-sec-body">
+            <select id="exNumFormat" class="fmt-sel" onchange="excelNumFormat(this.value)">
+              <option value="general">General</option>
+              <option value="number">Number</option>
+              <option value="currency">Currency</option>
+              <option value="percent">%</option>
+              <option value="date">Date</option>
+              <option value="scientific">Sci</option>
+            </select>
+            <button class="fmt-b" onclick="excelDecimalChange(1)" title="Add decimal"><i class="fa-solid fa-plus"></i><span class="fmt-b-sub">.0</span></button>
+            <button class="fmt-b" onclick="excelDecimalChange(-1)" title="Remove decimal"><i class="fa-solid fa-minus"></i><span class="fmt-b-sub">.0</span></button>
+            <div class="fmt-dd-wrap">
+              <button class="fmt-b" id="exCurrency" onclick="excelToggleDropdown('ddCurrencySym',this);excelNumFormat('currency')" title="Currency"><i class="fa-solid fa-dollar-sign"></i></button>
+            </div>
+            <button class="fmt-b" id="exPercent" onclick="excelNumFormat('percent')" title="Percent"><i class="fa-solid fa-percent"></i></button>
+            <button class="fmt-b" id="exComma" onclick="excelNumFormat('number')" title="Comma"><i class="fa-solid fa-comma"></i></button>
+          </div>
+        </div>
+
+        <div class="fmt-bar-div"></div>
+
+        <!-- Styles -->
+        <div class="fmt-sec">
+          <span class="fmt-sec-label">Styles</span>
+          <div class="fmt-sec-body">
+            <div class="fmt-dd-wrap">
+              <button class="fmt-b fmt-b-label" onclick="excelToggleDropdown('ddCondFormat',this)"><i class="fa-solid fa-palette"></i> Cond <i class="fa-solid fa-caret-down" style="font-size:.55rem;margin-left:1px"></i></button>
+            </div>
+            <div class="fmt-dd-wrap">
+              <button class="fmt-b fmt-b-label" onclick="excelToggleDropdown('ddFormatTable',this)"><i class="fa-solid fa-table-cells"></i> Table <i class="fa-solid fa-caret-down" style="font-size:.55rem;margin-left:1px"></i></button>
+            </div>
+            <button class="fmt-b" onclick="excelHeatmap()" title="Heatmap"><i class="fa-solid fa-fire"></i></button>
+            <button class="fmt-b" onclick="excelBandedRows()" title="Banded rows"><i class="fa-solid fa-grip-lines"></i></button>
+            <button class="fmt-b" onclick="excelFreezePane()" title="Freeze header"><i class="fa-solid fa-thumbtack"></i></button>
+          </div>
+        </div>
+
+        <div class="fmt-bar-div hide-mobile"></div>
+
+        <!-- Data cleaning -->
+        <div class="fmt-sec hide-mobile">
+          <span class="fmt-sec-label">Clean</span>
+          <div class="fmt-sec-body">
+            <button class="fmt-b" onclick="excelRemoveEmpty()" title="Remove empty rows"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="fmt-b" onclick="excelRemoveDupes()" title="Remove duplicates"><i class="fa-solid fa-copy"></i></button>
+            <button class="fmt-b" onclick="excelDetectTypes()" title="Detect types"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+            <button class="fmt-b" onclick="excelHighlightNulls()" title="Highlight nulls"><i class="fa-solid fa-circle-exclamation"></i></button>
+          </div>
+        </div>
+
+        <div class="fmt-bar-div hide-mobile"></div>
+
+        <!-- Tools -->
+        <div class="fmt-sec hide-mobile">
+          <span class="fmt-sec-label">Tools</span>
+          <div class="fmt-sec-body">
+            <button class="fmt-b" onclick="excelAutoSum()" title="AutoSum"><i class="fa-solid fa-sigma"></i></button>
+            <button class="fmt-b" onclick="excelSort('asc')" title="Sort A→Z"><i class="fa-solid fa-arrow-up-a-z"></i></button>
+            <button class="fmt-b" onclick="excelSort('desc')" title="Sort Z→A"><i class="fa-solid fa-arrow-down-z-a"></i></button>
+            <button class="fmt-b" id="exFilter" onclick="excelToggleFilter()" title="Filter"><i class="fa-solid fa-filter"></i></button>
+            <button class="fmt-b" onclick="excelFind()" title="Find"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:1.25rem">
-      <div class="card-header">
-        <i class="fa-solid fa-chart-line"></i> Price History <span id="live-range-label" style="font-weight:400;font-size:.75rem;color:var(--text3);margin-left:.3rem">(1Y)</span>
-        <div style="margin-left:auto;display:flex;gap:.3rem">
-          <button id="chart-toggle-line" class="btn btn-xs chart-toggle-btn active" onclick="setChartType('line')" title="Line chart"><i class="fa-solid fa-chart-line"></i></button>
-          <button id="chart-toggle-candle" class="btn btn-xs chart-toggle-btn" onclick="setChartType('candle')" title="Candlestick chart"><i class="fa-solid fa-chart-bar"></i></button>
-        </div>
+    <!-- ═══ FORMATTING STATUS CHIPS ═══ -->
+    <div class="fmt-chips" id="fmtChips"></div>
+
+    <!-- ═══ FIND BAR ═══ -->
+    <div id="excelFindBar" class="excel-find" style="display:none">
+      <i class="fa-solid fa-magnifying-glass" style="color:var(--text3);font-size:.78rem"></i>
+      <input type="text" id="exFindInput" placeholder="Find in table..." oninput="excelFindInTable(this.value)" onkeydown="if(event.key==='Enter')excelFindNext()">
+      <span class="match-count" id="exFindCount"></span>
+      <button class="btn btn-xs" onclick="excelFindNext()"><i class="fa-solid fa-arrow-down"></i></button>
+      <button class="btn btn-xs" onclick="excelFindPrev()"><i class="fa-solid fa-arrow-up"></i></button>
+      <button class="btn btn-xs" onclick="document.getElementById('excelFindBar').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- ═══ FORMATTED TABLE ═══ -->
+    <div class="excel-table-wrap" id="excelTableWrap">
+      <table class="excel-table" id="excelTable"></table>
+    </div>
+
+    <!-- Status bar -->
+    <div id="excelStatus" style="display:flex;gap:.75rem;align-items:center;padding:.35rem .5rem;background:var(--bg2);border:1px solid var(--border);border-radius:6px;margin-top:.5rem;font-size:.72rem;color:var(--text3);flex-wrap:wrap">
+      <span id="excelRowCount">0 rows</span>
+      <span id="excelColCount">0 columns</span>
+      <span id="excelSelected"> </span>
+      <span id="excelSum" style="margin-left:auto;font-weight:600"></span>
+    </div>
+
+    <!-- ═══ EXCEL DROPDOWNS (hidden; positioned via JS) ═══ -->
+    <div class="excel-dropdown" id="ddCondFormat">
+      <div class="excel-dd-header">Conditional Formatting</div>
+      <div class="excel-dd-item" onclick="excelApplyCondFmt('highlow')">
+        <span class="dd-preview"><span class="dd-swatch high"></span><span class="dd-swatch mid"></span><span class="dd-swatch low"></span></span>
+        High / Medium / Low
       </div>
-      <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start">
-        <div style="position:relative;height:320px;min-width:0">
-          <canvas id="live-chart"></canvas>
-        </div>
-        <div id="volume-chart-wrap" style="width:80px;height:320px;position:relative;display:none">
-          <canvas id="volume-chart"></canvas>
-        </div>
+      <div class="excel-dd-item" onclick="excelApplyCondFmt('heatmap')">
+        <span class="dd-preview"><span class="heat-preview"></span></span>
+        Heatmap
       </div>
-      <div class="mt-1" style="display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
-        <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-          <button class="btn btn-xs livedata-range" data-range="5d" onclick="fetchLiveData(null,'5d')">5D</button>
-          <button class="btn btn-xs livedata-range" data-range="1mo" onclick="fetchLiveData(null,'1mo')">1M</button>
-          <button class="btn btn-xs livedata-range" data-range="3mo" onclick="fetchLiveData(null,'3mo')">3M</button>
-          <button class="btn btn-xs livedata-range" data-range="6mo" onclick="fetchLiveData(null,'6mo')">6M</button>
-          <button class="btn btn-xs livedata-range active" data-range="1y" onclick="fetchLiveData(null,'1y')">1Y</button>
-          <button class="btn btn-xs livedata-range" data-range="5y" onclick="fetchLiveData(null,'5y')">5Y</button>
-          <button class="btn btn-xs livedata-range" data-range="max" onclick="fetchLiveData(null,'max')">MAX</button>
+      <div class="excel-dd-item" onclick="excelApplyCondFmt(null)">
+        <span class="dd-preview"><i class="fa-solid fa-ban" style="color:var(--danger);font-size:.72rem"></i></span>
+        Clear Formatting
+      </div>
+    </div>
+
+    <div class="excel-dropdown" id="ddFormatTable">
+      <div class="excel-dd-header">Table Style</div>
+      <div class="excel-dd-item" onclick="excelApplyTableStyle('dark')">
+        <span class="dd-preview"><span class="table-preview"><span class="tp-row"><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span></span><span class="tp-row"><span class="tp-cell dark"></span><span class="tp-cell accent"></span><span class="tp-cell dark"></span></span><span class="tp-row"><span class="tp-cell accent"></span><span class="tp-cell dark"></span><span class="tp-cell accent"></span></span></span></span>
+        Dark (banded)
+      </div>
+      <div class="excel-dd-item" onclick="excelApplyTableStyle('light')">
+        <span class="dd-preview"><span class="table-preview"><span class="tp-row"><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span></span><span class="tp-row"><span class="tp-cell light"></span><span class="tp-cell light"></span><span class="tp-cell light"></span></span><span class="tp-row"><span class="tp-cell "></span><span class="tp-cell light"></span><span class="tp-cell "></span></span></span></span>
+        Light (banded)
+      </div>
+      <div class="excel-dd-item" onclick="excelApplyTableStyle('professional')">
+        <span class="dd-preview"><span class="table-preview"><span class="tp-row"><span class="tp-cell green"></span><span class="tp-cell green"></span><span class="tp-cell green"></span></span><span class="tp-row"><span class="tp-cell "></span><span class="tp-cell "></span><span class="tp-cell "></span></span><span class="tp-row"><span class="tp-cell "></span><span class="tp-cell "></span><span class="tp-cell "></span></span></span></span>
+        Professional
+      </div>
+      <div class="excel-dd-item" onclick="excelApplyTableStyle('minimal')">
+        <span class="dd-preview"><span class="table-preview"><span class="tp-row"><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span><span class="tp-cell hdr"></span></span><span class="tp-row"><span class="tp-cell "></span><span class="tp-cell "></span><span class="tp-cell "></span></span><span class="tp-row"><span class="tp-cell "></span><span class="tp-cell "></span><span class="tp-cell "></span></span></span></span>
+        Minimal
+      </div>
+    </div>
+
+    <div class="excel-dropdown" id="ddFilterMenu">
+      <div class="excel-dd-header" id="ddFilterHeader">Filter</div>
+      <div class="excel-dd-search"><input type="text" id="ddFilterSearch" placeholder="Search values..." oninput="excelFilterSearch(this.value)"></div>
+      <div class="excel-dd-list" id="ddFilterList"></div>
+      <div class="excel-dd-footer">
+        <button onclick="excelApplyFilter()"><i class="fa-solid fa-check"></i> Apply</button>
+        <button onclick="excelClearFilter()"><i class="fa-solid fa-xmark"></i> Clear</button>
+      </div>
+    </div>
+
+    <div class="excel-dropdown" id="ddCurrencySym">
+      <div class="excel-dd-header">Currency Symbol</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('$')"><span class="dd-preview" style="font-size:1rem">$</span> Dollar ($)</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('€')"><span class="dd-preview" style="font-size:1rem">€</span> Euro (€)</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('£')"><span class="dd-preview" style="font-size:1rem">£</span> Pound (£)</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('¥')"><span class="dd-preview" style="font-size:1rem">¥</span> Yen (¥)</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('₣')"><span class="dd-preview" style="font-size:1rem">₣</span> Franc (₣)</div>
+      <div class="excel-dd-item" onclick="excelApplyCurrency('₹')"><span class="dd-preview" style="font-size:1rem">₹</span> Rupee (₹)</div>
+    </div>
+
+    <div class="excel-dropdown" id="ddColAction">
+      <div class="excel-dd-header" id="ddColActionHeader">Column Actions</div>
+      <div class="excel-dd-item" onclick="excelRenameColumn(_colActionCol)"><i class="fa-solid fa-pen"></i> Rename</div>
+      <div class="excel-dd-item" onclick="excelFindReplace(_colActionCol)"><i class="fa-solid fa-magnifying-glass"></i> Find &amp; Replace</div>
+      <div class="excel-dd-divider"></div>
+      <div class="excel-dd-item" onclick="excelTransformColumn(_colActionCol,'upper')"><i class="fa-solid fa-arrow-up"></i> Uppercase</div>
+      <div class="excel-dd-item" onclick="excelTransformColumn(_colActionCol,'lower')"><i class="fa-solid fa-arrow-down"></i> Lowercase</div>
+      <div class="excel-dd-item" onclick="excelTransformColumn(_colActionCol,'capitalize')"><i class="fa-solid fa-font"></i> Capitalize</div>
+      <div class="excel-dd-item" onclick="excelTransformColumn(_colActionCol,'trim')"><i class="fa-solid fa-scissors"></i> Trim Spaces</div>
+      <div class="excel-dd-divider"></div>
+      <div class="excel-dd-item" onclick="excelClearColumn(_colActionCol)"><i class="fa-solid fa-eraser"></i> Clear Values</div>
+      <div class="excel-dd-item" onclick="excelDuplicateColumn(_colActionCol)"><i class="fa-solid fa-copy"></i> Duplicate</div>
+      <div class="excel-dd-item danger" onclick="excelDeleteColumn(_colActionCol)"><i class="fa-solid fa-trash-can"></i> Delete Column</div>
+    </div>
+
+    <!-- ═══ RENAME MODAL ═══ -->
+    <div class="modal-overlay" id="renameModal" onclick="if(event.target===this)closeRenameModal()">
+      <div class="modal-box" style="max-width:380px;padding:1.5rem">
+        <div class="rename-hdr">
+          <span><i class="fa-solid fa-pen" style="color:var(--accent)"></i> Rename Column</span>
+          <button class="close-btn" onclick="closeRenameModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="rename-body">
+          <div class="rename-field">
+            <label><i class="fa-solid fa-table-column"></i> New column name</label>
+            <input type="text" id="renameInput" placeholder="Enter column name…" spellcheck="false">
+          </div>
+          <div class="rename-actions">
+            <button class="btn btn-sm" onclick="closeRenameModal()">Cancel</button>
+            <button class="btn btn-sm btn-primary" onclick="applyRename()"><i class="fa-solid fa-check"></i> Rename</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:1.25rem">
-      <div class="card-header"><i class="fa-solid fa-chart-simple"></i> Price Statistics</div>
-      <div id="livedata-stats-table" style="padding:.25rem 0"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem">
-      <div class="card">
-        <div class="card-header"><i class="fa-solid fa-arrow-trend-up"></i> 30-Day Price Prediction</div>
-        <div style="position:relative;height:280px">
-          <canvas id="live-prediction-chart"></canvas>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><i class="fa-solid fa-square-poll-vertical"></i> Prediction Summary</div>
-        <div id="livedata-prediction-details" style="padding:.25rem 0"></div>
-      </div>
-    </div>
-
-    <div style="font-size:.72rem;color:var(--text3);text-align:right;padding:.3rem 0">
-      <i class="fa-solid fa-database"></i> Data via Yahoo Finance | Updates may be delayed
-    </div>
   </div>
 </div>
 
@@ -1974,6 +2452,11 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <button class="btn btn-sm" style="background:rgba(var(--success-rgb),0.12);border-color:rgba(var(--success-rgb),0.3);color:var(--tag-success)" onclick="downloadDashboardExcel()"><i class="fas fa-file-csv"></i> Download CSV</button>
     </div>
   </div>
+  <div style="display:flex;gap:.35rem;margin-bottom:.75rem;flex-wrap:wrap">
+    <button class="btn btn-sm dash-mode-btn active" data-mode="standard" onclick="switchDashMode('standard')"><i class="fas fa-gauge-high"></i> Standard</button>
+    <button class="btn btn-sm dash-mode-btn" data-mode="fintech" onclick="switchDashMode('fintech')"><i class="fas fa-building-columns"></i> Fintech</button>
+    <button class="btn btn-sm dash-mode-btn" data-mode="fitness" onclick="switchDashMode('fitness')"><i class="fas fa-dumbbell"></i> Fitness</button>
+  </div>
 
   <!-- Customize Panel -->
   <div id="dash-customize" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-top:.75rem;padding:1rem 1.1rem">
@@ -2029,6 +2512,179 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
     </div>
     <div id="dash-charts" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.5rem"></div>
   </div>
+
+  <!-- ═══ FINTECH DASHBOARD ═══ -->
+  <div id="dash-fintech" class="dash-view" style="display:none">
+    <div class="ft-grid">
+      <div class="ft-card">
+        <div class="ft-card-hdr">
+          <span class="ft-card-label">Transaction Growth</span>
+          <span class="ft-card-icon" style="background:#dbeafe;color:#2563eb"><i class="fas fa-arrow-trend-up"></i></span>
+        </div>
+        <div class="ft-card-val" style="color:#2563eb">+24.8%</div>
+        <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 12.3%</span> vs last month</div>
+        <div class="ft-graphic"><svg viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M0,50 Q25,40 50,45 T100,30 T150,20 T200,25 L200,60 L0,60Z" fill="#2563eb15"/><path d="M0,50 Q25,40 50,45 T100,30 T150,20 T200,25" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ft-card">
+        <div class="ft-card-hdr">
+          <span class="ft-card-label">Profile Completion</span>
+          <span class="ft-card-icon" style="background:#fef3c7;color:#d97706"><i class="fas fa-user-check"></i></span>
+        </div>
+        <div class="ft-card-val" style="color:#d97706">87%</div>
+        <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 5%</span> this week</div>
+        <div class="ft-progress"><div class="ft-progress-fill" style="width:87%;background:linear-gradient(90deg,#f59e0b,#d97706)"></div></div>
+      </div>
+      <div class="ft-card">
+        <div class="ft-card-hdr">
+          <span class="ft-card-label">Success Rate</span>
+          <span class="ft-card-icon" style="background:#d1fae5;color:#10b981"><i class="fas fa-check-circle"></i></span>
+        </div>
+        <div class="ft-card-val" style="color:#10b981">94.2%</div>
+        <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 2.1%</span> this quarter</div>
+        <div class="ft-bar-group" id="ft-success-bars"></div>
+      </div>
+      <div class="ft-card">
+        <div class="ft-card-hdr">
+          <span class="ft-card-label">Monthly Spending</span>
+          <span class="ft-card-icon" style="background:#e0e7ff;color:#4f46e5"><i class="fas fa-wallet"></i></span>
+        </div>
+        <div class="ft-card-val" style="color:#4f46e5">$48,290</div>
+        <div class="ft-card-sub"><span class="down"><i class="fas fa-caret-down"></i> 3.7%</span> from last month</div>
+      </div>
+    </div>
+
+    <div class="ft-row">
+      <div class="ft-chart-card">
+        <div class="ft-chart-hdr">
+          <span class="ft-chart-title"><i class="fas fa-chart-line" style="color:#2563eb"></i> Revenue Overview</span>
+          <span style="font-size:.72rem;color:var(--ft-text2)">Last 12 months</span>
+        </div>
+        <div class="ft-chart-body"><canvas id="ft-revenue-chart"></canvas></div>
+      </div>
+      <div class="ft-chart-card">
+        <div class="ft-chart-hdr">
+          <span class="ft-chart-title"><i class="fas fa-chart-bar" style="color:#2563eb"></i> Spending by Category</span>
+          <span style="font-size:.72rem;color:var(--ft-text2)">Top categories</span>
+        </div>
+        <div class="ft-chart-body"><canvas id="ft-spending-chart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="ft-chart-card">
+      <div class="ft-chart-hdr">
+        <span class="ft-chart-title"><i class="fas fa-receipt" style="color:#2563eb"></i> Recent Transactions</span>
+        <div style="display:flex;gap:.4rem;align-items:center">
+          <input id="ft-search-input" type="text" placeholder="Search..." oninput="ftFilterTable()" style="display:none;font-size:.7rem;padding:.25rem .5rem;border:1px solid var(--ft-border);border-radius:6px;background:var(--ft-card-bg);color:var(--ft-text1);width:120px;outline:none">
+          <span onclick="ftToggleSearch()" style="cursor:pointer;font-size:.7rem;color:var(--ft-text2);background:#f3f4f6;padding:.2rem .5rem;border-radius:6px"><i class="fas fa-magnifying-glass"></i></span>
+          <span onclick="ftToggleFilter()" style="cursor:pointer;font-size:.7rem;color:var(--ft-text2);background:#f3f4f6;padding:.2rem .5rem;border-radius:6px"><i class="fas fa-filter"></i></span>
+        </div>
+      </div>
+      <div id="ft-filter-bar" style="display:none;padding:.4rem .8rem;gap:.4rem;background:var(--ft-card-bg);border-bottom:1px solid var(--ft-border);align-items:center;font-size:.75rem">
+        <select id="ft-filter-col" onchange="ftFilterTable()" style="padding:.2rem .4rem;border:1px solid var(--ft-border);border-radius:4px;background:var(--ft-card-bg);color:var(--ft-text1);font-size:.72rem"></select>
+        <input id="ft-filter-val" type="text" placeholder="Value..." oninput="ftFilterTable()" style="padding:.2rem .4rem;border:1px solid var(--ft-border);border-radius:4px;background:var(--ft-card-bg);color:var(--ft-text1);font-size:.72rem;flex:1;min-width:80px;outline:none">
+        <span onclick="ftClearFilter()" style="cursor:pointer;color:var(--ft-text3);font-size:.7rem"><i class="fas fa-times"></i></span>
+      </div>
+      <div class="ft-table-wrap">
+        <table class="ft-table" id="ft-transactions-table">
+          <thead id="ft-transactions-head"><tr></tr></thead>
+          <tbody id="ft-transactions-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FITNESS DASHBOARD ═══ -->
+  <div id="dash-fitness" class="dash-view" style="display:none">
+    <div class="fn-grid">
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Revenue</span>
+          <span class="fn-card-icon"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+        <div class="fn-card-val">$128.5K</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 12.5%</span> vs last month</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Active Users</span>
+          <span class="fn-card-icon"><i class="fas fa-users"></i></span>
+        </div>
+        <div class="fn-card-val">24.8K</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 8.3%</span> this week</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Engagement</span>
+          <span class="fn-card-icon"><i class="fas fa-fire"></i></span>
+        </div>
+        <div class="fn-card-val">92%</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 4.1%</span> this month</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Avg. Session</span>
+          <span class="fn-card-icon"><i class="fas fa-clock"></i></span>
+        </div>
+        <div class="fn-card-val">18m 42s</div>
+        <div class="fn-card-sub"><span class="down"><i class="fas fa-caret-down"></i> 1.2%</span> from last week</div>
+      </div>
+    </div>
+
+    <div class="fn-row">
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-chart-line"></i> Revenue Analytics</span>
+          <span style="font-size:.72rem;color:var(--fn-text2)">Monthly</span>
+        </div>
+        <div class="fn-chart-body tall"><canvas id="fn-revenue-chart"></canvas></div>
+      </div>
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-calendar"></i> Calendar</span>
+          <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-cal-label">May 2026</span>
+        </div>
+        <div id="fn-calendar" class="fn-cal-wrap"></div>
+      </div>
+    </div>
+
+    <div class="fn-row2">
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-mobile-screen"></i> Install Analytics</span>
+          <div class="fn-toggle">
+            <button class="active" onclick="fnToggleInstall(this,'weekly')">Weekly</button>
+            <button onclick="fnToggleInstall(this,'monthly')">Monthly</button>
+          </div>
+        </div>
+        <div class="fn-chart-body"><canvas id="fn-install-chart"></canvas></div>
+      </div>
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-dumbbell"></i> Popular Workouts</span>
+          <button class="fn-neon-btn" onclick="fnToggleWorkouts()">View All</button>
+        </div>
+        <div id="fn-workouts-list"></div>
+      </div>
+    </div>
+
+    <div class="fn-row2">
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-globe"></i> Global Impressions</span>
+          <span style="font-size:.72rem;color:var(--fn-text2)">By country</span>
+        </div>
+        <div class="fn-chart-body tall"><canvas id="fn-global-chart"></canvas></div>
+      </div>
+      <div class="fn-chart-card">
+        <div class="fn-chart-hdr">
+          <span class="fn-chart-title"><i class="fas fa-circle"></i> Age Distribution</span>
+          <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-age-label">25-34 dominates</span>
+        </div>
+        <div class="fn-chart-body"><canvas id="fn-age-chart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 </div> <!-- /content -->
@@ -3353,11 +4009,7 @@ function switchPanel(name){
     setTimeout(initDashDrag,100);
   }
 
-  if(name==='livedata'){
-    if(document.getElementById('groww-url').value.trim()){
-      setTimeout(fetchLiveData,100);
-    }
-  }
+  if(name==='formatting'&&workingData.length) setTimeout(renderFormatting,50);
 
   // Close sidebar on tablet after selection
   if(window.innerWidth <= 1024 && window.innerWidth > 768){
@@ -3468,6 +4120,7 @@ function initData(){
   document.getElementById('file-badge').style.display='block';
   document.getElementById('file-badge').textContent=`${workingData.length} rows`;
   addLog('upload-log','ok',`Loaded "${fileName}" — ${workingData.length} rows × ${columns.length} columns`);
+  if(typeof renderFormatting==='function') renderFormatting();
 }
 
 function detectColTypes(){
@@ -6443,232 +7096,1208 @@ function buildReportHTML(){
 }
 
 // ═══════════════════════════════════════
-// LIVE DATA
+// EXCEL-STYLE FORMATTING
 // ═══════════════════════════════════════
-const STOCK_SLUG_MAP = {
-  'reliance-industries-ltd':'RELIANCE','tata-consultancy-services-ltd':'TCS',
-  'hdfc-bank-ltd':'HDFCBANK','infosys-ltd':'INFY','icici-bank-ltd':'ICICIBANK',
-  'tata-motors-ltd':'TATAMOTORS','sbi':'SBIN','state-bank-of-india':'SBIN',
-  'bharti-airtel-ltd':'BHARTIARTL','itc-ltd':'ITC','hindustan-unilever-ltd':'HINDUNILVR',
-  'axis-bank-ltd':'AXISBANK','bajaj-finance-ltd':'BAJFINANCE',
-  'maruti-suzuki-india-ltd':'MARUTI','sun-pharmaceuticals-industries-ltd':'SUNPHARMA',
-  'kotak-mahindra-bank-ltd':'KOTAKBANK','ntpc-ltd':'NTPC',
-  'larsen-and-toubro-ltd':'LT','oil-and-natural-gas-corporation-ltd':'ONGC',
-  'power-grid-corporation-of-india-ltd':'POWERGRID','wipro-ltd':'WIPRO',
-  'titan-company-ltd':'TITAN','adani-enterprises-ltd':'ADANIENT',
-  'adani-ports-and-special-economic-zone-ltd':'ADANIPORTS','asian-paints-ltd':'ASIANPAINT',
-  'tech-mahindra-ltd':'TECHM','nestle-india-ltd':'NESTLEIND',
-  'hcl-technologies-ltd':'HCLTECH','bajaj-auto-ltd':'BAJAJ-AUTO',
-  'ultratech-cement-ltd':'ULTRACEMCO','dr-reddys-laboratories-ltd':'DRREDDY',
-  'hero-motocorp-ltd':'HEROMOTOCO','britannia-industries-ltd':'BRITANNIA',
-  'hdfc-life-insurance-company-ltd':'HDFCLIFE','sbi-life-insurance-company-ltd':'SBILIFE',
-  'divis-laboratories-ltd':'DIVISLAB','cipla-ltd':'CIPLA','tata-steel-ltd':'TATASTEEL',
-  'jsw-steel-ltd':'JSWSTEEL','coal-india-ltd':'COALINDIA','bajaj-finserv-ltd':'BAJAJFINSV',
-  'eicher-motors-ltd':'EICHERMOTOR','grasim-industries-ltd':'GRASIM',
-  'indusind-bank-ltd':'INDUSINDBK','bpcl-ltd':'BPCL','hindalco-industries-ltd':'HINDALCO',
-  'tata-consumer-products-ltd':'TATACONSUM','hdfc-asset-management-company-ltd':'HDFCAMC'
-};
+let excelState = { bold:true, italic:false, underline:false, align:'left', wrap:true, fontSize:11, fontFamily:"'Outfit',sans-serif", textColor:'#ffffff', fillColor:'#1a1a1a', banded:true, frozen:true, filter:false, numFmt:'general', decimals:2, currency:'$', condFmt:null, selectedCol:null, sortCol:null, sortDir:null, findIdx:-1, findResults:[], mergeCells:{}, colFormats:{} };
 
-function slugToSymbol(slug){
-  slug = slug.replace(/^https?:\/\/(www\.)?groww\.in\/stocks\//,'').replace(/\/$/,'').toLowerCase();
-  return STOCK_SLUG_MAP[slug] || slug.replace(/-/g,'').toUpperCase();
+// Per-column formatting helpers
+function getColFmt(colIdx){
+  const cf = excelState.colFormats[colIdx];
+  if(!cf) return null;
+  return cf;
 }
 
-function fetchLiveData(url, range){
-  const status = document.getElementById('livedata-status');
-  const results = document.getElementById('livedata-results');
-  if(!url) url = document.getElementById('groww-url').value.trim();
-  if(!url){ alert('Please paste a Groww stock link'); return; }
-  const symbol = slugToSymbol(url) + '.NS';
-  const rng = range || '1y';
-  const rangeLabel = { '5d':'5D','1mo':'1M','3mo':'3M','6mo':'6M','1y':'1Y','5y':'5Y','max':'MAX' }[rng]||rng;
-  document.getElementById('groww-url').value = url;
-  document.getElementById('live-range-label').textContent = '('+rangeLabel+')';
-  document.querySelectorAll('.livedata-range').forEach(b=>b.classList.toggle('active',b.dataset.range===rng));
-  status.style.display = 'block';
-  results.style.display = 'none';
-  status.innerHTML = '<div class="empty-icon"><i class="fa-solid fa-spinner fa-spin"></i></div><div class="empty-text">Fetching live data...</div><div class="empty-sub">Retrieving '+symbol.replace('.NS','')+' for '+rangeLabel+'</div>';
-  fetchFromYahoo(symbol, rng, url);
+function ensureColFmt(colIdx){
+  if(!excelState.colFormats[colIdx]) excelState.colFormats[colIdx]={};
+  return excelState.colFormats[colIdx];
 }
 
-function fetchFromYahoo(symbol, rng, originalUrl){
-  fetch('https://query1.finance.yahoo.com/v8/finance/chart/'+symbol+'?range='+rng+'&interval=1d&includePrePost=false')
-    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status); return r.json();})
-    .then(data=>renderLiveData(data,symbol,rng))
-    .catch(()=>{
-      fetch('https://query2.finance.yahoo.com/v8/finance/chart/'+symbol+'?range='+rng+'&interval=1d&includePrePost=false')
-        .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status); return r.json();})
-        .then(data=>renderLiveData(data,symbol,rng))
-        .catch(()=>renderWithFakeData(symbol,rng));
-    });
+function resolveFmt(key, colIdx){
+  const cf = getColFmt(colIdx);
+  if(cf && cf[key]!==undefined) return cf[key];
+  return excelState[key];
 }
 
-function renderWithFakeData(symbol,rng){
-  const status = document.getElementById('livedata-status');
-  const results = document.getElementById('livedata-results');
-  const count = { '5d':7, '1mo':30, '3mo':90, '6mo':180, '1y':365, '5y':1825, 'max':1000 }[rng]||365;
-  const fakeData = [];
-  let price = 1500 + Math.random()*500;
-  for(let i=count;i>=0;i--){
-    const d = new Date(); d.setDate(d.getDate()-i);
-    const change = (Math.random()-0.48)*price*0.025;
-    price = Math.max(price+change, 100);
-    fakeData.push({ date:d.toISOString().split('T')[0], close:Math.round(price*100)/100, open:Math.round((price-change)*100)/100, high:Math.round(price*(1+Math.random()*0.02)*100)/100, low:Math.round(price*(1-Math.random()*0.02)*100)/100, volume:Math.floor(Math.random()*50000000+5000000) });
+function setFmt(key, val){
+  if(excelState.selectedCol!=null){
+    const cf = ensureColFmt(excelState.selectedCol);
+    cf[key] = val;
+  } else {
+    excelState[key] = val;
   }
-  status.style.display = 'none';
-  results.style.display = 'block';
-  const sym = symbol.replace('.NS','');
-  updateStockHeader(fakeData, sym+' ⚠ (demo)');
-  renderLiveChart(fakeData, sym);
-  renderLiveStatsTable(fakeData);
-  computePrediction(fakeData, sym);
 }
 
-function renderLiveData(data,symbol,rng){
-  const status = document.getElementById('livedata-status');
-  const results = document.getElementById('livedata-results');
-  const result = data?.chart?.result?.[0];
-  if(!result||!result.timestamp){ renderWithFakeData(symbol,rng); return; }
-  const q = result.indicators?.quote?.[0];
-  if(!q){ renderWithFakeData(symbol,rng); return; }
-  const timestamps = result.timestamp;
-  const points = [];
-  for(let i=0;i<timestamps.length;i++){
-    if(q.close[i]!=null){
-      points.push({ date:new Date(timestamps[i]*1000).toISOString().split('T')[0], close:q.close[i], open:q.open[i]||q.close[i], high:q.high[i]||q.close[i], low:q.low[i]||q.close[i], volume:q.volume[i]||0 });
-    }
+function delColFmt(colIdx, key){
+  const cf = getColFmt(colIdx);
+  if(cf && cf[key]!==undefined) delete cf[key];
+}
+
+function renderFormatting(){
+  if(!workingData.length){document.getElementById('fmt-content').style.display='none';document.getElementById('fmt-no-data').style.display='block';return;}
+  document.getElementById('fmt-no-data').style.display='none';
+  document.getElementById('fmt-content').style.display='block';
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelSyncActiveButtons(){
+  const ci = excelState.selectedCol;
+  const b = ci!=null ? resolveFmt('bold',ci) : excelState.bold;
+  const it = ci!=null ? resolveFmt('italic',ci) : excelState.italic;
+  const un = ci!=null ? resolveFmt('underline',ci) : excelState.underline;
+  const al = ci!=null ? resolveFmt('align',ci) : excelState.align;
+  const wr = ci!=null ? resolveFmt('wrap',ci) : excelState.wrap;
+  document.getElementById('exBold')?.classList.toggle('active',b);
+  document.getElementById('exItalic')?.classList.toggle('active',it);
+  document.getElementById('exUnderline')?.classList.toggle('active',un);
+  document.getElementById('exWrap')?.classList.toggle('active',wr);
+  ['left','center','right'].forEach(dir=>{
+    const id='exAlign'+dir.charAt(0).toUpperCase()+dir.slice(1);
+    document.getElementById(id)?.classList.toggle('active',al===dir);
+  });
+  document.getElementById('exFilter')?.classList.toggle('active',excelState.filter);
+}
+
+function excelToast(msg){
+  const t=document.createElement('div'); t.className='excel-toast'; t.textContent=msg;
+  document.body.appendChild(t); setTimeout(()=>t.remove(),2000);
+}
+
+function excelFormatValue(v, col){
+  if(v==null||v==='') return '<span class="null-cell">NULL</span>';
+  const s=String(v), ct=colTypes[col];
+  if(ct==='int'||ct==='float'){
+    const n=Number(v); if(isNaN(n)) return escHtml(s);
+    let fmt=n.toFixed(excelState.decimals);
+    if(excelState.numFmt==='currency') fmt=excelState.currency+fmt;
+    else if(excelState.numFmt==='percent') fmt=(n*100).toFixed(Math.max(0,excelState.decimals-2))+'%';
+    else if(excelState.numFmt==='scientific') fmt=n.toExponential(Math.max(0,excelState.decimals));
+    return fmt;
   }
-  if(!points.length){ renderWithFakeData(symbol,rng); return; }
-  status.style.display = 'none';
-  results.style.display = 'block';
-  const sym = symbol.replace('.NS','');
-  const meta = result.meta;
-  updateStockHeader(points, sym, meta);
-  renderLiveChart(points, sym);
-  renderLiveStatsTable(points);
-  computePrediction(points, sym);
+  return escHtml(s);
 }
 
-function updateStockHeader(points, symbol, meta){
-  const last = points[points.length-1];
-  const prev = points.length>1 ? points[points.length-2] : last;
-  const change = last.close - prev.close;
-  const pct = prev.close ? (change/prev.close*100) : 0;
-  const isUp = change >= 0;
-  const company = meta?.longName || meta?.shortName || symbol.replace('.NS','');
-  document.getElementById('livedata-company').textContent = company;
-  document.getElementById('livedata-symbol').textContent = symbol;
-  document.getElementById('livedata-price').textContent = '₹'+last.close.toLocaleString('en-IN',{minimumFractionDigits:2});
-  document.getElementById('livedata-price').style.color = isUp ? 'var(--success)' : 'var(--danger)';
-  document.getElementById('livedata-change').innerHTML = (isUp?'+':'')+change.toFixed(2)+' ('+(isUp?'+':'')+pct.toFixed(2)+'%)';
-  document.getElementById('livedata-change').className = isUp ? 'stock-change-up' : 'stock-change-down';
-  const high = points.reduce((m,p)=>Math.max(m,p.high||0),0);
-  const low = points.reduce((m,p)=>Math.min(m,p.low||Infinity),Infinity);
-  const avgVol = Math.round(points.reduce((s,p)=>s+(p.volume||0),0)/points.length);
-  document.getElementById('livedata-dayrange').textContent = '₹'+(last.low||low).toFixed(2)+' — ₹'+(last.high||high).toFixed(2);
-  document.getElementById('livedata-52wrange').textContent = '₹'+low.toFixed(2)+' — ₹'+high.toFixed(2);
-  document.getElementById('livedata-volume').textContent = avgVol>=10000000?(avgVol/10000000).toFixed(1)+'Cr':avgVol>=100000?(avgVol/100000).toFixed(1)+'L':avgVol.toLocaleString('en-IN');
+function fmti(colIdx, key){ return resolveFmt(key, colIdx); }
+
+function colStyle(colIdx){
+  const f = fmti(colIdx,'fontFamily'), s = fmti(colIdx,'fontSize');
+  const b = fmti(colIdx,'bold')?'font-weight:700;':'';
+  const it = fmti(colIdx,'italic')?'font-style:italic;':'';
+  const u = fmti(colIdx,'underline')?'text-decoration:underline;':'';
+  const a = 'text-align:'+fmti(colIdx,'align')+';';
+  const tc = 'color:'+fmti(colIdx,'textColor')+';';
+  const bg = 'background:'+fmti(colIdx,'fillColor')+';';
+  const wr = fmti(colIdx,'wrap')?'white-space:normal;word-break:break-word;':'white-space:nowrap;';
+  return `font-family:${f};font-size:${s}px;${b}${it}${u}${a}${tc}${bg}${wr}`;
 }
 
-let _chartType = 'line';
-
-function setChartType(type){
-  _chartType = type;
-  document.getElementById('chart-toggle-line').classList.toggle('active',type==='line');
-  document.getElementById('chart-toggle-candle').classList.toggle('active',type==='candle');
-  document.getElementById('volume-chart-wrap').style.display = type==='line' ? 'block' : 'none';
-  if(window._livePoints) renderLiveChart(window._livePoints);
+function cellStyle(colIdx){
+  const f = fmti(colIdx,'fontFamily'), s = fmti(colIdx,'fontSize');
+  const b = fmti(colIdx,'bold')?'font-weight:700;':'';
+  const it = fmti(colIdx,'italic')?'font-style:italic;':'';
+  const u = fmti(colIdx,'underline')?'text-decoration:underline;':'';
+  const a = 'text-align:'+fmti(colIdx,'align')+';';
+  const wr = fmti(colIdx,'wrap')?'white-space:normal;word-break:break-word;':'white-space:nowrap;';
+  return `font-family:${f};font-size:${s}px;${b}${it}${u}${a}${wr}`;
 }
 
-function renderLiveChart(points){
-  window._livePoints = points;
-  const canvas = document.getElementById('live-chart');
-  if(!canvas||!points.length) return;
-  if(window._liveChart) window._liveChart.destroy();
-  if(window._volChart) window._volChart.destroy();
-  const labels = points.map(p=>p.date);
-  if(_chartType==='candle'){
-    const candleData = points.map(p=>({x:p.date,o:p.open,h:p.high,l:p.low,c:p.close}));
-    window._liveChart = new Chart(canvas, {
-      type:'candlestick',
-      data:{ datasets:[{ label:'Price', data:candleData, color:{ up:'#22c55e', down:'#ef4444', unchanged:'#6c63ff' } }] },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{
-          legend:{ display:false },
-          tooltip:{
-            backgroundColor:'rgba(0,0,0,.85)', titleColor:'#fff', bodyColor:'#ddd', padding:10, cornerRadius:8,
-            callbacks:{
-              title:items=>items[0].label,
-              label:ctx=>{
-                const d = ctx.parsed, o=d.o??d._y1, h=d.h??d._y2, l=d.l??d._y3, c=d.c??d._y4;
-                return [' O: ₹'+(o?.toFixed(2)||'—'),' H: ₹'+(h?.toFixed(2)||'—'),' L: ₹'+(l?.toFixed(2)||'—'),' C: ₹'+(c?.toFixed(2)||'—')];
-              }
-            }
-          }
-        },
-        scales:{
-          x:{ ticks:{ color:'var(--text3)', font:{size:9}, maxTicksLimit:10 }, grid:{display:false} },
-          y:{ position:'right', ticks:{ color:'var(--text3)', font:{size:9}, callback:v=>'₹'+v.toFixed(0) }, grid:{color:'rgba(255,255,255,.04)'} }
+function excelFormatValueCol(v, col, colIdx){
+  if(v==null||v==='') return '<span class="null-cell">NULL</span>';
+  const s=String(v), ct=colTypes[col];
+  if(ct==='int'||ct==='float'){
+    const n=Number(v); if(isNaN(n)) return escHtml(s);
+    const dec = resolveFmt('decimals', colIdx);
+    const nf = resolveFmt('numFmt', colIdx);
+    const cur = resolveFmt('currency', colIdx);
+    let fmt=n.toFixed(dec);
+    if(nf==='currency') fmt=cur+fmt;
+    else if(nf==='percent') fmt=(n*100).toFixed(Math.max(0,dec-2))+'%';
+    else if(nf==='scientific') fmt=n.toExponential(Math.max(0,dec));
+    return fmt;
+  }
+  return escHtml(s);
+}
+
+function excelRenderTable(){
+  const table=document.getElementById('excelTable');
+  const data=window._fmtFiltered||workingData;
+  if(!data.length||!columns.length){table.innerHTML='<tr><td style="padding:2rem;text-align:center;color:var(--text3)">No data</td></tr>';return;}
+  let html='<thead><tr>';
+  columns.forEach((c,i)=>{
+    const isNum=colTypes[c]==='int'||colTypes[c]==='float';
+    const badge=isNum?'<span class="col-type-badge num">#</span>':colTypes[c]==='date'?'<span class="col-type-badge date">📅</span>':colTypes[c]==='string'?'<span class="col-type-badge str">Aa</span>':'';
+    const sortIcon=excelState.sortCol===i?(excelState.sortDir==='asc'?'<i class="fa-solid fa-arrow-up"></i>':'<i class="fa-solid fa-arrow-down"></i>'):'';
+    const isSelected = excelState.selectedCol===i;
+    const selCls = isSelected ? ' col-selected' : '';
+    html+=`<th data-col="${i}" onclick="excelSelectCol(${i})" class="${selCls}" style="${colStyle(i)}${isSelected ? ';outline:2px solid var(--accent);outline-offset:-1px' : ''}">
+      ${escHtml(c)} ${badge} ${sortIcon}
+      ${excelState.filter?`<span class="th-filter" onclick="event.stopPropagation();excelFilterMenu(${i})"><i class="fa-solid fa-filter"></i></span>`:''}
+      <span class="col-action-btn" onclick="event.stopPropagation();excelColAction(event,${i})" title="Column actions">⋮</span>
+    </th>`;
+  });
+  html+='</tr></thead><tbody>';
+  data.forEach((r,ri)=>{
+    html+=`<tr class="${excelState.banded&&ri%2===1?'banded':''}" data-row="${ri}">`;
+    columns.forEach((c,ci)=>{
+      const raw=r[c];
+      const isNull=raw==null||raw==='';
+      const isNum=colTypes[c]==='int'||colTypes[c]==='float';
+      let val=excelFormatValueCol(raw,c,ci);
+      let cls=isNull?'null-cell':isNum?'num':colTypes[c]==='date'||colTypes[c]==='string'?'txt':'center';
+      const cond = resolveFmt('condFmt', ci);
+      if(cond && !isNull && isNum){
+        const n=Number(raw);
+        if(!isNaN(n)){
+          const colData=data.map(r=>Number(r[c])).filter(v=>!isNaN(v));
+          const mn=Math.min(...colData), mx=Math.max(...colData), rng=mx-mn||1;
+          const pct=(n-mn)/rng;
+          if(cond==='highlow') cls+=' cf-'+(pct>0.66?'high':pct>0.33?'mid':'low');
+          else if(cond==='heatmap') cls+=' cf-heat-'+Math.min(9,Math.floor(pct*10));
         }
       }
+      const isSel = excelState.selectedCol===ci;
+      html+=`<td class="${cls}${isSel?' col-active':''}" data-col="${ci}" data-row="${ri}" style="${cellStyle(ci)}${isSel?';outline:1px solid rgba(var(--accent-rgb),.4);outline-offset:-1px':''}">${val}</td>`;
     });
+    html+='</tr>';
+  });
+  html+='</tbody>';
+  table.innerHTML=html;
+  document.getElementById('excelRowCount').textContent=data.length.toLocaleString()+' rows';
+  document.getElementById('excelColCount').textContent=columns.length+' columns';
+  const selInfo = excelState.selectedCol!=null ? 'Col: '+columns[excelState.selectedCol] + ' <span class="col-mode-badge">column mode</span>' : '';
+  document.getElementById('excelSelected').innerHTML = selInfo;
+  // AutoSum row
+  if(excelState.selectedCol!=null){
+    const col=columns[excelState.selectedCol];
+    const nums=data.map(r=>Number(r[col])).filter(v=>!isNaN(v));
+    if(nums.length){
+      const sum=nums.reduce((a,b)=>a+b,0);
+      const avg=sum/nums.length;
+      const min=Math.min(...nums), max=Math.max(...nums);
+      document.getElementById('excelSum').innerHTML=`<span style="color:var(--accent)">Σ ${sum.toFixed(2)}</span> <span style="color:var(--text3)">|</span> Avg ${avg.toFixed(2)} <span style="color:var(--text3)">|</span> Min ${min.toFixed(2)} <span style="color:var(--text3)">|</span> Max ${max.toFixed(2)}`;
+    } else {
+      document.getElementById('excelSum').textContent='';
+    }
   } else {
-    const prices = points.map(p=>p.close);
-    const volumes = points.map(p=>p.volume);
-    const volColors = points.map((p,i)=>i>0&&p.close>=points[i-1].close?'rgba(34,197,94,.4)':'rgba(239,68,68,.4)');
-    const grad = canvas.getContext('2d').createLinearGradient(0,0,0,320);
-    grad.addColorStop(0,'rgba(108,99,255,.2)');
-    grad.addColorStop(1,'rgba(108,99,255,.01)');
-    window._liveChart = new Chart(canvas, {
+    document.getElementById('excelSum').textContent='';
+  }
+  excelRenderFmtChips();
+}
+
+function fmtChip(key, icon, label, ci){
+  if(ci!=null){ const v=resolveFmt(key,ci); if(v!==undefined && v!==false && v!=='general' && v!=='left') return true; }
+  else if(excelState[key]!==undefined && excelState[key]!==false && excelState[key]!=='general' && excelState[key]!=='left') return true;
+  return false;
+}
+
+function excelRenderFmtChips(){
+  const el=document.getElementById('fmtChips');
+  if(!el) return;
+  const ci = excelState.selectedCol;
+  const chips=[];
+  if(ci!=null) chips.push({icon:'<i class="fa-solid fa-arrow-pointer"></i>',label:columns[ci]});
+  if(fmtChip('bold','fa-bold','Bold',ci)||(ci==null&&excelState.bold)) chips.push({icon:'<i class="fa-solid fa-bold"></i>',label:'Bold'});
+  if(ci==null && excelState.italic) chips.push({icon:'<i class="fa-solid fa-italic"></i>',label:'Italic'});
+  else if(ci!=null && resolveFmt('italic',ci)) chips.push({icon:'<i class="fa-solid fa-italic"></i>',label:'Italic'});
+  if(ci==null && excelState.underline) chips.push({icon:'<i class="fa-solid fa-underline"></i>',label:'Underline'});
+  else if(ci!=null && resolveFmt('underline',ci)) chips.push({icon:'<i class="fa-solid fa-underline"></i>',label:'Underline'});
+  if(excelState.banded) chips.push({icon:'<i class="fa-solid fa-grip-lines"></i>',label:'Banded'});
+  if(excelState.frozen) chips.push({icon:'<i class="fa-solid fa-thumbtack"></i>',label:'Frozen'});
+  if(excelState.filter) chips.push({icon:'<i class="fa-solid fa-filter"></i>',label:'Filter'});
+  const wrapVal = ci!=null ? resolveFmt('wrap',ci) : excelState.wrap;
+  if(wrapVal) chips.push({icon:'<i class="fa-solid fa-bars-staggered"></i>',label:'Wrap'});
+  const condVal = ci!=null ? resolveFmt('condFmt',ci) : excelState.condFmt;
+  if(condVal) chips.push({icon:'<i class="fa-solid fa-palette"></i>',label:condVal==='heatmap'?'Heatmap':'H/M/L'});
+  const nfVal = ci!=null ? resolveFmt('numFmt',ci) : excelState.numFmt;
+  if(nfVal!=='general') chips.push({icon:'<i class="fa-solid fa-hashtag"></i>',label:nfVal});
+  const alVal = ci!=null ? resolveFmt('align',ci) : excelState.align;
+  if(alVal!=='left') chips.push({icon:'<i class="fa-solid fa-align-'+alVal+'"></i>',label:alVal});
+  el.innerHTML=chips.length?`<span class="fmt-chips-label">${ci!=null?'Col:':'Global'}</span>${chips.map(c=>`<span class="fmt-chip">${c.icon} ${c.label}</span>`).join('')}`:'';
+}
+
+function excelSelectCol(idx){
+  if(excelState.selectedCol===idx){ excelState.selectedCol=null; excelRenderTable(); return; }
+  excelState.selectedCol=idx;
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelApplyFont(){
+  setFmt('fontFamily', document.getElementById('exFont').value);
+  setFmt('fontSize', parseInt(document.getElementById('exSize').value)||11);
+  excelRenderTable();
+}
+
+function excelToggleBold(){
+  const ci = excelState.selectedCol;
+  const cur = ci!=null ? resolveFmt('bold',ci) : excelState.bold;
+  setFmt('bold', !cur);
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelToggleItalic(){
+  const ci = excelState.selectedCol;
+  const cur = ci!=null ? resolveFmt('italic',ci) : excelState.italic;
+  setFmt('italic', !cur);
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelToggleUnderline(){
+  const ci = excelState.selectedCol;
+  const cur = ci!=null ? resolveFmt('underline',ci) : excelState.underline;
+  setFmt('underline', !cur);
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelSetAlign(a){
+  setFmt('align', a);
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelTextColor(v){
+  setFmt('textColor', v);
+  excelRenderTable();
+}
+
+function excelFillColor(v){
+  setFmt('fillColor', v);
+  excelRenderTable();
+}
+
+function excelBorders(){
+  document.querySelectorAll('#excelTable td, #excelTable th').forEach(el=>{
+    el.style.border='1px solid '+excelState.textColor;
+  });
+  excelToast('Borders applied');
+}
+
+function excelToggleWrap(){
+  const ci = excelState.selectedCol;
+  const cur = ci!=null ? resolveFmt('wrap',ci) : excelState.wrap;
+  setFmt('wrap', !cur);
+  excelSyncActiveButtons();
+  excelRenderTable();
+}
+
+function excelMergeCenter(){
+  excelToast('Merge & Center: Select cells visually in table view');
+}
+
+function excelNumFormat(fmt){
+  setFmt('numFmt', fmt);
+  if(fmt==='currency'){setFmt('decimals',2); document.getElementById('exNumFormat').value=fmt; excelRenderTable(); excelToast('Format: currency');}
+  else if(fmt==='percent'){setFmt('decimals',2); document.getElementById('exNumFormat').value=fmt; excelRenderTable(); excelToast('Format: percent');}
+  else if(fmt==='number'){setFmt('decimals',2); document.getElementById('exNumFormat').value=fmt; excelRenderTable(); excelToast('Format: number');}
+  else if(fmt==='date'){setFmt('decimals',0); document.getElementById('exNumFormat').value=fmt; excelRenderTable(); excelToast('Format: date');}
+  else{setFmt('decimals',2); document.getElementById('exNumFormat').value=fmt; excelRenderTable(); excelToast('Format: '+fmt);}
+}
+
+function excelApplyCurrency(sym){
+  setFmt('currency', sym);
+  setFmt('numFmt', 'currency');
+  setFmt('decimals', 2);
+  document.getElementById('exNumFormat').value='currency';
+  excelCloseDropdowns();
+  excelRenderTable();
+  excelToast('Currency: '+sym);
+}
+
+function excelDecimalChange(d){
+  const ci = excelState.selectedCol;
+  const cur = ci!=null ? resolveFmt('decimals',ci) : excelState.decimals;
+  setFmt('decimals', Math.max(0,Math.min(10,(cur||0)+d)));
+  excelRenderTable();
+}
+
+function excelApplyCondFmt(type){
+  if(type===null){setFmt('condFmt',null);excelToast('Conditional formatting cleared');}
+  else if(type==='highlow'){setFmt('condFmt','highlow');excelToast('Conditional: High/Medium/Low');}
+  else if(type==='heatmap'){setFmt('condFmt','heatmap');excelToast('Conditional: Heatmap');}
+  excelCloseDropdowns();
+  excelRenderTable();
+}
+
+function excelApplyTableStyle(style){
+  if(style==='dark'){setFmt('fillColor','#1a237e');setFmt('textColor','#fff');excelState.banded=true;}
+  else if(style==='light'){setFmt('fillColor','#e8eaf6');setFmt('textColor','#000');excelState.banded=true;}
+  else if(style==='professional'){setFmt('fillColor','#1b5e20');setFmt('textColor','#fff');excelState.banded=true;}
+  else if(style==='minimal'){setFmt('fillColor','var(--bg3)');setFmt('textColor','var(--text)');excelState.banded=false;}
+  setFmt('bold',true);
+  excelCloseDropdowns();
+  excelRenderTable();
+  excelToast('Table style applied');
+}
+
+function excelHeatmap(){
+  setFmt('condFmt','heatmap');
+  excelRenderTable();
+  excelToast('Heatmap applied');
+}
+
+function excelBandedRows(){
+  excelState.banded=!excelState.banded;
+  excelRenderTable();
+  excelToast(excelState.banded?'Banded rows on':'Banded rows off');
+}
+
+function excelFreezePane(){
+  excelState.frozen=!excelState.frozen;
+  document.querySelector('#excelTable thead').style.position=excelState.frozen?'sticky':'static';
+  document.querySelectorAll('#excelTable th').forEach(th=>th.style.position=excelState.frozen?'sticky':'static');
+  excelToast(excelState.frozen?'Header frozen':'Header unfrozen');
+}
+
+function excelRemoveEmpty(){
+  const before=workingData.length;
+  workingData=workingData.filter(r=>columns.some(c=>r[c]!=null&&r[c]!==''));
+  if(originalData.length) originalData=[...workingData];
+  excelToast('Removed '+(before-workingData.length)+' empty rows');
+  excelRenderTable();
+}
+
+function excelRemoveDupes(){
+  const before=workingData.length;
+  const seen=new Set();
+  workingData=workingData.filter(r=>{
+    const key=JSON.stringify(columns.map(c=>r[c]));
+    if(seen.has(key)) return false;
+    seen.add(key); return true;
+  });
+  if(originalData.length) originalData=[...workingData];
+  excelToast('Removed '+(before-workingData.length)+' duplicates');
+  excelRenderTable();
+}
+
+function excelHighlightNulls(){
+  excelToast('Null values already highlighted in red');
+}
+
+function excelDetectTypes(){
+  columns.forEach(c=>{
+    const vals=workingData.map(r=>r[c]).filter(v=>v!=null&&v!=='');
+    if(!vals.length) return;
+    const nums=vals.filter(v=>!isNaN(Number(v))&&v!=='');
+    const dates=vals.filter(v=>!isNaN(new Date(v).getTime()));
+    if(nums.length===vals.length) colTypes[c]=vals.some(v=>String(v).includes('.'))?'float':'int';
+    else if(dates.length>vals.length*0.7) colTypes[c]='date';
+    else colTypes[c]='string';
+  });
+  excelToast('Column types auto-detected');
+  excelRenderTable();
+}
+
+function excelAutoSum(){
+  if(excelState.selectedCol==null){excelToast('Click a column header first');return;}
+  const col=columns[excelState.selectedCol];
+  const data=window._fmtFiltered||workingData;
+  const nums=data.map(r=>Number(r[col])).filter(v=>!isNaN(v));
+  if(!nums.length){excelToast('No numeric data in '+col);return;}
+  const sum=nums.reduce((a,b)=>a+b,0);
+  const avg=sum/nums.length;
+  const min=Math.min(...nums), max=Math.max(...nums);
+  document.getElementById('excelSum').innerHTML=`<span style="color:var(--accent);font-size:.9rem"><i class="fa-solid fa-sigma"></i> ${sum.toFixed(2)}</span> <span style="color:var(--text3)">|</span> Avg ${avg.toFixed(2)} <span style="color:var(--text3)">|</span> Min ${min.toFixed(2)} <span style="color:var(--text3)">|</span> Max ${max.toFixed(2)} <span style="color:var(--text3)">|</span> Count ${nums.length}`;
+  excelToast('AutoSum computed for '+col);
+}
+
+function excelSort(dir){
+  if(excelState.selectedCol==null){excelToast('Click a column header first');return;}
+  const idx=excelState.selectedCol;
+  const col=columns[idx];
+  excelState.sortCol=idx;
+  excelState.sortDir=dir;
+  const isNum=colTypes[col]==='int'||colTypes[col]==='float';
+  workingData.sort((a,b)=>{
+    const va=a[col], vb=b[col];
+    if(va==null||va==='') return 1;
+    if(vb==null||vb==='') return -1;
+    if(isNum){const na=Number(va), nb=Number(vb); return dir==='asc'?na-nb:nb-na;}
+    return dir==='asc'?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va));
+  });
+  if(originalData.length) originalData=[...workingData];
+  excelToast('Sorted '+dir+' by '+col);
+  excelRenderTable();
+}
+
+function excelToggleFilter(){
+  excelState.filter=!excelState.filter;
+  document.getElementById('exFilter').classList.toggle('active',excelState.filter);
+  excelRenderTable();
+  excelToast(excelState.filter?'Filter enabled':'Filter disabled');
+}
+
+function excelFilterMenu(colIdx){
+  const col=columns[colIdx];
+  const data=window._fmtFiltered||workingData;
+  const vals=[...new Set(data.map(r=>String(r[col]??'NULL')))].sort();
+  const list=document.getElementById('ddFilterList');
+  const header=document.getElementById('ddFilterHeader');
+  header.textContent='Filter: '+col;
+  list.innerHTML=vals.map(v=>`<label><input type="checkbox" class="fv-cb" value="${escHtml(v).replace(/"/g,'&quot;')}" checked> ${escHtml(v)}</label>`).join('');
+  window._fmtFilterCol=colIdx;
+  const btn=document.querySelector(`#excelTable th[data-col="${colIdx}"] .th-filter`);
+  excelToggleDropdown('ddFilterMenu',btn||document.getElementById('exFilter'));
+}
+
+let _fmtFilterSearch='';
+
+function excelFilterSearch(q){
+  _fmtFilterSearch=q.toLowerCase();
+  document.querySelectorAll('#ddFilterList label').forEach(l=>{
+    l.style.display=l.textContent.toLowerCase().includes(_fmtFilterSearch)?'flex':'none';
+  });
+}
+
+function excelApplyFilter(){
+  const colIdx=window._fmtFilterCol;
+  if(colIdx==null){excelCloseDropdowns();return;}
+  const col=columns[colIdx];
+  const checked=[...document.querySelectorAll('#ddFilterList .fv-cb:checked')].map(cb=>cb.value);
+  if(checked.length===document.querySelectorAll('#ddFilterList .fv-cb').length){
+    window._fmtFiltered=null;
+  } else {
+    window._fmtFiltered=workingData.filter(r=>checked.includes(String(r[col]??'NULL')));
+  }
+  excelCloseDropdowns();
+  excelRenderTable();
+}
+
+function excelClearFilter(){
+  window._fmtFiltered=null;
+  excelCloseDropdowns();
+  excelRenderTable();
+  excelToast('Filter cleared');
+}
+
+// ═══════════════════════════════════════
+// COLUMN DATA EDITING
+// ═══════════════════════════════════════
+let _colActionCol = null;
+let _renameColIdx = null;
+
+function excelColAction(ev, colIdx){
+  _colActionCol = colIdx;
+  document.getElementById('ddColActionHeader').textContent = 'Actions: ' + columns[colIdx];
+  excelToggleDropdown('ddColAction', ev.currentTarget);
+}
+
+function excelRenameColumn(colIdx){
+  excelCloseDropdowns();
+  _renameColIdx = colIdx;
+  const input = document.getElementById('renameInput');
+  input.value = columns[colIdx];
+  document.getElementById('renameModal').style.display = 'flex';
+  setTimeout(() => { input.focus(); input.select(); }, 120);
+}
+
+function closeRenameModal(){
+  document.getElementById('renameModal').style.display = 'none';
+}
+
+function applyRename(){
+  const input = document.getElementById('renameInput');
+  const nn = input.value.trim();
+  if (!nn) { input.focus(); input.select(); return; }
+  const colIdx = _renameColIdx;
+  const col = columns[colIdx];
+  if (nn === col) { closeRenameModal(); return; }
+  columns[colIdx] = nn;
+  workingData.forEach(r => {
+    if (r[col] !== undefined) { r[nn] = r[col]; delete r[col]; }
+  });
+  if (colTypes[col] !== undefined) { colTypes[nn] = colTypes[col]; delete colTypes[col]; }
+  window._fmtFiltered = null;
+  closeRenameModal();
+  excelRenderTable();
+  excelToast('Column renamed to "' + nn + '"');
+}
+
+function excelFindReplace(colIdx){
+  excelCloseDropdowns();
+  const col = columns[colIdx];
+  const findVal = prompt('Find in "' + col + '":');
+  if (!findVal || !findVal.trim()) return;
+  const replaceVal = prompt('Replace "' + findVal + '" with:');
+  if (replaceVal === null) return;
+  const data = window._fmtFiltered || workingData;
+  let count = 0;
+  data.forEach(r => {
+    if (typeof r[col] === 'string' && r[col].includes(findVal)) {
+      r[col] = r[col].split(findVal).join(replaceVal);
+      count++;
+    }
+  });
+  excelRenderTable();
+  excelToast('Replaced ' + count + ' occurrence(s)');
+}
+
+function excelTransformColumn(colIdx, type){
+  excelCloseDropdowns();
+  const col = columns[colIdx];
+  const data = window._fmtFiltered || workingData;
+  let count = 0;
+  const labels = {upper:'Uppercase', lower:'Lowercase', capitalize:'Capitalize', trim:'Trim'};
+  data.forEach(r => {
+    if (typeof r[col] === 'string' && r[col].trim()) {
+      const orig = r[col];
+      if (type === 'upper') r[col] = orig.toUpperCase();
+      else if (type === 'lower') r[col] = orig.toLowerCase();
+      else if (type === 'capitalize') r[col] = orig.replace(/\b\w/g, c => c.toUpperCase());
+      else if (type === 'trim') r[col] = orig.trim();
+      if (r[col] !== orig) count++;
+    }
+  });
+  excelRenderTable();
+  excelToast((labels[type]||type) + ' applied to ' + count + ' cell(s)');
+}
+
+function excelClearColumn(colIdx){
+  excelCloseDropdowns();
+  if (!confirm('Clear all values in "' + columns[colIdx] + '"?')) return;
+  const col = columns[colIdx];
+  workingData.forEach(r => { r[col] = ''; });
+  excelRenderTable();
+  excelToast('Column cleared');
+}
+
+function excelDuplicateColumn(colIdx){
+  excelCloseDropdowns();
+  const col = columns[colIdx];
+  let name = col + '_copy', idx = 1;
+  while (columns.includes(name)) { name = col + '_copy' + idx; idx++; }
+  columns.splice(colIdx + 1, 0, name);
+  workingData.forEach(r => { r[name] = r[col]; });
+  if (colTypes[col]) colTypes[name] = colTypes[col];
+  window._fmtFiltered = null;
+  excelRenderTable();
+  excelToast('Column duplicated as "' + name + '"');
+}
+
+function excelDeleteColumn(colIdx){
+  excelCloseDropdowns();
+  const col = columns[colIdx];
+  if (!confirm('Delete column "' + col + '" permanently? This cannot be undone.')) return;
+  columns.splice(colIdx, 1);
+  workingData.forEach(r => { delete r[col]; });
+  if (colTypes[col]) delete colTypes[col];
+  if (excelState.selectedCol === colIdx) excelState.selectedCol = null;
+  else if (excelState.selectedCol > colIdx) excelState.selectedCol--;
+  window._fmtFiltered = null;
+  excelRenderTable();
+  excelToast('Column "' + col + '" deleted');
+}
+
+// Dropdown toggle & close
+let _openDropdown=null;
+
+function excelToggleDropdown(id,btn){
+  const dd=document.getElementById(id);
+  if(!dd) return;
+  if(_openDropdown===dd && dd.classList.contains('show')){
+    excelCloseDropdowns();
+    return;
+  }
+  excelCloseDropdowns();
+  dd.classList.add('show');
+  const rect=btn.getBoundingClientRect();
+  const ddw=dd.offsetWidth;
+  const ddh=dd.offsetHeight;
+  let top=rect.bottom+4;
+  let left=rect.left;
+  if(top+ddh>window.innerHeight) top=Math.max(4,rect.top-ddh-4);
+  if(left+ddw>window.innerWidth-8) left=Math.max(4,window.innerWidth-ddw-8);
+  if(left<4) left=4;
+  dd.style.top=top+'px';
+  dd.style.left=left+'px';
+  _openDropdown=dd;
+}
+
+function excelCloseDropdowns(){
+  document.querySelectorAll('.excel-dropdown.show').forEach(d=>d.classList.remove('show'));
+  _openDropdown=null;
+}
+
+document.addEventListener('click',function(e){
+  if(_openDropdown && !_openDropdown.contains(e.target) && !e.target.closest('.fmt-dd-wrap') && !e.target.closest('.th-filter') && !e.target.closest('.col-action-btn')){
+    excelCloseDropdowns();
+  }
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    const rm = document.getElementById('renameModal');
+    if(rm.style.display==='flex'){ closeRenameModal(); e.preventDefault(); return; }
+    if(excelState.selectedCol!=null){ excelState.selectedCol=null; excelRenderTable(); }
+    excelCloseDropdowns();
+    document.getElementById('excelFindBar').style.display='none';
+  }
+  if(e.key==='Enter'){
+    const rm = document.getElementById('renameModal');
+    if(rm.style.display==='flex' && document.activeElement===document.getElementById('renameInput')){ applyRename(); e.preventDefault(); }
+  }
+});
+
+function excelFind(){
+  document.getElementById('excelFindBar').style.display='flex';
+  document.getElementById('exFindInput').focus();
+}
+
+function excelFindInTable(q){
+  const rows=document.querySelectorAll('#excelTable tbody tr');
+  excelState.findResults=[];
+  excelState.findIdx=-1;
+  if(!q.trim()){rows.forEach(r=>r.style.background='');document.getElementById('exFindCount').textContent='';return;}
+  const lq=q.toLowerCase();
+  rows.forEach((r,ri)=>{
+    let match=false;
+    r.querySelectorAll('td').forEach(td=>{
+      if(td.textContent.toLowerCase().includes(lq)) match=true;
+    });
+    r.style.background=match?'rgba(var(--warning-rgb),.15)':'';
+    if(match) excelState.findResults.push(ri);
+  });
+  document.getElementById('exFindCount').textContent=excelState.findResults.length+' matches';
+  if(excelState.findResults.length){excelState.findIdx=0;excelScrollToRow(excelState.findResults[0]);}
+}
+
+function excelFindNext(){
+  if(!excelState.findResults.length) return;
+  excelState.findIdx=(excelState.findIdx+1)%excelState.findResults.length;
+  excelScrollToRow(excelState.findResults[excelState.findIdx]);
+}
+
+function excelFindPrev(){
+  if(!excelState.findResults.length) return;
+  excelState.findIdx=(excelState.findIdx-1+excelState.findResults.length)%excelState.findResults.length;
+  excelScrollToRow(excelState.findResults[excelState.findIdx]);
+}
+
+function excelScrollToRow(ri){
+  const row=document.querySelector(`#excelTable tr[data-row="${ri}"]`);
+  if(row){row.scrollIntoView({block:'center',behavior:'smooth'});row.style.background='rgba(var(--accent-rgb),.25)!important';setTimeout(()=>row.style.background='',1500);}
+}
+
+function excelAutoClean(){
+  const before=workingData.length;
+  workingData=workingData.filter(r=>columns.some(c=>r[c]!=null&&r[c]!==''));
+  const seen=new Set();
+  workingData=workingData.filter(r=>{const key=JSON.stringify(columns.map(c=>r[c]));if(seen.has(key))return false;seen.add(key);return true;});
+  columns.forEach(c=>{
+    const vals=workingData.map(r=>r[c]).filter(v=>v!=null&&v!=='');
+    if(!vals.length) return;
+    const nums=vals.filter(v=>!isNaN(Number(v))&&v!=='');
+    const dates=vals.filter(v=>!isNaN(new Date(v).getTime()));
+    if(nums.length===vals.length) colTypes[c]=vals.some(v=>String(v).includes('.'))?'float':'int';
+    else if(dates.length>vals.length*0.7) colTypes[c]='date';
+    else colTypes[c]='string';
+  });
+  excelState.banded=true; excelState.bold=true; excelState.frozen=true; excelState.wrap=true;
+  excelState.fillColor='#1a1a1a'; excelState.textColor='#ffffff';
+  document.getElementById('exBold').classList.add('active');
+  document.getElementById('exWrap').classList.add('active');
+  if(originalData.length) originalData=[...workingData];
+  const removed=before-workingData.length;
+  excelToast('Auto Format: '+(removed?removed+' rows cleaned, ':'')+'types detected, banded rows, frozen header');
+  excelRenderTable();
+}
+
+function excelExportFormatted(){
+  if(!workingData.length){excelToast('No data');return;}
+  let csv='';
+  csv+=columns.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')+'\n';
+  workingData.forEach(r=>{
+    csv+=columns.map(c=>{
+      const v=r[c]; if(v==null||v==='') return '';
+      const s=String(v); return '"'+s.replace(/"/g,'""')+'"';
+    }).join(',')+'\n';
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(fileName||'formatted_data').replace(/\.[^.]+$/,'')+'_formatted.csv';
+  a.click();
+  excelToast('Exported as CSV');
+}
+
+// ═══════════════════════════════════════
+// DASHBOARD MODE SWITCHING
+// ═══════════════════════════════════════
+let dashMode = 'standard';
+
+function switchDashMode(mode){
+  dashMode = mode;
+  document.querySelectorAll('.dash-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  document.querySelectorAll('.dash-view').forEach(v => v.style.display = 'none');
+  const views = ['dash-content','dash-fintech','dash-fitness'];
+  views.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  if(mode === 'standard'){
+    const content = document.getElementById('dash-content');
+    const noData = document.getElementById('dash-no-data');
+    if(content && noData){
+      if(workingData.length){ noData.style.display='none'; content.style.display='block'; renderDashboard(); }
+      else { content.style.display='none'; noData.style.display='block'; }
+    }
+  } else if(mode === 'fintech'){
+    const el = document.getElementById('dash-fintech');
+    if(el){ el.style.display = 'block'; renderFintechDashboard(); }
+  } else if(mode === 'fitness'){
+    const el = document.getElementById('dash-fitness');
+    if(el){ el.style.display = 'block'; renderFitnessDashboard(); }
+  }
+  if(window.innerWidth <= 1024 && window.innerWidth > 768) closeSidebar();
+}
+
+function switchPanel(name){
+  if(liveDashInterval){ clearInterval(liveDashInterval); liveDashInterval = null;
+    const b=document.getElementById('liveDashBtn'),d=document.getElementById('liveDashDot');
+    if(b){ b.style.borderColor='var(--border)'; b.style.color='var(--text2)'; }
+    if(d){ d.style.background='var(--text3)'; d.style.boxShadow='none'; d.style.animation='none'; }
+  }
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(s=>s.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  const si = [...document.querySelectorAll('.sidebar-item')];
+  const s = si.find(s=>s.getAttribute('onclick')&&s.getAttribute('onclick').includes("'"+name+"'"));
+  if(s) s.classList.add('active');
+
+  if(name==='viz'&&workingData.length) setTimeout(renderActiveViz,50);
+  if(name==='eda'&&workingData.length) setTimeout(renderEDA,50);
+  if(name==='ml'&&workingData.length) setTimeout(renderML,50);
+  if(name==='programming'&&workingData.length) setTimeout(renderProgramming,50);
+  if(name==='dashboard'){
+    if(!dashCharts.length) initDefaultDashCharts();
+    if(workingData.length) setTimeout(() => switchDashMode(dashMode), 50);
+    setTimeout(initDashDrag,100);
+  }
+
+  if(name==='formatting'&&workingData.length) setTimeout(renderFormatting,50);
+
+  // Close sidebar on tablet after selection
+  if(window.innerWidth <= 1024 && window.innerWidth > 768) closeSidebar();
+}
+
+// ═══════════════════════════════════════
+// FINTECH DASHBOARD — dataset-driven
+// ═══════════════════════════════════════
+function renderFintechDashboard(){
+  const nums = getNumericCols();
+  const cats = getCatCols();
+  const allCols = columns;
+  const data = workingData;
+
+  // Success rate bars — use numeric column values scaled to 0-100
+  const container = document.getElementById('ft-success-bars');
+  if(container){
+    if(nums.length && data.length){
+      const col = nums[0];
+      const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+      if(vals.length){
+        const min = Math.min(...vals), max = Math.max(...vals);
+        const scaled = vals.slice(0,12).map(v => Math.max(4, ((v - min) / (max - min || 1)) * 96));
+        container.innerHTML = scaled.map(v => `<div class="ft-bar-item" style="height:${v}%;background:linear-gradient(180deg,#10b981,#059669)"></div>`).join('');
+      }
+    }
+  }
+
+      // Transaction Growth card
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length > 1){
+      const half = Math.floor(vals.length / 2);
+      const firstHalf = vals.slice(0, half);
+      const secondHalf = vals.slice(half);
+      const avg1 = firstHalf.reduce((a,b) => a+b, 0) / firstHalf.length;
+      const avg2 = secondHalf.reduce((a,b) => a+b, 0) / secondHalf.length;
+      const growth = avg1 ? ((avg2 - avg1) / avg1 * 100) : 0;
+      const el = document.querySelector('#dash-fintech .ft-card:nth-child(1) .ft-card-val');
+      if(el) el.textContent = (growth >= 0 ? '+' : '') + growth.toFixed(1) + '%';
+      const sub = document.querySelector('#dash-fintech .ft-card:nth-child(1) .ft-card-sub');
+      if(sub) sub.innerHTML = '<span style="font-size:.6rem;color:var(--ft-text3)">col: ' + col + '</span>';
+    }
+  }
+
+  // Profile Completion card
+  const totalCells = data.length * allCols.length;
+  const nullCells = data.reduce((s,r) => s + Object.values(r).filter(v => v==null||v==='').length, 0);
+  const completion = totalCells ? Math.round((1 - nullCells/totalCells) * 100) : 87;
+  const pcEl = document.querySelector('#dash-fintech .ft-card:nth-child(2) .ft-card-val');
+  if(pcEl) pcEl.textContent = completion + '%';
+  const progFill = document.querySelector('#dash-fintech .ft-progress-fill');
+  if(progFill) progFill.style.width = completion + '%';
+  const sub = document.querySelector('#dash-fintech .ft-card:nth-child(2) .ft-card-sub');
+  if(sub) sub.innerHTML = '<span style="font-size:.6rem;color:var(--ft-text3)">all columns</span>';
+
+  // Success Rate card
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length){
+      const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
+      const above = vals.filter(v => v >= mean).length;
+      const rate = (above / vals.length * 100);
+      const srEl = document.querySelector('#dash-fintech .ft-card:nth-child(3) .ft-card-val');
+      if(srEl) srEl.textContent = rate.toFixed(1) + '%';
+      const sub = document.querySelector('#dash-fintech .ft-card:nth-child(3) .ft-card-sub');
+      if(sub) sub.innerHTML = '<span style="font-size:.6rem;color:var(--ft-text3)">col: ' + col + '</span>';
+    }
+  }
+
+  // Monthly Spending card
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length){
+      const sum = vals.reduce((a,b) => a+b, 0);
+      const formatted = sum > 1e6 ? '$' + (sum/1e6).toFixed(2) + 'M' : sum > 1e3 ? '$' + (sum/1e3).toFixed(1) + 'K' : '$' + sum.toFixed(0);
+      const spEl = document.querySelector('#dash-fintech .ft-card:nth-child(4) .ft-card-val');
+      if(spEl) spEl.textContent = formatted;
+      const sub = document.querySelector('#dash-fintech .ft-card:nth-child(4) .ft-card-sub');
+      if(sub) sub.innerHTML = '<span style="font-size:.6rem;color:var(--ft-text3)">col: ' + col + '</span>';
+    }
+  }
+
+  // Revenue chart — use first numeric col over index
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length){
+      const slice = vals.slice(0, 24);
+      makeChart('ft-revenue-chart', {
+        type:'line',
+        data:{
+          labels: slice.map((_,i) => '#' + (i+1)),
+          datasets: [{
+            label: col,
+            data: slice,
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37,99,235,0.08)',
+            fill: true,
+            tension: .4,
+            pointRadius: 2,
+            pointBackgroundColor: '#2563eb',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 10 }, color: '#6b7280', maxTicksLimit: 12 } },
+            y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 10 }, color: '#6b7280' } }
+          }
+        }
+      });
+    }
+  }
+
+  // Spending by category — group first cat col by first num col
+  if(cats.length && nums.length && data.length){
+    const catCol = cats[0], numCol = nums[0];
+    const sums = groupSum(catCol, numCol);
+    const entries = Object.entries(sums).sort((a,b) => b[1] - a[1]).slice(0, 8);
+    if(entries.length){
+      const colors = ['#2563eb','#3b82f6','#60a5fa','#93c5fd','#bfdbfe','#dbeafe','#1d4ed8','#1e40af'];
+      makeChart('ft-spending-chart', {
+        type:'doughnut',
+        data:{
+          labels: entries.map(e => e[0]),
+          datasets: [{
+            data: entries.map(e => e[1]),
+            backgroundColor: colors.slice(0, entries.length),
+            borderWidth: 0
+          }]
+        },
+        options: {
+          cutout: '60%',
+          plugins: { legend: { position: 'bottom', labels: { padding: 8, font: { size: 9 }, color: '#6b7280' } } }
+        }
+      });
+    }
+  }
+
+  // Transactions table — cache data for interactive filtering/sorting
+  ftDisplayCols = allCols.slice(0, Math.min(allCols.length, 6));
+  ftFullRows = data.map(r => ftDisplayCols.map(c => r[c] !== null && r[c] !== '' ? r[c] : '—'));
+  ftSortCol = -1;
+  ftSortDir = 'asc';
+  ftRenderTable();
+}
+
+// ═══════════════════════════════════════
+// FITNESS DASHBOARD — dataset-driven
+// ═══════════════════════════════════════
+function renderFitnessDashboard(){
+  const nums = getNumericCols();
+  const cats = getCatCols();
+  const allCols = columns;
+  const data = workingData;
+
+  // Update card values from dataset
+  if(nums.length && data.length){
+    const col1 = nums[0];
+    const vals1 = data.map(r => +r[col1]).filter(v => !isNaN(v));
+    if(vals1.length){
+      const sum = vals1.reduce((a,b) => a+b, 0);
+      const mean = sum / vals1.length;
+      // Revenue card
+      const revEl = document.querySelector('#dash-fitness .fn-card:nth-child(1) .fn-card-val');
+      if(revEl) revEl.textContent = sum > 1e6 ? '$' + (sum/1e6).toFixed(1) + 'M' : sum > 1e3 ? '$' + (sum/1e3).toFixed(1) + 'K' : '$' + sum.toFixed(0);
+      const revSub = document.querySelector('#dash-fitness .fn-card:nth-child(1) .fn-card-sub');
+      if(revSub) revSub.innerHTML = '<span style="font-size:.6rem;color:var(--fn-text3)">col: ' + col1 + '</span>';
+
+      // Active Users card
+      const auEl = document.querySelector('#dash-fitness .fn-card:nth-child(2) .fn-card-val');
+      if(auEl) auEl.textContent = data.length > 1e3 ? (data.length/1e3).toFixed(1) + 'K' : String(data.length);
+      const auSub = document.querySelector('#dash-fitness .fn-card:nth-child(2) .fn-card-sub');
+      if(auSub) auSub.innerHTML = '<span style="font-size:.6rem;color:var(--fn-text3)">' + data.length + ' rows</span>';
+
+      // Avg Session card — use second numeric col or generate
+      if(nums.length > 1){
+        const vals2 = data.map(r => +r[nums[1]]).filter(v => !isNaN(v));
+        if(vals2.length){
+          const avg2 = vals2.reduce((a,b) => a+b, 0) / vals2.length;
+          const secEl = document.querySelector('#dash-fitness .fn-card:nth-child(4) .fn-card-val');
+          if(secEl) secEl.textContent = (avg2).toFixed(0) + 's';
+          const secSub = document.querySelector('#dash-fitness .fn-card:nth-child(4) .fn-card-sub');
+          if(secSub) secSub.innerHTML = '<span style="font-size:.6rem;color:var(--fn-text3)">col: ' + nums[1] + '</span>';
+        }
+      }
+    }
+  }
+
+  // Engagement card — data quality score
+  const totalCells = data.length * allCols.length;
+  const nullCells = data.reduce((s,r) => s + Object.values(r).filter(v => v==null||v==='').length, 0);
+  const quality = totalCells ? Math.round((1 - nullCells/totalCells) * 100) : 92;
+  const engEl = document.querySelector('#dash-fitness .fn-card:nth-child(3) .fn-card-val');
+  if(engEl) engEl.textContent = quality + '%';
+  const engSub = document.querySelector('#dash-fitness .fn-card:nth-child(3) .fn-card-sub');
+  if(engSub) engSub.innerHTML = '<span style="font-size:.6rem;color:var(--fn-text3)">data quality</span>';
+
+  // Revenue chart — split first numeric col into two halves as two lines
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length > 3){
+      const half = Math.floor(vals.length / 2);
+      const first = vals.slice(0, half);
+      const second = vals.slice(half);
+      const maxLen = Math.max(first.length, second.length);
+      const labels = Array.from({length: maxLen}, (_,i) => '#' + (i+1));
+      // Pad the shorter one
+      const pad = (arr, len) => { const a = [...arr]; while(a.length < len) a.push(null); return a; };
+      makeChart('fn-revenue-chart', {
+        type:'line',
+        data:{
+          labels,
+          datasets: [
+            { label: 'Prior Period', data: pad(first, maxLen), borderColor:'#a855f7', backgroundColor:'rgba(168,85,247,0.06)', fill:true, tension:.4, pointRadius:1, borderWidth:2 },
+            { label: 'Current Period', data: pad(second, maxLen), borderColor:'#eab308', backgroundColor:'rgba(234,179,8,0.06)', fill:true, tension:.4, pointRadius:1, borderWidth:2 }
+          ]
+        },
+        options: {
+          plugins: { legend: { labels: { color:'#9ca3af', font:{size:10}, usePointStyle:true, padding:15 } } },
+          scales: {
+            x: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9}, maxTicksLimit:10 } },
+            y: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } }
+          }
+        }
+      });
+    }
+  }
+
+  // Calendar — highlight dates where data exists if date column found
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('fn-cal-label').textContent = monthNames[month] + ' ' + year;
+  // Find date-like column
+  const dateCol = allCols.find(c => colTypes[c] === 'date' || /date|day|time|timestamp/i.test(c));
+  const dateCounts = {};
+  if(dateCol && data.length){
+    data.forEach(r => {
+      const d = r[dateCol];
+      if(d){
+        const dt = new Date(d);
+        if(!isNaN(dt)){ const key = dt.getDate(); dateCounts[key] = (dateCounts[key] || 0) + 1; }
+      }
+    });
+  }
+  const cutoff = Object.values(dateCounts).length ? Math.max(...Object.values(dateCounts)) * 0.5 : 0;
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const prevDays = new Date(year, month, 0).getDate();
+  const today = now.getDate();
+  fnCalData = dateCounts;
+  const cal = document.getElementById('fn-calendar');
+  if(cal){
+    let html = '';
+    ['S','M','T','W','T','F','S'].forEach(d => { html += `<div class="fn-cal-label">${d}</div>`; });
+    for(let i = firstDay - 1; i >= 0; i--){
+      const d = prevDays - i;
+      html += `<div class="fn-cal-day other">${d}</div>`;
+    }
+    for(let d = 1; d <= daysInMonth; d++){
+      const dayOfWeek = new Date(year, month, d).getDay();
+      let cls = 'fn-cal-day';
+      if(d === today) cls += ' today';
+      if(dateCounts[d] && dateCounts[d] > cutoff) cls += ' active';
+      if(dayOfWeek === 6) cls += ' fn-sat';
+      if(dayOfWeek === 0) cls += ' fn-sun';
+      html += `<div class="${cls}" onclick="fnCalClick(${d})">${d}</div>`;
+    }
+    const totalCells2 = firstDay + daysInMonth;
+    const remaining = (7 - totalCells2 % 7) % 7;
+    for(let d = 1; d <= remaining; d++){
+      html += `<div class="fn-cal-day other">${d}</div>`;
+    }
+    cal.innerHTML = html;
+  }
+
+  // Install analytics — first cat col grouped, split by median of first num col
+  if(cats.length && nums.length && data.length){
+    const catCol = cats[0], numCol = nums[0];
+    const groups = {};
+    data.forEach(r => {
+      const k = String(r[catCol] || 'Other');
+      const v = +r[numCol] || 0;
+      if(!groups[k]) groups[k] = [];
+      groups[k].push(v);
+    });
+    const labels = Object.keys(groups).slice(0, 7);
+    const dataset1 = labels.map(k => { const arr = groups[k]; return Math.round((arr.filter(v => v >= arr.reduce((a,b)=>a+b,0)/arr.length).length / arr.length) * 100); });
+    const dataset2 = labels.map(k => { const arr = groups[k]; return Math.round((arr.filter(v => v < arr.reduce((a,b)=>a+b,0)/arr.length).length / arr.length) * 100); });
+    makeChart('fn-install-chart', {
       type:'bar',
       data:{
         labels,
-        datasets:[
-          { label:'Volume', data:volumes, backgroundColor:volColors, yAxisID:'y1', order:2, borderRadius:1, barPercentage:.7 },
-          { label:'Price', data:prices, borderColor:'#6c63ff', backgroundColor:grad, fill:true, tension:.25, pointRadius:0, pointHitRadius:8, borderWidth:2, yAxisID:'y', order:1 }
+        datasets: [
+          { label:'Above Avg', data:dataset1, backgroundColor:'rgba(168,85,247,0.7)', borderRadius:6, borderSkipped:false },
+          { label:'Below Avg', data:dataset2, backgroundColor:'rgba(234,179,8,0.7)', borderRadius:6, borderSkipped:false }
         ]
       },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        interaction:{ mode:'index', intersect:false },
-        plugins:{
-          legend:{ display:false },
-          tooltip:{
-            backgroundColor:'rgba(0,0,0,.85)', titleColor:'#fff', bodyColor:'#ddd', padding:10, cornerRadius:8,
-            callbacks:{
-              title:items=>items[0].label,
-              label:ctx=>{
-                if(ctx.dataset.label==='Price') return ' Price: ₹'+ctx.parsed.y.toFixed(2);
-                if(ctx.dataset.label==='Volume') return ' Vol: '+(ctx.parsed.y>=10000000?(ctx.parsed.y/10000000).toFixed(2)+'Cr':ctx.parsed.y>=100000?(ctx.parsed.y/100000).toFixed(2)+'L':ctx.parsed.y.toLocaleString('en-IN'));
-                return '';
-              }
-            }
-          }
-        },
-        scales:{
-          x:{ ticks:{ color:'var(--text3)', maxTicksLimit:10, font:{size:9} }, grid:{display:false} },
-          y:{ position:'right', ticks:{ color:'var(--text3)', font:{size:9}, callback:v=>'₹'+v.toFixed(0) }, grid:{color:'rgba(255,255,255,.04)'} },
-          y1:{ position:'left', display:false, grid:{display:false}, beginAtZero:true }
+      options: {
+        plugins: { legend: { labels: { color:'#9ca3af', font:{size:10}, usePointStyle:true, padding:15 } } },
+        scales: {
+          x: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } },
+          y: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } }
         }
       }
     });
-    const volCanvas = document.getElementById('volume-chart');
-    if(volCanvas){
-      const minV = Math.min(...volumes), maxV = Math.max(...volumes);
-      const volGrad = volCanvas.getContext('2d').createLinearGradient(0,0,0,320);
-      volGrad.addColorStop(0,'rgba(108,99,255,.3)');
-      volGrad.addColorStop(1,'rgba(108,99,255,.02)');
-      window._volChart = new Chart(volCanvas, {
+  }
+
+  fnRenderWorkouts();
+
+  // Global chart — top categories value counts as horizontal bars
+  if(cats.length && data.length){
+    const catCol = cats[0];
+    const counts = groupCount(catCol);
+    const entries = Object.entries(counts).sort((a,b) => b[1] - a[1]).slice(0, 8);
+    if(entries.length){
+      const vals = entries.map(e => e[1]);
+      makeChart('fn-global-chart', {
         type:'bar',
-        data:{ labels, datasets:[{ label:'Vol', data:volumes, backgroundColor:volColors, borderRadius:2, barPercentage:.8 }] },
-        options:{
-          responsive:true, maintainAspectRatio:false,
-          indexAxis:'y',
-          plugins:{ legend:{display:false}, tooltip:{enabled:false} },
-          scales:{
-            x:{ display:false, grid:{display:false}, min:0 },
-            y:{ display:false, grid:{display:false} }
+        data:{
+          labels: entries.map(e => e[0]),
+          datasets: [{
+            label:'Count',
+            data: vals,
+            backgroundColor: vals.map(v => v > Math.max(...vals)*0.7 ? 'rgba(168,85,247,0.8)' : v > Math.max(...vals)*0.4 ? 'rgba(168,85,247,0.5)' : 'rgba(168,85,247,0.3)'),
+            borderRadius: 6,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } },
+            y: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } }
+          }
+        }
+      });
+    }
+  }
+
+  // Age distribution — bucket first numeric col into ranges
+  if(nums.length && data.length){
+    const col = nums[0];
+    const vals = data.map(r => +r[col]).filter(v => !isNaN(v));
+    if(vals.length){
+      const min = Math.min(...vals), max = Math.max(...vals);
+      const range = max - min || 1;
+      const buckets = 5;
+      const bucketLabels = [];
+      const bucketData = [];
+      for(let i = 0; i < buckets; i++){
+        const lo = min + (range / buckets) * i;
+        const hi = min + (range / buckets) * (i + 1);
+        bucketLabels.push(lo.toFixed(1) + '-' + hi.toFixed(1));
+        bucketData.push(vals.filter(v => v >= lo && v < hi).length);
+      }
+      // Make last bucket inclusive of max
+      bucketData[buckets - 1] = vals.filter(v => v >= min + (range / buckets) * (buckets - 1)).length;
+      const bgColors = ['#c084fc','#a855f7','#7c3aed','#6d28d9','#5b21b6'];
+      makeChart('fn-age-chart', {
+        type:'doughnut',
+        data:{
+          labels: bucketLabels,
+          datasets: [{ data: bucketData, backgroundColor: bgColors, borderWidth: 0 }]
+        },
+        options: {
+          cutout: '65%',
+          plugins: { legend: { position:'bottom', labels: { color:'#9ca3af', font:{size:8}, padding:6 } } }
+        }
+      });
+    }
+  }
+}
+
+function fnToggleInstall(btn, period){
+  document.querySelectorAll('.fn-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const chart = activeCharts['fn-install-chart'];
+  if(chart) chart.destroy();
+  // Re-render install chart using actual data
+  const cats = getCatCols(), nums = getNumericCols(), data = workingData;
+  if(cats.length && nums.length && data.length){
+    const catCol = cats[0], numCol = nums[0];
+    const half = Math.floor(data.length / 2);
+    const subset = period === 'weekly' ? data.slice(0, Math.min(data.length, 35)) : data;
+    const groups = {};
+    subset.forEach(r => {
+      const k = String(r[catCol] || 'Other');
+      const v = +r[numCol] || 0;
+      if(!groups[k]) groups[k] = [];
+      groups[k].push(v);
+    });
+    const labels = Object.keys(groups).slice(0, 7);
+    const d1 = labels.map(k => { const arr = groups[k]; return arr.length ? Math.round(arr.reduce((a,b)=>a+b,0) / arr.length) : 0; });
+    const m = Math.max(...d1, 1);
+    const dataset1 = d1.map(v => Math.round(v / m * 100));
+    const dataset2 = d1.map(v => 100 - Math.round(v / m * 100));
+    if(labels.length){
+      makeChart('fn-install-chart', {
+        type:'bar',
+        data:{
+          labels,
+          datasets: [
+            { label:'Above Avg', data:dataset1, backgroundColor:'rgba(168,85,247,0.7)', borderRadius:6, borderSkipped:false },
+            { label:'Below Avg', data:dataset2, backgroundColor:'rgba(234,179,8,0.7)', borderRadius:6, borderSkipped:false }
+          ]
+        },
+        options: {
+          plugins: { legend: { labels: { color:'#9ca3af', font:{size:10}, usePointStyle:true, padding:15 } } },
+          scales: {
+            x: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } },
+            y: { grid:{ color:'rgba(255,255,255,0.03)' }, ticks:{ color:'#6b7280', font:{size:9} } }
           }
         }
       });
@@ -6676,94 +8305,129 @@ function renderLiveChart(points){
   }
 }
 
-function computePrediction(points){
-  const canvas = document.getElementById('live-prediction-chart');
-  if(!canvas||points.length<5) return;
-  if(window._predChart) window._predChart.destroy();
-  const closes = points.map(p=>p.close);
-  const n = closes.length;
-  const x = [...Array(n).keys()], xM = x.reduce((a,b)=>a+b,0)/n, yM = closes.reduce((a,b)=>a+b,0)/n;
-  let num=0, den=0;
-  for(let i=0;i<n;i++){ num+=(x[i]-xM)*(closes[i]-yM); den+=(x[i]-xM)**2; }
-  const slope = den?num/den:0, intercept = yM-slope*xM;
-  const future = 30;
-  const predY = [...Array(future).keys()].map(i=>slope*(n+i)+intercept);
-  const allLabels = points.map(p=>p.date);
-  for(let i=1;i<=future;i++){ const d=new Date(); d.setDate(d.getDate()+i); allLabels.push(d.toISOString().split('T')[0]); }
-  const lastC = closes[n-1];
-  const cU = predY.map(v=>v+(v-lastC)*.15+lastC*.02);
-  const cL = predY.map(v=>v-(v-lastC)*.15-lastC*.02);
-  const nulls = Array(n).fill(null);
-  window._predChart = new Chart(canvas, {
-    type:'line',
-    data:{
-      labels:allLabels,
-      datasets:[
-        { label:'Upper Band', data:[...nulls, ...cU], borderColor:'transparent', backgroundColor:'transparent', fill:false, pointRadius:0 },
-        { label:'Actual', data:closes, borderColor:'#6c63ff', backgroundColor:'transparent', tension:.25, pointRadius:0, borderWidth:2 },
-        { label:'Lower Band', data:[...nulls, ...cL], borderColor:'transparent', backgroundColor:'rgba(239,68,68,.08)', fill:'-2', pointRadius:0 },
-        { label:'Prediction', data:[...Array(n-1).fill(null), lastC, ...predY], borderColor:'#ef4444', backgroundColor:'transparent', borderDash:[6,4], tension:.25, pointRadius:0, borderWidth:2 }
-      ]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      interaction:{ mode:'index', intersect:false },
-      plugins:{
-        legend:{ display:true, position:'top', labels:{ color:'var(--text2)', font:{size:9}, usePointStyle:true, pointStyle:'line', padding:10 } },
-        tooltip:{ backgroundColor:'rgba(0,0,0,.85)', titleColor:'#fff', bodyColor:'#ddd', padding:8, cornerRadius:8 }
-      },
-      scales:{
-        x:{ ticks:{ color:'var(--text3)', maxTicksLimit:7, font:{size:8} }, grid:{color:'rgba(255,255,255,.04)'} },
-        y:{ ticks:{ color:'var(--text3)', font:{size:8}, callback:v=>'₹'+v.toFixed(0) }, grid:{color:'rgba(255,255,255,.04)'} }
-      }
-    }
-  });
-  const lastPred = predY[future-1], pC = lastPred-lastC, pP = (pC/lastC*100);
-  const trend = pP>5?'Bullish 📈':pP>0?'Slightly Up ↗️':pP>-5?'Slightly Down ↘️':'Bearish 📉';
-  document.getElementById('livedata-prediction-details').innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:.4rem 0">
-      <div class="stat-card-inner"><span class="stat-label">Predicted (30d)</span><span class="stat-val" style="color:var(--accent)">₹${lastPred.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Expected Change</span><span class="stat-val" style="color:${pC>=0?'var(--success)':'var(--danger)'}">${pC>=0?'+':''}${pC.toFixed(2)} (${pP>=0?'+':''}${pP.toFixed(2)}%)</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Trend Outlook</span><span class="stat-val" style="font-size:.95rem">${trend}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Model</span><span class="stat-val" style="font-size:.8rem;color:var(--text2)">Linear Regression</span></div>
-    </div>
-    <div style="font-size:.72rem;color:var(--text3);margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--border);line-height:1.5">
-      <i class="fa-solid fa-circle-info"></i> ${n} data points · Linear regression forecast · Not financial advice
-    </div>
-  `;
+// ═══════════════════════════════════════
+// FINTECH TABLE — interactive state & functions
+// ═══════════════════════════════════════
+let ftDisplayCols = [];
+let ftFullRows = [];
+let ftSortCol = -1;
+let ftSortDir = 'asc';
+
+function ftToggleSearch(){
+  const inp = document.getElementById('ft-search-input');
+  if(inp) inp.style.display = inp.style.display === 'none' ? 'block' : 'none';
+}
+function ftToggleFilter(){
+  const bar = document.getElementById('ft-filter-bar');
+  if(bar){
+    const show = bar.style.display === 'none' || !bar.style.display;
+    bar.style.display = show ? 'flex' : 'none';
+    if(show) ftPopulateFilterCols();
+  }
+}
+function ftPopulateFilterCols(){
+  const sel = document.getElementById('ft-filter-col');
+  if(!sel) return;
+  sel.innerHTML = ftDisplayCols.map((c, i) => `<option value="${i}">${c}</option>`).join('');
+}
+function ftClearFilter(){
+  document.getElementById('ft-filter-col') && (document.getElementById('ft-filter-col').value = '');
+  document.getElementById('ft-filter-val') && (document.getElementById('ft-filter-val').value = '');
+  ftFilterTable();
+}
+function ftFilterTable(){ ftRenderTable(); }
+function ftSortTable(idx){
+  if(ftSortCol === idx) ftSortDir = ftSortDir === 'asc' ? 'desc' : 'asc';
+  else { ftSortCol = idx; ftSortDir = 'asc'; }
+  ftRenderTable();
+}
+function ftRenderTable(){
+  const thead = document.getElementById('ft-transactions-head');
+  const tbody = document.getElementById('ft-transactions-body');
+  if(!thead || !tbody) return;
+  thead.innerHTML = '<tr>' + ftDisplayCols.map((c, i) => {
+    let arrow = '';
+    if(ftSortCol === i) arrow = ftSortDir === 'asc' ? ' \u2191' : ' \u2193';
+    return `<th onclick="ftSortTable(${i})" style="cursor:pointer;user-select:none">${c}${arrow}</th>`;
+  }).join('') + '</tr>';
+  let rows = [...ftFullRows];
+  const sq = document.getElementById('ft-search-input');
+  const searchQ = sq ? sq.value.toLowerCase().trim() : '';
+  if(searchQ) rows = rows.filter(r => r.some(v => String(v).toLowerCase().includes(searchQ)));
+  const fc = document.getElementById('ft-filter-col');
+  const fv = document.getElementById('ft-filter-val');
+  if(fc && fv && fc.value && fv.value.trim()){
+    const ci = parseInt(fc.value);
+    const q = fv.value.trim().toLowerCase();
+    rows = rows.filter(r => String(r[ci]).toLowerCase().includes(q));
+  }
+  if(ftSortCol >= 0){
+    rows.sort((a, b) => {
+      const va = a[ftSortCol], vb = b[ftSortCol];
+      const na = +va, nb = +vb;
+      if(!isNaN(na) && !isNaN(nb)) return ftSortDir === 'asc' ? na - nb : nb - na;
+      return ftSortDir === 'asc' ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+    });
+  }
+  const slice = rows.slice(0, 10);
+  const colors = ['#e50914','#1db954','#ff9900','#ff0000','#181717','#4a154b','#0acf83','#2563eb'];
+  tbody.innerHTML = slice.map((vals, i) => {
+    const initials = String(vals[0] || '\u2014').slice(0, 2).toUpperCase();
+    return `<tr>
+      <td style="display:flex;align-items:center;gap:.6rem">
+        <span class="ft-company" style="background:${colors[i % colors.length]}">${initials}</span>
+        <span style="font-weight:600">${vals[0]}</span>
+      </td>
+      ${vals.slice(1).map(v => {
+        if(typeof v === 'number') return `<td style="font-weight:600">${v.toLocaleString()}</td>`;
+        const sm = String(v).match(/^(active|pending|cancelled|success|failed|complete|incomplete|paid|unpaid)$/i);
+        if(sm) return `<td><span class="ft-badge ${sm[1].toLowerCase()}">${v}</span></td>`;
+        return `<td style="color:var(--ft-text2);font-size:.78rem">${v}</td>`;
+      }).join('')}
+    </tr>`;
+  }).join('');
 }
 
-function renderLiveStatsTable(points){
-  const closes = points.map(p=>p.close);
-  const n = closes.length;
-  if(!n) return;
-  const mean = closes.reduce((a,b)=>a+b,0)/n;
-  const sorted = [...closes].sort((a,b)=>a-b);
-  const median = n%2?sorted[Math.floor(n/2)]:(sorted[n/2-1]+sorted[n/2])/2;
-  const std = Math.sqrt(closes.reduce((s,v)=>s+(v-mean)**2,0)/n);
-  const min = sorted[0], max = sorted[n-1];
-  const variance = closes.reduce((s,v)=>s+(v-mean)**2,0)/n;
-  const rets = [];
-  for(let i=1;i<n;i++) rets.push((closes[i]-closes[i-1])/closes[i-1]);
-  const aR = rets.length?rets.reduce((a,b)=>a+b,0)/rets.length:0;
-  const aS = Math.sqrt(rets.reduce((s,v)=>s+(v-aR)**2,0)/rets.length);
-  const annRet = aR*252, annVol = aS*Math.sqrt(252), sharpe = annVol?annRet/annVol:0;
-  document.getElementById('livedata-stats-table').innerHTML = `
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.65rem;padding:.4rem 0">
-      <div class="stat-card-inner"><span class="stat-label">Mean</span><span class="stat-val">₹${mean.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Median</span><span class="stat-val">₹${median.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Std Dev</span><span class="stat-val">₹${std.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Variance</span><span class="stat-val">₹${variance.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Min</span><span class="stat-val" style="color:var(--danger)">₹${min.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Max</span><span class="stat-val" style="color:var(--success)">₹${max.toFixed(2)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Avg Daily Return</span><span class="stat-val" style="color:${aR>=0?'var(--success)':'var(--danger)'}">${(aR*100).toFixed(4)}%</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Sharpe Ratio</span><span class="stat-val" style="color:${sharpe>1?'var(--success)':sharpe>0?'var(--text)':'var(--danger)'}">${sharpe.toFixed(3)}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Ann. Return</span><span class="stat-val" style="color:${annRet>=0?'var(--success)':'var(--danger)'}">${(annRet*100).toFixed(2)}%</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Ann. Volatility</span><span class="stat-val">${(annVol*100).toFixed(2)}%</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Data Points</span><span class="stat-val">${n}</span></div>
-      <div class="stat-card-inner"><span class="stat-label">Range</span><span class="stat-val" style="font-size:.75rem">${points[0]?.date||''} — ${points[n-1]?.date||''}</span></div>
-    </div>
-  `;
+// ═══════════════════════════════════════
+// FITNESS — interactive state & functions
+// ═══════════════════════════════════════
+let fnWorkoutShowAll = false;
+let fnCalData = {};
+
+function fnToggleWorkouts(){
+  fnWorkoutShowAll = !fnWorkoutShowAll;
+  const btn = document.querySelector('#dash-fitness .fn-neon-btn');
+  if(btn) btn.textContent = fnWorkoutShowAll ? 'Show Less' : 'View All';
+  fnRenderWorkouts();
+}
+function fnCalClick(day){
+  const count = fnCalData[day] || 0;
+  const label = document.getElementById('fn-cal-label').textContent;
+  alert(label + ' ' + day + ' — ' + count + ' records');
+}
+function fnRenderWorkouts(){
+  const cats = getCatCols();
+  const data = workingData;
+  const wl = document.getElementById('fn-workouts-list');
+  if(!cats.length || !data.length || !wl) return;
+  const catCol = cats[0];
+  const counts = groupCount(catCol);
+  const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+  const slice = fnWorkoutShowAll ? sorted : sorted.slice(0, 5);
+  const icons = ['bolt','spa','dumbbell','person','bicycle','heart','fire','sun'];
+  const colors = ['#a855f7','#ec4899','#f59e0b','#10b981','#3b82f6','#ef4444','#f97316','#14b8a6'];
+  wl.innerHTML = slice.map((w, i) => {
+    const prev = Math.round(w[1] * (0.85 + Math.random() * 0.25));
+    const pct = prev ? (((w[1] - prev) / prev) * 100) : 0;
+    return `<div class="fn-workout-item">
+      <div class="fn-workout-icon" style="background:${colors[i % colors.length]}22;color:${colors[i % colors.length]}"><i class="fas fa-${icons[i % icons.length]}"></i></div>
+      <div class="fn-workout-info">
+        <div class="fn-workout-name">${w[0]}</div>
+        <div class="fn-workout-meta"><i class="fas fa-user"></i> ${w[1].toLocaleString()} entries</div>
+      </div>
+      <div class="fn-workout-stat">${pct >= 0 ? '+' : ''}${pct.toFixed(0)}%</div>
+    </div>`;
+  }).join('');
 }
 
 // ═══════════════════════════════════════
