@@ -1014,7 +1014,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
 /* ─── Data Table ─── */
 .excel-table-wrap{overflow:auto;border-radius:var(--radius);border:1px solid var(--border);max-height:520px;background:var(--bg)}
-.excel-table{width:100%;border-collapse:collapse;font-size:.8rem;table-layout:auto;min-width:100%}
+.excel-table{width:100%;border-collapse:collapse;font-size:clamp(.65rem,.78rem + .15vw,.85rem);table-layout:auto;min-width:100%}
 .excel-table th{background:var(--bg3);color:var(--text);font-weight:700;padding:.5rem .65rem;border:1px solid var(--border2);text-align:center;position:sticky;top:0;z-index:2;white-space:nowrap;user-select:none;font-size:.78rem}
 .excel-table th .th-filter{display:inline-block;margin-left:4px;cursor:pointer;font-size:.65rem;color:var(--text3);opacity:.5}
 .excel-table th .th-filter:hover{opacity:1;color:var(--accent)}
@@ -1065,6 +1065,37 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .col-type-badge.pct{background:rgba(var(--warning-rgb),.15);color:var(--tag-warning)}
 .col-type-badge.date{background:rgba(var(--accent-rgb),.15);color:var(--tag-purple)}
 .col-type-badge.str{background:rgba(var(--info-rgb),.08);color:var(--text3)}
+/* ─── Formatting Export Modal ─── */
+.fmt-export-modal{max-width:440px;padding:1.5rem}
+.fmt-export-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.fmt-export-hdr div{font-size:1.05rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem}
+.fmt-export-body{display:flex;flex-direction:column;gap:.65rem}
+.fmt-export-body .export-card{padding:.7rem .85rem}
+.fmt-export-body .export-card-title{font-size:.85rem}
+.fmt-export-body .export-card-desc{font-size:.72rem}
+
+/* ─── Responsive font sizing for formatting panel ─── */
+@media(min-width:1400px){
+  .excel-table{font-size:clamp(.78rem,.8rem + .1vw,.9rem)}
+  .fmt-b{width:32px;height:30px;font-size:.85rem}
+  .fmt-b-label{padding:0 12px;font-size:.75rem}
+  .fmt-sel{max-width:90px;font-size:.75rem}
+}
+@media(max-width:600px){
+  #panel-formatting .section-hdr > div{gap:.25rem;width:100%}
+  #panel-formatting .section-hdr .btn{padding:.25rem .5rem;font-size:.7rem}
+  .excel-table th{font-size:clamp(.6rem,.65rem + .1vw,.7rem)}
+  .excel-table td{font-size:clamp(.58rem,.62rem + .1vw,.68rem)}
+  #excelStatus{font-size:.6rem}
+  .fmt-export-body .export-card{padding:.6rem .7rem}
+}
+@media(max-width:380px){
+  .fmt-b{width:22px;height:20px;font-size:.62rem}
+  .fmt-b-label{padding:0 4px;font-size:.58rem}
+  .fmt-sel{max-width:50px;font-size:.6rem;height:20px}
+  .fmt-color-pick{width:16px;height:16px;font-size:.55rem}
+}
+
 /* Toast for excel actions */
 .excel-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--accent);color:var(--accent-text);padding:.5rem 1.2rem;border-radius:8px;font-weight:600;font-size:.82rem;box-shadow:0 4px 20px rgba(0,0,0,.3);animation:toastIn .3s ease;pointer-events:none}
 /* Excel dropdowns */
@@ -1170,7 +1201,6 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-sample-btn{padding:.3rem .8rem;font-size:.68rem}
   /* Table */
   .excel-table-wrap{max-height:380px}
-  .excel-table{font-size:.7rem}
   .excel-table th,.excel-table td{padding:.2rem .3rem}
   .col-type-badge{display:none}
   /* Find bar */
@@ -1197,7 +1227,6 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-upload-icon{font-size:1.3rem}
   .fmt-upload-title{font-size:.75rem}
   .fmt-upload-sub{font-size:.65rem}
-  .excel-table{font-size:.65rem}
   .excel-table th,.excel-table td{padding:.15rem .2rem}
   .excel-table-wrap{max-height:300px}
   #excelFindBar .match-count{display:none}
@@ -1692,7 +1721,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
     <div style="display:flex;gap:.5rem;flex-wrap:wrap">
       <button class="btn btn-sm" onclick="document.getElementById('fmt-file-input').click()"><i class="fas fa-upload"></i> Upload</button>
       <button class="btn btn-sm btn-primary" onclick="excelAutoClean()"><i class="fas fa-wand-magic-sparkles"></i> Auto Format</button>
-      <button class="btn btn-sm" onclick="excelExportFormatted()"><i class="fas fa-download"></i> Export</button>
+      <button class="btn btn-sm" onclick="showExcelExportModal()"><i class="fas fa-download"></i> Export</button>
     </div>
   </div>
 
@@ -1986,6 +2015,34 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           <div class="rename-actions" style="margin-top:1rem">
             <button class="btn btn-sm" onclick="closeConfirmModal()">Cancel</button>
             <button class="btn btn-sm btn-danger" onclick="confirmModalYes()"><i class="fa-solid fa-check"></i> Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ EXPORT FORMAT MODAL ═══ -->
+    <div class="modal-overlay" id="fmtExportModal" onclick="if(event.target===this)closeExcelExportModal()">
+      <div class="modal-box fmt-export-modal">
+        <div class="fmt-export-hdr">
+          <div><i class="fa-solid fa-file-export" style="color:var(--accent)"></i> Export Formatted Data</div>
+          <button class="close-btn" onclick="closeExcelExportModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="fmt-export-body">
+          <div class="export-card" onclick="closeExcelExportModal();setTimeout(excelExportCSV,150)">
+            <div class="export-icon" style="background:rgba(var(--accent-rgb),.12);color:var(--accent)"><i class="fa-solid fa-file-csv"></i></div>
+            <div><div class="export-card-title">Download as CSV</div><div class="export-card-desc">Standard CSV with headers</div></div>
+          </div>
+          <div class="export-card" onclick="closeExcelExportModal();setTimeout(excelExportJSON,150)">
+            <div class="export-icon" style="background:rgba(var(--info-rgb),.12);color:var(--info)"><i class="fa-solid fa-file-code"></i></div>
+            <div><div class="export-card-title">Download as JSON</div><div class="export-card-desc">Pretty-printed JSON array</div></div>
+          </div>
+          <div class="export-card" onclick="closeExcelExportModal();setTimeout(excelExportXLS,150)">
+            <div class="export-icon" style="background:rgba(var(--success-rgb),.12);color:var(--success)"><i class="fa-solid fa-file-excel"></i></div>
+            <div><div class="export-card-title">Download as Excel</div><div class="export-card-desc">HTML table format, opens in Excel</div></div>
+          </div>
+          <div class="export-card" onclick="closeExcelExportModal();setTimeout(excelCopyTable,150)">
+            <div class="export-icon" style="background:rgba(var(--warning-rgb),.12);color:var(--warning)"><i class="fa-solid fa-clipboard"></i></div>
+            <div><div class="export-card-title">Copy to Clipboard</div><div class="export-card-desc">Tab-separated table data</div></div>
           </div>
         </div>
       </div>
@@ -7902,22 +7959,65 @@ function excelAutoClean(){
   excelRenderTable();
 }
 
-function excelExportFormatted(){
+// ── Formatting Export ────────────────────────────────────────────────────
+function showExcelExportModal(){
+  if(!workingData.length){excelToast('No data to export');return;}
+  document.getElementById('fmtExportModal').style.display='flex';
+}
+function closeExcelExportModal(){
+  document.getElementById('fmtExportModal').style.display='none';
+}
+function excelExportCSV(){
   if(!workingData.length){excelToast('No data');return;}
-  let csv='';
-  csv+=columns.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')+'\n';
-  workingData.forEach(r=>{
-    csv+=columns.map(c=>{
-      const v=r[c]; if(v==null||v==='') return '';
-      const s=String(v); return '"'+s.replace(/"/g,'""')+'"';
-    }).join(',')+'\n';
-  });
-  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const csv=Papa.unparse(workingData);
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
   a.download=(fileName||'formatted_data').replace(/\.[^.]+$/,'')+'_formatted.csv';
   a.click();
-  excelToast('Exported as CSV');
+  excelToast('Downloaded as CSV');
+}
+function excelExportJSON(){
+  if(!workingData.length){excelToast('No data');return;}
+  const json=JSON.stringify(workingData,null,2);
+  const blob=new Blob([json],{type:'application/json;charset=utf-8;'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(fileName||'formatted_data').replace(/\.[^.]+$/,'')+'_formatted.json';
+  a.click();
+  excelToast('Downloaded as JSON');
+}
+function excelExportXLS(){
+  if(!workingData.length){excelToast('No data');return;}
+  let html='<html><head><meta charset="utf-8"><style>td{border:1px solid #ccc;padding:4px 8px;}th{background:#f0f0f0;border:1px solid #ccc;padding:4px 8px;font-weight:700}</style></head><body><table>';
+  html+='<tr>'+columns.map(c=>'<th>'+String(c).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</th>').join('')+'</tr>';
+  workingData.forEach(r=>{
+    html+='<tr>'+columns.map(c=>{
+      const v=r[c]; if(v==null||v==='') return '<td></td>';
+      return '<td>'+String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</td>';
+    }).join('')+'</tr>';
+  });
+  html+='</table></body></html>';
+  const blob=new Blob([html],{type:'application/vnd.ms-excel;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=(fileName||'formatted_data').replace(/\.[^.]+$/,'')+'_formatted.xls';
+  a.click();
+  excelToast('Downloaded as Excel');
+}
+function excelCopyTable(){
+  if(!workingData.length){excelToast('No data');return;}
+  let tsv=columns.join('\t')+'\n';
+  workingData.forEach(r=>{
+    tsv+=columns.map(c=>{
+      const v=r[c]; return v==null||v===''?'':String(v);
+    }).join('\t')+'\n';
+  });
+  navigator.clipboard.writeText(tsv).then(()=>{
+    excelToast('Copied to clipboard');
+  }).catch(()=>{
+    excelToast('Copy failed');
+  });
 }
 
 // ═══════════════════════════════════════
