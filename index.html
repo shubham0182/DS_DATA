@@ -1009,9 +1009,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .fmt-color-pick{width:22px;height:22px;border-radius:4px;border:1px solid var(--border2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;position:relative;font-size:.72rem;color:var(--text2);background:var(--bg3);flex-shrink:0}
 .fmt-color-pick:hover{border-color:var(--accent)}
 .fmt-color-pick input[type=color]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;top:0;left:0}
-/* Dropdown wrapper */
+/* ─── Dropdown Wrapper ─── */
 .fmt-dd-wrap{position:relative;display:inline-flex;align-items:center}
-/* Excel Table */
+
+/* ─── Data Table ─── */
 .excel-table-wrap{overflow:auto;border-radius:var(--radius);border:1px solid var(--border);max-height:520px;background:var(--bg)}
 .excel-table{width:100%;border-collapse:collapse;font-size:.8rem;table-layout:auto;min-width:100%}
 .excel-table th{background:var(--bg3);color:var(--text);font-weight:700;padding:.5rem .65rem;border:1px solid var(--border2);text-align:center;position:sticky;top:0;z-index:2;white-space:nowrap;user-select:none;font-size:.78rem}
@@ -1024,15 +1025,6 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .excel-dd-item.danger{color:var(--danger)}
 .excel-dd-item.danger:hover{background:rgba(var(--danger-rgb),.12)!important;color:var(--danger)}
 .excel-dd-divider{height:1px;background:var(--border);margin:4px 0}
-.rename-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;font-size:1.05rem;font-weight:700;color:var(--text)}
-.rename-body{display:flex;flex-direction:column;gap:.65rem}
-.rename-field label{display:block;font-size:.78rem;color:var(--text2);margin-bottom:.35rem;font-weight:500}
-.rename-field label i{width:16px;text-align:center;margin-right:4px}
-.rename-field input{width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text);font-size:.85rem;outline:none;transition:border .2s,box-shadow .2s;box-sizing:border-box}
-.rename-field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.12)}
-.rename-field input::placeholder{color:var(--text3)}
-.rename-actions{display:flex;gap:.65rem;justify-content:flex-end;margin-top:.35rem}
-.rename-actions .btn{padding:.5rem 1rem;font-size:.8rem}
 .excel-table td{padding:.35rem .55rem;border:1px solid var(--border2);color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums;transition:background .15s}
 .excel-table td.num{text-align:right;font-family:var(--mono);font-size:.78rem}
 .excel-table td.center{text-align:center}
@@ -1111,6 +1103,18 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .excel-table th.col-selected{outline:2px solid var(--accent)!important;outline-offset:-1px;position:relative;z-index:3}
 .excel-table td.col-active{outline:1px solid rgba(var(--accent-rgb),.4)!important;outline-offset:-1px}
 .col-mode-badge{display:inline-block;font-size:.6rem;padding:0 6px;border-radius:3px;background:rgba(var(--accent-rgb),.12);color:var(--accent);font-weight:600;margin-left:5px;text-transform:uppercase;letter-spacing:.02em}
+
+/* ─── Rename Modal ─── */
+.rename-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;font-size:1.05rem;font-weight:700;color:var(--text)}
+.rename-body{display:flex;flex-direction:column;gap:.65rem}
+.rename-field label{display:block;font-size:.78rem;color:var(--text2);margin-bottom:.35rem;font-weight:500}
+.rename-field label i{width:16px;text-align:center;margin-right:4px}
+.rename-field input{width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:8px;background:var(--bg3);color:var(--text);font-size:.85rem;outline:none;transition:border .2s,box-shadow .2s;box-sizing:border-box}
+.rename-field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.12)}
+.rename-field input::placeholder{color:var(--text3)}
+.rename-actions{display:flex;gap:.65rem;justify-content:flex-end;margin-top:.35rem}
+.rename-actions .btn{padding:.5rem 1rem;font-size:.8rem}
+
 /* Formatting status chips */
 .fmt-chips{display:flex;gap:4px;align-items:center;padding:.3rem .5rem;margin-bottom:.5rem;flex-wrap:wrap;min-height:28px}
 .fmt-chips-label{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.03em;font-weight:600;margin-right:4px}
@@ -1129,13 +1133,14 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .fmt-sample-btn:hover{background:var(--bg3);color:var(--text2);border-color:var(--border2)}
 /* Responsive: small desktop / tablet */
 @media(max-width:1024px){
-  .fmt-bar-inner{gap:0}
-  .fmt-sec{padding:2px 5px}
+  .fmt-bar-inner{flex-wrap:wrap;overflow:visible;gap:1px}
+  .fmt-sec{padding:2px 5px;flex-shrink:1}
   .fmt-b{width:28px;height:26px;font-size:.74rem}
   .fmt-b-label{padding:0 7px;font-size:.68rem}
   .fmt-sel{max-width:66px;font-size:.68rem}
   .fmt-sel.sz{max-width:36px}
   .fmt-color-pick{width:20px;height:20px;font-size:.65rem}
+  .fmt-bar-div{display:none}
 }
 
 /* Responsive: mobile */
@@ -1796,10 +1801,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           </div>
         </div>
 
-        <div class="fmt-bar-div hide-mobile"></div>
+        <div class="fmt-bar-div"></div>
 
         <!-- Data cleaning -->
-        <div class="fmt-sec hide-mobile">
+        <div class="fmt-sec">
           <span class="fmt-sec-label">Clean</span>
           <div class="fmt-sec-body">
             <button class="fmt-b" onclick="excelRemoveEmpty()" title="Remove empty rows"><i class="fa-solid fa-trash-can"></i></button>
@@ -1809,10 +1814,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           </div>
         </div>
 
-        <div class="fmt-bar-div hide-mobile"></div>
+        <div class="fmt-bar-div"></div>
 
         <!-- Tools -->
-        <div class="fmt-sec hide-mobile">
+        <div class="fmt-sec">
           <span class="fmt-sec-label">Tools</span>
           <div class="fmt-sec-body">
             <button class="fmt-b" onclick="excelAutoSum()" title="AutoSum"><i class="fa-solid fa-sigma"></i></button>
@@ -1938,6 +1943,49 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           <div class="rename-actions">
             <button class="btn btn-sm" onclick="closeRenameModal()">Cancel</button>
             <button class="btn btn-sm btn-primary" onclick="applyRename()"><i class="fa-solid fa-check"></i> Rename</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ FIND REPLACE MODAL ═══ -->
+    <div class="modal-overlay" id="findReplaceModal" onclick="if(event.target===this)closeFindReplaceModal()">
+      <div class="modal-box" style="max-width:400px;padding:1.5rem">
+        <div class="rename-hdr">
+          <span><i class="fa-solid fa-magnifying-glass" style="color:var(--accent)"></i> Find &amp; Replace</span>
+          <button class="close-btn" onclick="closeFindReplaceModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="rename-body">
+          <div class="rename-field" style="margin-bottom:.75rem">
+            <label><i class="fa-solid fa-search"></i> Find</label>
+            <input type="text" id="frFindInput" placeholder="Value to find…" spellcheck="false">
+          </div>
+          <div class="rename-field" style="margin-bottom:.75rem">
+            <label><i class="fa-solid fa-replace"></i> Replace with</label>
+            <input type="text" id="frReplaceInput" placeholder="Replacement value…" spellcheck="false">
+          </div>
+          <div class="rename-actions">
+            <button class="btn btn-sm" onclick="closeFindReplaceModal()">Cancel</button>
+            <button class="btn btn-sm btn-primary" onclick="applyFindReplace()"><i class="fa-solid fa-check"></i> Replace All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CONFIRM MODAL ═══ -->
+    <div class="modal-overlay" id="confirmModal" onclick="if(event.target===this)closeConfirmModal()">
+      <div class="modal-box" style="max-width:380px;padding:1.5rem">
+        <div class="rename-hdr">
+          <span><i class="fa-solid fa-triangle-exclamation" style="color:var(--warning)"></i> Confirm</span>
+          <button class="close-btn" onclick="closeConfirmModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="rename-body">
+          <div class="rename-field">
+            <p id="confirmMsg" style="margin:0;font-size:.9rem;color:var(--text2);line-height:1.5"></p>
+          </div>
+          <div class="rename-actions" style="margin-top:1rem">
+            <button class="btn btn-sm" onclick="closeConfirmModal()">Cancel</button>
+            <button class="btn btn-sm btn-danger" onclick="confirmModalYes()"><i class="fa-solid fa-check"></i> Confirm</button>
           </div>
         </div>
       </div>
@@ -2796,7 +2844,7 @@ function updateLoginUI(){
   if(session){
     btn.innerHTML='<i class="fa-solid fa-circle-check" style="color:var(--success)"></i>';
     btn.title=session.name||session.email;
-    btn.onclick=()=>{if(confirm('Sign out?'))handleLogout();};
+    btn.onclick=()=>{showConfirmModal('Sign out?', handleLogout);};
   } else {
     btn.innerHTML='<i class="fa-solid fa-circle-user"></i>';
     btn.title='Login';
@@ -3351,7 +3399,7 @@ function downloadReport(fmt){
 }
 
 function showFormatPicker(type){
-  if(!workingData.length){alert('Load a dataset first');return;}
+  if(!workingData.length){excelToast('Load a dataset first');return;}
   const labels = {code:'Code Report',dataset:'Dataset Report'};
   const icons = {code:'fa-file-code',dataset:'fa-chart-pie'};
   if(document.getElementById('fmt-picker-overlay')) return;
@@ -6382,7 +6430,7 @@ function processChatQuery(q){
 // EXPORT
 // ═══════════════════════════════════════
 function exportClean(){
-  if(!workingData.length){alert('No data to export');return;}
+  if(!workingData.length){excelToast('No data to export');return;}
   const csv=Papa.unparse(workingData);
   const blob=new Blob([csv],{type:'text/csv'});
   const url=URL.createObjectURL(blob);
@@ -6391,7 +6439,7 @@ function exportClean(){
 }
 
 function downloadDashboardExcel(){
-  if(!workingData.length){alert('No data loaded');return;}
+  if(!workingData.length){excelToast('No data loaded');return;}
   const numCols = getNumericCols();
   const catCols = getCatCols();
   const nullTotal = workingData.reduce((s,r) => s + Object.values(r).filter(v => v == null || v === '').length, 0);
@@ -6576,7 +6624,7 @@ function exportAllCharts(){
 }
 
 function openReportModal(){
-  if(!workingData.length){alert('No data loaded');return;}
+  if(!workingData.length){excelToast('No data loaded');return;}
   document.getElementById('report-modal').style.display='flex';
 }
 function closeReportModal(){
@@ -6601,7 +6649,7 @@ function generateReportFinal(){
         const a=document.createElement('a');
         a.href=url; a.download='TS_Data_Report.html';
         a.click();
-        alert('Downloaded HTML file. Open it and press Ctrl+P to save as PDF.');
+        excelToast('HTML file downloaded. Open it and press Ctrl+P to save as PDF.');
       }
     } else {
       const docHtml = html.replace('<html>','<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">');
@@ -6612,7 +6660,7 @@ function generateReportFinal(){
       a.click();
     }
   } catch(e) {
-    alert('Error generating report: ' + e.message);
+    excelToast('Error: ' + e.message);
   }
 }
 
@@ -7615,13 +7663,30 @@ function applyRename(){
   excelToast('Column renamed to "' + nn + '"');
 }
 
-function excelFindReplace(colIdx){
+// ═══ FIND REPLACE MODAL ═══
+let _frColIdx = null;
+
+function showFindReplaceModal(colIdx){
   excelCloseDropdowns();
+  _frColIdx = colIdx;
+  document.getElementById('frFindInput').value = '';
+  document.getElementById('frReplaceInput').value = '';
+  document.getElementById('findReplaceModal').style.display = 'flex';
+  setTimeout(() => { document.getElementById('frFindInput').focus(); }, 120);
+}
+
+function closeFindReplaceModal(){
+  document.getElementById('findReplaceModal').style.display = 'none';
+  _frColIdx = null;
+}
+
+function applyFindReplace(){
+  const colIdx = _frColIdx;
+  if (colIdx == null) { closeFindReplaceModal(); return; }
   const col = columns[colIdx];
-  const findVal = prompt('Find in "' + col + '":');
-  if (!findVal || !findVal.trim()) return;
-  const replaceVal = prompt('Replace "' + findVal + '" with:');
-  if (replaceVal === null) return;
+  const findVal = document.getElementById('frFindInput').value;
+  if (!findVal || !findVal.trim()) { excelToast('Enter a value to find'); return; }
+  const replaceVal = document.getElementById('frReplaceInput').value;
   const data = window._fmtFiltered || workingData;
   let count = 0;
   data.forEach(r => {
@@ -7630,8 +7695,33 @@ function excelFindReplace(colIdx){
       count++;
     }
   });
+  closeFindReplaceModal();
   excelRenderTable();
   excelToast('Replaced ' + count + ' occurrence(s)');
+}
+
+// ═══ CONFIRM MODAL ═══
+let _confirmCallback = null;
+
+function showConfirmModal(msg, callback){
+  document.getElementById('confirmMsg').textContent = msg;
+  _confirmCallback = callback;
+  document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeConfirmModal(){
+  document.getElementById('confirmModal').style.display = 'none';
+  _confirmCallback = null;
+}
+
+function confirmModalYes(){
+  document.getElementById('confirmModal').style.display = 'none';
+  if (_confirmCallback) _confirmCallback();
+  _confirmCallback = null;
+}
+
+function excelFindReplace(colIdx){
+  showFindReplaceModal(colIdx);
 }
 
 function excelTransformColumn(colIdx, type){
@@ -7656,11 +7746,12 @@ function excelTransformColumn(colIdx, type){
 
 function excelClearColumn(colIdx){
   excelCloseDropdowns();
-  if (!confirm('Clear all values in "' + columns[colIdx] + '"?')) return;
-  const col = columns[colIdx];
-  workingData.forEach(r => { r[col] = ''; });
-  excelRenderTable();
-  excelToast('Column cleared');
+  showConfirmModal('Clear all values in "' + columns[colIdx] + '"?', () => {
+    const col = columns[colIdx];
+    workingData.forEach(r => { r[col] = ''; });
+    excelRenderTable();
+    excelToast('Column cleared');
+  });
 }
 
 function excelDuplicateColumn(colIdx){
@@ -7679,15 +7770,16 @@ function excelDuplicateColumn(colIdx){
 function excelDeleteColumn(colIdx){
   excelCloseDropdowns();
   const col = columns[colIdx];
-  if (!confirm('Delete column "' + col + '" permanently? This cannot be undone.')) return;
-  columns.splice(colIdx, 1);
-  workingData.forEach(r => { delete r[col]; });
-  if (colTypes[col]) delete colTypes[col];
-  if (excelState.selectedCol === colIdx) excelState.selectedCol = null;
-  else if (excelState.selectedCol > colIdx) excelState.selectedCol--;
-  window._fmtFiltered = null;
-  excelRenderTable();
-  excelToast('Column "' + col + '" deleted');
+  showConfirmModal('Delete column "' + col + '" permanently? This cannot be undone.', () => {
+    columns.splice(colIdx, 1);
+    workingData.forEach(r => { delete r[col]; });
+    if (colTypes[col]) delete colTypes[col];
+    if (excelState.selectedCol === colIdx) excelState.selectedCol = null;
+    else if (excelState.selectedCol > colIdx) excelState.selectedCol--;
+    window._fmtFiltered = null;
+    excelRenderTable();
+    excelToast('Column "' + col + '" deleted');
+  });
 }
 
 // Dropdown toggle & close
@@ -7730,6 +7822,10 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){
     const rm = document.getElementById('renameModal');
     if(rm.style.display==='flex'){ closeRenameModal(); e.preventDefault(); return; }
+    const frm = document.getElementById('findReplaceModal');
+    if(frm.style.display==='flex'){ closeFindReplaceModal(); e.preventDefault(); return; }
+    const cm = document.getElementById('confirmModal');
+    if(cm.style.display==='flex'){ closeConfirmModal(); e.preventDefault(); return; }
     if(excelState.selectedCol!=null){ excelState.selectedCol=null; excelRenderTable(); }
     excelCloseDropdowns();
     document.getElementById('excelFindBar').style.display='none';
@@ -7737,6 +7833,8 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Enter'){
     const rm = document.getElementById('renameModal');
     if(rm.style.display==='flex' && document.activeElement===document.getElementById('renameInput')){ applyRename(); e.preventDefault(); }
+    const frm = document.getElementById('findReplaceModal');
+    if(frm.style.display==='flex'){ applyFindReplace(); e.preventDefault(); }
   }
 });
 
@@ -8403,7 +8501,7 @@ function fnToggleWorkouts(){
 function fnCalClick(day){
   const count = fnCalData[day] || 0;
   const label = document.getElementById('fn-cal-label').textContent;
-  alert(label + ' ' + day + ' — ' + count + ' records');
+  excelToast(label + ' ' + day + ' — ' + count + ' records');
 }
 function fnRenderWorkouts(){
   const cats = getCatCols();
