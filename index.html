@@ -122,11 +122,11 @@ nav{
   padding:.15rem .45rem;border-radius:20px;font-weight:600
 }
 .theme-toggle{
-  width:36px;height:36px;border-radius:8px;border:1px solid var(--border2);
-  background:transparent;cursor:pointer;color:var(--text);font-size:1rem;
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);
+  background:rgba(var(--accent-rgb),0.05);cursor:pointer;color:var(--text);font-size:1rem;
   display:flex;align-items:center;justify-content:center;transition:all .2s
 }
-.theme-toggle:hover{background:var(--bg3)}
+.theme-toggle:hover{background:rgba(var(--accent-rgb),0.12);border-color:var(--accent)}
 .chat-toggle{
   width:36px;height:36px;border-radius:8px;border:1px solid var(--border2);
   background:transparent;cursor:pointer;color:var(--text);font-size:1rem;
@@ -337,44 +337,67 @@ select,input[type=text],input[type=number]{
 select:focus,input:focus{border-color:var(--accent)}
 
 /* ─── SLIDERS ─── */
+/* ─── FONT SIZE RANGE (formatting ribbon) ─── */
+.fmt-size-wrap{display:inline-flex;align-items:center;gap:4px;padding:0 4px}
+.fmt-size-range{-webkit-appearance:none;appearance:none;width:52px;height:4px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));outline:none;cursor:pointer;margin:0;transition:background .15s}
+.fmt-size-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.2),0 1px 4px rgba(0,0,0,.3);transition:all .2s cubic-bezier(.34,1.56,.64,1);margin-top:-5px}
+.fmt-size-range::-webkit-slider-thumb:hover{transform:scale(1.2);box-shadow:0 0 0 2px var(--bg2),0 0 0 5px rgba(var(--accent-rgb),.15)}
+.fmt-size-range::-moz-range-track{height:4px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));border:none}
+.fmt-size-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.2)}
+.fmt-size-val{font-size:.7rem;font-weight:700;font-family:var(--mono);color:var(--text2);min-width:16px;text-align:center;line-height:1}
+
+/* ─── MODERN RANGE INPUT ─── */
 input[type=range]{
   -webkit-appearance:none;appearance:none;
-  width:100%;height:6px;
+  width:100%;height:8px;
   background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));
-  border-radius:3px;outline:none;
-  margin:6px 0;cursor:pointer;transition:background .15s
+  border-radius:4px;outline:none;
+  margin:8px 0;cursor:pointer;transition:background .2s
 }
 input[type=range]::-webkit-slider-track{
-  -webkit-appearance:none;height:6px;border-radius:3px;background:transparent;border:none
+  -webkit-appearance:none;height:8px;border-radius:4px;background:transparent;border:none
 }
 input[type=range]::-webkit-slider-thumb{
   -webkit-appearance:none;appearance:none;
-  width:20px;height:20px;border-radius:50%;
-  background:var(--accent);border:3px solid var(--bg2);
-  cursor:pointer;transition:all .2s cubic-bezier(.22,1,.36,1);
-  box-shadow:0 0 0 1px rgba(var(--accent-rgb),.4),0 2px 8px rgba(0,0,0,.35);
-  margin-top:-7px
+  width:22px;height:22px;border-radius:50%;
+  background:var(--accent);
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.25),0 2px 8px rgba(0,0,0,.3);
+  margin-top:-7px;
+  position:relative
 }
 input[type=range]::-webkit-slider-thumb:hover{
-  transform:scale(1.15);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.3),0 3px 14px rgba(0,0,0,.45)
+  transform:scale(1.18);box-shadow:0 0 0 2px var(--bg2),0 0 0 5px rgba(var(--accent-rgb),.2),0 4px 16px rgba(0,0,0,.4)
 }
 input[type=range]::-moz-range-track{
-  height:6px;border-radius:3px;
+  height:8px;border-radius:4px;
   background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));
   border:none
 }
 input[type=range]::-moz-range-thumb{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--accent);border:3px solid var(--bg2);
-  cursor:pointer;transition:all .2s cubic-bezier(.22,1,.36,1);
-  box-shadow:0 0 0 1px rgba(var(--accent-rgb),.4),0 2px 8px rgba(0,0,0,.35)
+  width:22px;height:22px;border-radius:50%;
+  background:var(--accent);border:none;
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.25),0 2px 8px rgba(0,0,0,.3)
 }
-input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.1)}
-input[type=range]:active::-webkit-slider-thumb{transform:scale(.95)}
+input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.12)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(.92)}
 input[type=range]:focus-visible{outline:none}
 input[type=range]:focus-visible::-webkit-slider-thumb{
-  box-shadow:0 0 0 4px rgba(var(--accent-rgb),.25),0 0 0 1px var(--accent),0 2px 8px rgba(0,0,0,.35)
+  box-shadow:0 0 0 2px var(--bg2),0 0 0 5px rgba(var(--accent-rgb),.3),0 0 20px rgba(var(--accent-rgb),.15),0 2px 8px rgba(0,0,0,.3)
 }
+
+/* ─── RANGE CONTROL WRAPPER (ML sliders) ─── */
+.range-control{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;transition:border-color .25s,box-shadow .25s}
+.range-control:hover{border-color:var(--border2);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.range-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem}
+.range-label{font-size:.78rem;font-weight:600;color:var(--text2);letter-spacing:.01em}
+.range-badge{font-size:.7rem;font-weight:700;font-family:var(--mono);color:var(--accent);background:rgba(var(--accent-rgb),.1);padding:2px 10px;border-radius:5px;min-width:38px;text-align:center}
+.range-track-wrap{display:flex;align-items:center;gap:.7rem}
+.range-min,.range-max{font-size:.68rem;color:var(--text3);font-weight:500;font-family:var(--mono);min-width:30px}
+.range-max{text-align:right}
 
 /* ─── CHARTS ─── */
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem}
@@ -1131,6 +1154,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-color-pick{width:16px;height:16px;font-size:.55rem}
 }
 
+/* Inline cell editor */
+.excel-cell-edit{width:100%;box-sizing:border-box;padding:2px 4px;border:2px solid var(--accent);border-radius:3px;background:var(--bg);color:var(--text);font-size:inherit;font-family:inherit;outline:none;margin:0;min-width:40px}
 /* Toast for excel actions */
 .excel-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--accent);color:var(--accent-text);padding:.5rem 1.2rem;border-radius:8px;font-weight:600;font-size:.82rem;box-shadow:0 4px 20px rgba(0,0,0,.3);animation:toastIn .3s ease;pointer-events:none}
 /* Excel dropdowns */
@@ -1165,6 +1190,24 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .excel-dd-list label{display:flex;align-items:center;gap:.4rem;padding:.25rem .5rem;font-size:.75rem;color:var(--text2);cursor:pointer;border-radius:3px;transition:all .1s}
 .excel-dd-list label:hover{background:var(--bg3)}
 .excel-dd-list input[type=checkbox]{accent-color:var(--accent);margin:0}
+/* Table style: dark */
+.excel-table[data-style="dark"] thead th{background:#1a237e!important;color:#fff!important}
+.excel-table[data-style="dark"] tbody tr:nth-child(odd) td{background:#1a1a2e;color:#e0e0e0}
+.excel-table[data-style="dark"] tbody tr:nth-child(even) td{background:#16213e;color:#e0e0e0}
+.excel-table[data-style="dark"] tbody tr:hover td{background:rgba(255,255,255,.08)!important}
+/* Table style: light */
+.excel-table[data-style="light"] thead th{background:#e8eaf6!important;color:#1a1a1a!important}
+.excel-table[data-style="light"] tbody tr:nth-child(odd) td{background:#fff;color:#333}
+.excel-table[data-style="light"] tbody tr:nth-child(even) td{background:#f5f5f9;color:#333}
+.excel-table[data-style="light"] tbody tr:hover td{background:rgba(0,0,0,.04)!important}
+/* Table style: professional */
+.excel-table[data-style="professional"] thead th{background:#1b5e20!important;color:#fff!important}
+.excel-table[data-style="professional"] tbody tr:nth-child(odd) td{background:#fff;color:#333}
+.excel-table[data-style="professional"] tbody tr:nth-child(even) td{background:#f1f8e9;color:#333}
+.excel-table[data-style="professional"] tbody tr:hover td{background:rgba(27,94,32,.08)!important}
+/* Table style: minimal */
+.excel-table[data-style="minimal"] thead th{background:var(--bg3)!important;color:var(--text)!important;border-bottom:2px solid var(--border2)}
+.excel-table[data-style="minimal"] tbody td{border-color:var(--border)}
 /* Column selection mode */
 .excel-table th.col-selected{outline:2px solid var(--accent)!important;outline-offset:-1px;position:relative;z-index:3}
 .excel-table td.col-active{outline:1px solid rgba(var(--accent-rgb),.4)!important;outline-offset:-1px}
@@ -1205,6 +1248,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-b-label{padding:0 7px;font-size:.68rem}
   .fmt-sel{max-width:66px;font-size:.68rem}
   .fmt-sel.sz{max-width:36px}
+  .fmt-size-range{width:40px}
+  .fmt-size-val{font-size:.65rem;min-width:14px}
   .fmt-color-pick{width:20px;height:20px;font-size:.65rem}
   .fmt-bar-div{display:none}
 }
@@ -1222,6 +1267,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-b-label{padding:0 8px;font-size:.68rem}
   .fmt-sel{max-width:74px;font-size:.7rem;height:24px}
   .fmt-sel.sz{max-width:40px}
+  .fmt-size-range{width:48px}
+  .fmt-size-val{font-size:.68rem}
   .fmt-color-pick{width:20px;height:20px}
   /* Chips */
   .fmt-chips{padding:.2rem .3rem;gap:3px}
@@ -1258,6 +1305,8 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-sel{max-width:58px;font-size:.65rem;height:22px}
   .fmt-sel.sz{max-width:32px}
   .fmt-color-pick{width:18px;height:18px;font-size:.6rem}
+  .fmt-size-range{width:36px}
+  .fmt-size-val{font-size:.6rem;min-width:12px}
   .fmt-upload-zone{padding:1rem .5rem;gap:5px}
   .fmt-upload-icon{font-size:1.3rem}
   .fmt-upload-title{font-size:.75rem}
@@ -1904,11 +1953,11 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
               <option value="Georgia,serif">Georgia</option>
               <option value="'Courier New',monospace">Courier New</option>
             </select>
-            <select id="exSize" class="fmt-sel sz" onchange="excelApplyFont()">
-              <option>8</option><option>9</option><option>10</option><option selected>11</option>
-              <option>12</option><option>14</option><option>16</option><option>18</option>
-              <option>20</option><option>24</option><option>28</option><option>36</option>
-            </select>
+            <div class="fmt-size-wrap">
+              <input type="range" id="exSize" class="fmt-size-range" min="8" max="36" value="11" step="1" style="--pct:12%"
+                oninput="this.style.setProperty('--pct',((this.value-8)/28*100)+'%');document.getElementById('exSizeVal').textContent=this.value;excelApplyFont()"/>
+              <span id="exSizeVal" class="fmt-size-val">11</span>
+            </div>
             <button class="fmt-b active" id="exBold" onclick="excelToggleBold()" title="Bold (Ctrl+B)"><i class="fa-solid fa-bold"></i></button>
             <button class="fmt-b" id="exItalic" onclick="excelToggleItalic()" title="Italic (Ctrl+I)"><i class="fa-solid fa-italic"></i></button>
             <button class="fmt-b" id="exUnderline" onclick="excelToggleUnderline()" title="Underline (Ctrl+U)"><i class="fa-solid fa-underline"></i></button>
@@ -1969,10 +2018,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           <span class="fmt-sec-label">Styles</span>
           <div class="fmt-sec-body">
             <div class="fmt-dd-wrap">
-              <button class="fmt-b fmt-b-label" onclick="excelToggleDropdown('ddCondFormat',this)"><i class="fa-solid fa-palette"></i> Cond <i class="fa-solid fa-caret-down" style="font-size:.55rem;margin-left:1px"></i></button>
+              <button class="fmt-b" onclick="excelToggleDropdown('ddCondFormat',this)" title="Conditional formatting"><i class="fa-solid fa-palette"></i><i class="fa-solid fa-caret-down" style="font-size:.5rem;margin-left:1px"></i></button>
             </div>
             <div class="fmt-dd-wrap">
-              <button class="fmt-b fmt-b-label" onclick="excelToggleDropdown('ddFormatTable',this)"><i class="fa-solid fa-table-cells"></i> Table <i class="fa-solid fa-caret-down" style="font-size:.55rem;margin-left:1px"></i></button>
+              <button class="fmt-b" onclick="excelToggleDropdown('ddFormatTable',this)" title="Table styles"><i class="fa-solid fa-table-cells"></i><i class="fa-solid fa-caret-down" style="font-size:.5rem;margin-left:1px"></i></button>
             </div>
             <button class="fmt-b" onclick="excelHeatmap()" title="Heatmap"><i class="fa-solid fa-fire"></i></button>
             <button class="fmt-b" onclick="excelBandedRows()" title="Banded rows"><i class="fa-solid fa-grip-lines"></i></button>
@@ -2024,7 +2073,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
     <!-- ═══ FORMATTED TABLE ═══ -->
     <div class="excel-table-wrap" id="excelTableWrap">
-      <table class="excel-table" id="excelTable"></table>
+      <table class="excel-table" id="excelTable" data-style=""></table>
     </div>
 
     <!-- Status bar -->
@@ -2524,20 +2573,36 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
         </div>
         <div class="ml-card">
           <div class="clean-title"><i class="fas fa-bullseye"></i> Feature Selection</div>
-          <div class="clean-desc" style="margin-bottom:.75rem">Select the most important features based on variance threshold</div>
-            <div style="margin-bottom:.5rem">
-            <div style="font-size:.74rem;color:var(--text2);margin-bottom:.3rem">Variance Threshold</div>
-            <input type="range" id="var-threshold" min="0" max="100" value="10" style="width:100%;--pct:10%"
-              oninput="this.style.setProperty('--pct',this.value+'%');document.getElementById('var-val').textContent=this.value+'%';computeVarianceFeatures()"/>
-            <span id="var-val" style="font-size:.76rem;font-family:var(--mono)">10%</span>
+          <div class="clean-desc" style="margin-bottom:.75rem">Keep features with variance above threshold</div>
+          <div class="range-control">
+            <div class="range-hdr">
+              <span class="range-label">Variance Threshold</span>
+              <span class="range-badge" id="var-val">10%</span>
+            </div>
+            <div class="range-track-wrap">
+              <span class="range-min">0%</span>
+              <input type="range" id="var-threshold" min="0" max="100" value="10" style="--pct:10%"
+                oninput="this.style.setProperty('--pct',this.value+'%');document.getElementById('var-val').textContent=this.value+'%';computeVarianceFeatures()"/>
+              <span class="range-max">100%</span>
+            </div>
           </div>
-          <div id="feature-sel-result" style="font-size:.78rem;color:var(--text2);margin-top:.5rem"></div>
+          <div id="feature-sel-result" style="font-size:.78rem;color:var(--text2);margin-top:.6rem"></div>
         </div>
         <div class="ml-card">
           <div class="clean-title"><i class="fas fa-chart-bar"></i> Train / Test Split</div>
-          <div class="clean-desc" style="margin-bottom:.75rem">Preview how data would split for ML training</div>
-          <input type="range" id="split-ratio" min="50" max="90" value="80" style="width:100%;--pct:80%"
-            oninput="this.style.setProperty('--pct',this.value+'%');updateSplitInfo(this.value)"/>
+          <div class="clean-desc" style="margin-bottom:.75rem">Choose training data proportion</div>
+          <div class="range-control">
+            <div class="range-hdr">
+              <span class="range-label">Training set size</span>
+              <span class="range-badge" id="split-pct">80%</span>
+            </div>
+            <div class="range-track-wrap">
+              <span class="range-min">50%</span>
+              <input type="range" id="split-ratio" min="50" max="90" value="80" style="--pct:80%"
+                oninput="this.style.setProperty('--pct',this.value+'%');document.getElementById('split-pct').textContent=this.value+'%';updateSplitInfo(this.value)"/>
+              <span class="range-max">90%</span>
+            </div>
+          </div>
           <div id="split-info" style="font-size:.82rem;margin-top:.6rem"></div>
         </div>
       </div>
@@ -2849,7 +2914,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-card">
         <div class="ft-card-hdr">
           <span class="ft-card-label">Transaction Growth</span>
-          <span class="ft-card-icon" style="background:#dbeafe;color:#2563eb"><i class="fas fa-arrow-trend-up"></i></span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="ft-card-icon" style="background:#dbeafe;color:#2563eb"><i class="fas fa-arrow-trend-up"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-card-val" style="color:#2563eb">+24.8%</div>
         <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 12.3%</span> vs last month</div>
@@ -2858,7 +2926,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-card">
         <div class="ft-card-hdr">
           <span class="ft-card-label">Profile Completion</span>
-          <span class="ft-card-icon" style="background:#fef3c7;color:#d97706"><i class="fas fa-user-check"></i></span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="ft-card-icon" style="background:#fef3c7;color:#d97706"><i class="fas fa-user-check"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-card-val" style="color:#d97706">87%</div>
         <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 5%</span> this week</div>
@@ -2867,7 +2938,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-card">
         <div class="ft-card-hdr">
           <span class="ft-card-label">Success Rate</span>
-          <span class="ft-card-icon" style="background:#d1fae5;color:#10b981"><i class="fas fa-check-circle"></i></span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="ft-card-icon" style="background:#d1fae5;color:#10b981"><i class="fas fa-check-circle"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-card-val" style="color:#10b981">94.2%</div>
         <div class="ft-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 2.1%</span> this quarter</div>
@@ -2876,7 +2950,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-card">
         <div class="ft-card-hdr">
           <span class="ft-card-label">Monthly Spending</span>
-          <span class="ft-card-icon" style="background:#e0e7ff;color:#4f46e5"><i class="fas fa-wallet"></i></span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="ft-card-icon" style="background:#e0e7ff;color:#4f46e5"><i class="fas fa-wallet"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-card-val" style="color:#4f46e5">$48,290</div>
         <div class="ft-card-sub"><span class="down"><i class="fas fa-caret-down"></i> 3.7%</span> from last month</div>
@@ -2887,14 +2964,20 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-chart-card">
         <div class="ft-chart-hdr">
           <span class="ft-chart-title"><i class="fas fa-chart-line" style="color:#2563eb"></i> Revenue Overview</span>
-          <span style="font-size:.72rem;color:var(--ft-text2)">Last 12 months</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--ft-text2)">Last 12 months</span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-chart-body"><canvas id="ft-revenue-chart"></canvas></div>
       </div>
       <div class="ft-chart-card">
         <div class="ft-chart-hdr">
           <span class="ft-chart-title"><i class="fas fa-chart-bar" style="color:#2563eb"></i> Spending by Category</span>
-          <span style="font-size:.72rem;color:var(--ft-text2)">Top categories</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--ft-text2)">Top categories</span>
+            <button class="dash-remove-btn" onclick="this.closest('.ft-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="ft-chart-body"><canvas id="ft-spending-chart"></canvas></div>
       </div>
@@ -2904,6 +2987,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="ft-chart-hdr">
         <span class="ft-chart-title"><i class="fas fa-receipt" style="color:#2563eb"></i> Recent Transactions</span>
         <div style="display:flex;gap:.4rem;align-items:center">
+          <button class="dash-remove-btn" onclick="this.closest('.ft-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
           <input id="ft-search-input" type="text" placeholder="Search..." oninput="ftFilterTable()" style="display:none;font-size:.7rem;padding:.25rem .5rem;border:1px solid var(--ft-border);border-radius:6px;background:var(--ft-card-bg);color:var(--ft-text1);width:120px;outline:none">
           <span onclick="ftToggleSearch()" style="cursor:pointer;font-size:.7rem;color:var(--ft-text2);background:#f3f4f6;padding:.2rem .5rem;border-radius:6px"><i class="fas fa-magnifying-glass"></i></span>
           <span onclick="ftToggleFilter()" style="cursor:pointer;font-size:.7rem;color:var(--ft-text2);background:#f3f4f6;padding:.2rem .5rem;border-radius:6px"><i class="fas fa-filter"></i></span>
@@ -2929,8 +3013,47 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fn-card">
         <div class="fn-card-hdr">
           <span class="fn-card-label">Revenue</span>
-          <span class="fn-card-icon"><i class="fas fa-dollar-sign"></i></span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="fn-card-icon"><i class="fas fa-dollar-sign"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
+        <div class="fn-card-val">$12.4K</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 12.5%</span> vs last month</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Active Users</span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="fn-card-icon"><i class="fas fa-users"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="fn-card-val">24.8K</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 8.3%</span> this week</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Engagement</span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="fn-card-icon"><i class="fas fa-fire"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="fn-card-val">92%</div>
+        <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 4.1%</span> this month</div>
+      </div>
+      <div class="fn-card">
+        <div class="fn-card-hdr">
+          <span class="fn-card-label">Avg. Session</span>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="fn-card-icon"><i class="fas fa-clock"></i></span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-card').style.display='none'" title="Remove"><i class="fas fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="fn-card-val">18m 42s</div>
+        <div class="fn-card-sub"><span class="down"><i class="fas fa-caret-down"></i> 1.2%</span> from last week</div>
+      </div>
         <div class="fn-card-val">$128.5K</div>
         <div class="fn-card-sub"><span class="up"><i class="fas fa-caret-up"></i> 12.5%</span> vs last month</div>
       </div>
@@ -2964,14 +3087,20 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-chart-line"></i> Revenue Analytics</span>
-          <span style="font-size:.72rem;color:var(--fn-text2)">Monthly</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--fn-text2)">Monthly</span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="fn-chart-body tall"><canvas id="fn-revenue-chart"></canvas></div>
       </div>
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-calendar"></i> Calendar</span>
-          <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-cal-label">May 2026</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-cal-label">May 2026</span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div id="fn-calendar" class="fn-cal-wrap"></div>
       </div>
@@ -2981,9 +3110,12 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-mobile-screen"></i> Install Analytics</span>
-          <div class="fn-toggle">
-            <button class="active" onclick="fnToggleInstall(this,'weekly')">Weekly</button>
-            <button onclick="fnToggleInstall(this,'monthly')">Monthly</button>
+          <div style="display:flex;gap:6px;align-items:center">
+            <div class="fn-toggle">
+              <button class="active" onclick="fnToggleInstall(this,'weekly')">Weekly</button>
+              <button onclick="fnToggleInstall(this,'monthly')">Monthly</button>
+            </div>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
           </div>
         </div>
         <div class="fn-chart-body"><canvas id="fn-install-chart"></canvas></div>
@@ -2991,7 +3123,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-dumbbell"></i> Popular Workouts</span>
-          <button class="fn-neon-btn" onclick="fnToggleWorkouts()">View All</button>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="fn-neon-btn" onclick="fnToggleWorkouts()">View All</button>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div id="fn-workouts-list"></div>
       </div>
@@ -3001,14 +3136,20 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-globe"></i> Global Impressions</span>
-          <span style="font-size:.72rem;color:var(--fn-text2)">By country</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--fn-text2)">By country</span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="fn-chart-body tall"><canvas id="fn-global-chart"></canvas></div>
       </div>
       <div class="fn-chart-card">
         <div class="fn-chart-hdr">
           <span class="fn-chart-title"><i class="fas fa-circle"></i> Age Distribution</span>
-          <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-age-label">25-34 dominates</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span style="font-size:.72rem;color:var(--fn-text2)" id="fn-age-label">25-34 dominates</span>
+            <button class="dash-remove-btn" onclick="this.closest('.fn-chart-card').style.display='none'" title="Remove chart"><i class="fas fa-xmark"></i></button>
+          </div>
         </div>
         <div class="fn-chart-body"><canvas id="fn-age-chart"></canvas></div>
       </div>
@@ -3206,9 +3347,22 @@ function toggleTheme(){
   document.querySelector('.theme-toggle').innerHTML = '<i class="'+icons[theme]+'"></i>';
   Object.values(activeCharts).forEach(c=>{ if(c&&c.destroy) c.destroy(); });
   activeCharts = {};
+  excelSyncThemeColors();
   if(workingData.length) {
     renderActiveViz();
     renderDashboard();
+  }
+}
+
+function excelSyncThemeColors(){
+  const isLight = theme==='white';
+  if(!excelState.tableStyle){
+    excelState.fillColor = isLight ? '#e8eaf6' : '#1a1a1a';
+    excelState.textColor = isLight ? '#1a1a1a' : '#ffffff';
+  }
+  if(document.getElementById('panel-formatting').classList.contains('active')&&workingData.length){
+    excelSyncToolbar();
+    excelRenderTable();
   }
 }
 
@@ -4586,20 +4740,54 @@ function parseCSV(text){
 // SAMPLE DATA
 // ═══════════════════════════════════════
 function loadSample(type){
-  const cats=['Electronics','Clothing','Food','Books','Sports'];
-  originalData = Array.from({length:300},(_,i)=>({
-    order_id:i+1001,
-    category:cats[i%cats.length],
-    price:+(10+Math.random()*990).toFixed(2),
-    quantity:Math.round(1+Math.random()*20),
-    revenue:+(50+Math.random()*5000).toFixed(2),
-    country:['India','USA','UK','Germany','France'][i%5],
-    month:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][i%12],
-    returns:i%10===0?null:Math.round(Math.random()*3),
-    customer_score:+(1+Math.random()*4).toFixed(1),
-    is_premium:Math.random()>0.5
-  }));
-  fileName='ecommerce_dataset.csv';
+  if(type==='sales'){
+    const regions=['North','South','East','West'];
+    const prods=['Laptop','Phone','Tablet','Monitor','Headphones'];
+    originalData = Array.from({length:200},(_,i)=>({
+      id:i+1,
+      date:`2024-${String(Math.ceil((i%12)+1)).padStart(2,'0')}-${String((i%28)+1).padStart(2,'0')}`,
+      product:prods[i%prods.length],
+      region:regions[i%regions.length],
+      sales:Math.round(1000+Math.random()*9000),
+      units:Math.round(1+Math.random()*50),
+      profit:Math.round(100+Math.random()*3000),
+      discount:+(Math.random()*0.3).toFixed(2),
+      customer_age:Math.round(20+Math.random()*50),
+      rating:+(1+Math.random()*4).toFixed(1),
+      returns: i%7===0?null:Math.round(Math.random()*5)
+    }));
+    fileName='sales_dataset.csv';
+  } else if(type==='students'){
+    const courses=['Math','Science','English','History','Art'];
+    originalData = Array.from({length:150},(_,i)=>({
+      student_id:i+1,
+      name:`Student_${i+1}`,
+      course:courses[i%courses.length],
+      grade:Math.round(40+Math.random()*60),
+      attendance:+(50+Math.random()*50).toFixed(1),
+      assignments:Math.round(5+Math.random()*15),
+      midterm:Math.round(30+Math.random()*70),
+      final:Math.round(30+Math.random()*70),
+      gpa:+(1+Math.random()*3).toFixed(2),
+      pass_fail: i%8===0?null:(Math.random()>0.2?'Pass':'Fail')
+    }));
+    fileName='students_dataset.csv';
+  } else {
+    const cats=['Electronics','Clothing','Food','Books','Sports'];
+    originalData = Array.from({length:300},(_,i)=>({
+      order_id:i+1001,
+      category:cats[i%cats.length],
+      price:+(10+Math.random()*990).toFixed(2),
+      quantity:Math.round(1+Math.random()*20),
+      revenue:+(50+Math.random()*5000).toFixed(2),
+      country:['India','USA','UK','Germany','France'][i%5],
+      month:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][i%12],
+      returns:i%10===0?null:Math.round(Math.random()*3),
+      customer_score:+(1+Math.random()*4).toFixed(1),
+      is_premium:Math.random()>0.5
+    }));
+    fileName='ecommerce_dataset.csv';
+  }
   columns = Object.keys(originalData[0]);
   initData();
 }
@@ -7593,7 +7781,7 @@ function buildReportHTML(){
 // ═══════════════════════════════════════
 // EXCEL-STYLE FORMATTING
 // ═══════════════════════════════════════
-let excelState = { bold:true, italic:false, underline:false, align:'left', wrap:true, fontSize:11, fontFamily:"'Outfit',sans-serif", textColor:'#ffffff', fillColor:'#1a1a1a', banded:true, frozen:true, filter:false, numFmt:'general', decimals:2, currency:'$', condFmt:null, selectedCol:null, sortCol:null, sortDir:null, findIdx:-1, findResults:[], mergeCells:{}, colFormats:{} };
+let excelState = { bold:true, italic:false, underline:false, align:'left', wrap:true, fontSize:11, fontFamily:"'Outfit',sans-serif", textColor:'#ffffff', fillColor:'#1a1a1a', banded:true, frozen:true, filter:false, numFmt:'general', decimals:2, currency:'$', condFmt:null, selectedCol:null, sortCol:null, sortDir:null, findIdx:-1, findResults:[], mergeCells:{}, colFormats:{}, tableStyle:null };
 
 // Per-column formatting helpers
 function getColFmt(colIdx){
@@ -7631,8 +7819,19 @@ function renderFormatting(){
   if(!workingData.length){document.getElementById('fmt-content').style.display='none';document.getElementById('fmt-no-data').style.display='block';return;}
   document.getElementById('fmt-no-data').style.display='none';
   document.getElementById('fmt-content').style.display='block';
-  excelSyncActiveButtons();
+  excelSyncToolbar();
   excelRenderTable();
+}
+
+function excelSyncToolbar(){
+  excelSyncActiveButtons();
+  excelSyncColorPickers();
+  const ff = document.getElementById('exFont');
+  const fs = document.getElementById('exSize');
+  const fv = document.getElementById('exSizeVal');
+  if(ff) ff.value = excelState.fontFamily;
+  if(fs){ fs.value = excelState.fontSize; fs.style.setProperty('--pct',((excelState.fontSize-8)/28*100)+'%'); }
+  if(fv) fv.textContent = excelState.fontSize;
 }
 
 function excelSyncActiveButtons(){
@@ -7693,7 +7892,8 @@ function cellStyle(colIdx){
   const u = fmti(colIdx,'underline')?'text-decoration:underline;':'';
   const a = 'text-align:'+fmti(colIdx,'align')+';';
   const wr = fmti(colIdx,'wrap')?'white-space:normal;word-break:break-word;':'white-space:nowrap;';
-  return `font-family:${f};font-size:${s}px;${b}${it}${u}${a}${wr}`;
+  const tc = 'color:'+fmti(colIdx,'textColor')+';';
+  return `font-family:${f};font-size:${s}px;${b}${it}${u}${a}${tc}${wr}`;
 }
 
 function excelFormatValueCol(v, col, colIdx){
@@ -7751,12 +7951,19 @@ function excelRenderTable(){
         }
       }
       const isSel = excelState.selectedCol===ci;
-      html+=`<td class="${cls}${isSel?' col-active':''}" data-col="${ci}" data-row="${ri}" style="${cellStyle(ci)}${isSel?';outline:1px solid rgba(var(--accent-rgb),.4);outline-offset:-1px':''}">${val}</td>`;
+      html+=`<td class="${cls}${isSel?' col-active':''}" data-col="${ci}" data-row="${ri}" style="${cellStyle(ci)}${isSel?';outline:1px solid rgba(var(--accent-rgb),.4);outline-offset:-1px':''}" ondblclick="excelEditCell(event,${ri},${ci})">${val}</td>`;
     });
     html+='</tr>';
   });
   html+='</tbody>';
   table.innerHTML=html;
+  table.dataset.style = excelState.tableStyle||'';
+  // Re-apply freeze pane if enabled (state is lost on innerHTML rebuild)
+  if(excelState.frozen){
+    const thead = table.querySelector('thead');
+    if(thead) thead.style.position = 'sticky';
+    table.querySelectorAll('th').forEach(th => th.style.position = 'sticky');
+  }
   document.getElementById('excelRowCount').textContent=data.length.toLocaleString()+' rows';
   document.getElementById('excelColCount').textContent=columns.length+' columns';
   const selInfo = excelState.selectedCol!=null ? 'Col: '+columns[excelState.selectedCol] + ' <span class="col-mode-badge">column mode</span>' : '';
@@ -7803,6 +8010,7 @@ function excelRenderFmtChips(){
   if(wrapVal) chips.push({icon:'<i class="fa-solid fa-bars-staggered"></i>',label:'Wrap'});
   const condVal = ci!=null ? resolveFmt('condFmt',ci) : excelState.condFmt;
   if(condVal) chips.push({icon:'<i class="fa-solid fa-palette"></i>',label:condVal==='heatmap'?'Heatmap':'H/M/L'});
+  if(excelState.tableStyle) chips.push({icon:'<i class="fa-solid fa-table-cells"></i>',label:excelState.tableStyle});
   const nfVal = ci!=null ? resolveFmt('numFmt',ci) : excelState.numFmt;
   if(nfVal!=='general') chips.push({icon:'<i class="fa-solid fa-hashtag"></i>',label:nfVal});
   const alVal = ci!=null ? resolveFmt('align',ci) : excelState.align;
@@ -7814,7 +8022,17 @@ function excelSelectCol(idx){
   if(excelState.selectedCol===idx){ excelState.selectedCol=null; excelRenderTable(); return; }
   excelState.selectedCol=idx;
   excelSyncActiveButtons();
+  excelSyncColorPickers();
   excelRenderTable();
+}
+
+function excelSyncColorPickers(){
+  const tc = document.getElementById('exTextColor');
+  const fc = document.getElementById('exFillColor');
+  if(!tc||!fc) return;
+  const ci = excelState.selectedCol;
+  tc.value = ci!=null ? resolveFmt('textColor',ci) : excelState.textColor;
+  fc.value = ci!=null ? resolveFmt('fillColor',ci) : excelState.fillColor;
 }
 
 function excelApplyFont(){
@@ -7870,6 +8088,47 @@ function excelBorders(){
   excelToast('Borders applied');
 }
 
+let _editingCell = null;
+
+function excelEditCell(ev, rowIdx, colIdx){
+  if(_editingCell) return;
+  const td = ev.currentTarget;
+  const col = columns[colIdx];
+  const data = window._fmtFiltered||workingData;
+  const row = data[rowIdx];
+  if(!row) return;
+  const orig = row[col];
+  _editingCell = {td, rowIdx, colIdx, orig};
+  td.innerHTML = `<input class="excel-cell-edit" type="text" value="${escHtml(String(orig??''))}" spellcheck="false">`;
+  const inp = td.querySelector('.excel-cell-edit');
+  inp.focus();
+  inp.select();
+  inp.addEventListener('blur', () => excelCommitEdit(inp.value));
+  inp.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ inp.blur(); }
+    if(e.key==='Escape'){ td.innerHTML = escHtml(String(orig??'')); _editingCell=null; }
+  });
+}
+
+function excelCommitEdit(val){
+  if(!_editingCell) return;
+  const {td, rowIdx, colIdx, orig} = _editingCell;
+  _editingCell = null;
+  const col = columns[colIdx];
+  const data = window._fmtFiltered||workingData;
+  const row = data[rowIdx];
+  if(!row) return;
+  const nv = val.trim();
+  if(nv === String(orig??'')){ excelRenderTable(); return; }
+  row[col] = nv;
+  if(originalData.length){
+    const origRow = originalData[rowIdx];
+    if(origRow) origRow[col] = nv;
+  }
+  excelRenderTable();
+  excelToast('Cell updated');
+}
+
 function excelToggleWrap(){
   const ci = excelState.selectedCol;
   const cur = ci!=null ? resolveFmt('wrap',ci) : excelState.wrap;
@@ -7917,14 +8176,11 @@ function excelApplyCondFmt(type){
 }
 
 function excelApplyTableStyle(style){
-  if(style==='dark'){setFmt('fillColor','#1a237e');setFmt('textColor','#fff');excelState.banded=true;}
-  else if(style==='light'){setFmt('fillColor','#e8eaf6');setFmt('textColor','#000');excelState.banded=true;}
-  else if(style==='professional'){setFmt('fillColor','#1b5e20');setFmt('textColor','#fff');excelState.banded=true;}
-  else if(style==='minimal'){setFmt('fillColor','var(--bg3)');setFmt('textColor','var(--text)');excelState.banded=false;}
-  setFmt('bold',true);
+  excelState.tableStyle = excelState.tableStyle===style ? null : style;
+  excelState.banded = style!=='minimal';
   excelCloseDropdowns();
   excelRenderTable();
-  excelToast('Table style applied');
+  excelToast(excelState.tableStyle ? 'Style: '+style : 'Style cleared');
 }
 
 function excelHeatmap(){
@@ -7941,8 +8197,7 @@ function excelBandedRows(){
 
 function excelFreezePane(){
   excelState.frozen=!excelState.frozen;
-  document.querySelector('#excelTable thead').style.position=excelState.frozen?'sticky':'static';
-  document.querySelectorAll('#excelTable th').forEach(th=>th.style.position=excelState.frozen?'sticky':'static');
+  excelRenderTable();
   excelToast(excelState.frozen?'Header frozen':'Header unfrozen');
 }
 
