@@ -1231,6 +1231,52 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .excel-table-wrap{max-height:300px}
   #excelFindBar .match-count{display:none}
 }
+/* ─── SKELETON LOADER ─── */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skel{background:var(--bg3);border-radius:6px;position:relative;overflow:hidden}
+.skel::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 25%,rgba(255,255,255,0.06) 50%,transparent 75%);
+  background-size:800px 100%;animation:shimmer 2s ease-in-out infinite;
+}
+.skel-line{height:14px;margin-bottom:10px;width:100%}
+.skel-line.w80{width:80%}.skel-line.w60{width:60%}.skel-line.w40{width:40%}.skel-line.w30{width:30%}.skel-line.w50{width:50%}.skel-line.w70{width:70%}
+.skel-block{height:100px;margin-bottom:10px}
+.skel-block.sm{height:60px}
+.skel-block.md{height:80px}
+.skel-block.lg{height:140px}
+.skel-notebook{padding:.5rem 0}
+.skel-notebook .skel-cell{position:relative;padding:.85rem 1rem .85rem 3.5rem;border-bottom:1px solid var(--border)}
+.skel-notebook .skel-cell:last-child{border-bottom:none}
+.skel-notebook .skel-prompt{position:absolute;left:.85rem;top:.95rem;width:2rem;height:12px}
+.skel-notebook .skel-code-block{background:var(--bg2);border-radius:6px;padding:.65rem .75rem;margin-top:6px}
+.skel-notebook .skel-title-block{padding:.25rem 0}
+.skel-notebook .skel-title-block .skel-line{margin-bottom:8px}
+.prog-loader-skel{display:none}
+.prog-loader-skel-show{display:block}
+
+/* ─── UPDATE NOTIFICATION ─── */
+#update-badge{
+  display:none;width:18px;height:18px;border-radius:50%;background:var(--danger);
+  color:#fff;font-size:.55rem;font-weight:700;position:absolute;top:-4px;right:-4px;
+  align-items:center;justify-content:center;line-height:1;border:2px solid var(--bg2);
+  animation:pulse 2s ease-in-out infinite;cursor:pointer
+}
+.nav-update-wrap{position:relative;display:inline-flex}
+
+/* ─── CHANGELOG MODAL ─── */
+.changelog-list{display:flex;flex-direction:column;gap:.5rem;max-height:320px;overflow-y:auto;margin:.5rem 0}
+.changelog-item{display:flex;gap:.6rem;padding:.5rem .65rem;border-radius:8px;background:var(--bg3);border:1px solid var(--border);font-size:.8rem;line-height:1.5}
+.changelog-item .cl-version{font-weight:700;color:var(--accent);white-space:nowrap;min-width:48px;font-family:var(--mono);font-size:.75rem}
+.changelog-item .cl-text{color:var(--text2)}
+.changelog-item .cl-tag{font-size:.6rem;padding:1px 6px;border-radius:4px;font-weight:600;margin-left:6px;white-space:nowrap}
+.cl-tag-new{background:rgba(var(--success-rgb),0.15);color:var(--tag-success)}
+.cl-tag-fix{background:rgba(var(--warning-rgb),0.15);color:var(--tag-warning)}
+.cl-tag-upd{background:rgba(var(--info-rgb),0.15);color:var(--tag-info)}
+.changelog-date{font-size:.7rem;color:var(--text3);margin-bottom:.35rem}
 </style>
 </head>
 <body>
@@ -1327,6 +1373,23 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   </div>
 </div>
 
+<!-- CHANGELOG MODAL -->
+<div id="changelog-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)hideChangelog()">
+  <div class="modal-box" style="max-width:460px;padding:1.5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
+      <div style="font-size:1.1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem">
+        <i class="fa-solid fa-clock-rotate-left" style="color:var(--accent)"></i> What's New
+      </div>
+      <button class="close-btn" onclick="hideChangelog()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="changelog-date">Last updated: May 27, 2026</div>
+    <div class="changelog-list" id="changelog-list"></div>
+    <div style="display:flex;justify-content:flex-end;margin-top:.75rem">
+      <button class="btn btn-sm btn-primary" onclick="hideChangelog()">Got it!</button>
+    </div>
+  </div>
+</div>
+
 <!-- EXPORT MODAL -->
 <div id="export-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeExportModal()">
   <div class="modal-box" style="max-width:420px;padding:1.5rem">
@@ -1364,7 +1427,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
     <span id="file-badge" style="display:none" class="badge-count">No file</span>
     <button class="chat-toggle" id="chatToggle" onclick="toggleChat()"><i class="fa-solid fa-comment-dots"></i></button>
     <button class="chat-toggle" onclick="openLoginModal()" title="Login"><i class="fa-solid fa-circle-user"></i></button>
-    <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+    <div class="nav-update-wrap">
+      <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+      <span id="update-badge" onclick="showChangelog()">1</span>
+    </div>
   </div>
 </nav>
 
@@ -2497,7 +2563,82 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   <div id="prog-content" style="display:none">
     <div class="alert alert-info"><i class="fas fa-circle-info"></i> Python code shown in <strong>Jupyter Notebook</strong> format. Tap a library tab below.</div>
     <div class="prog-lib-tabs" id="prog-lib-tabs"></div>
-    <div class="prog-loader" id="prog-loader"><i class="fa-solid fa-spinner fa-spin"></i> Generating code...</div>
+    <div class="prog-loader" id="prog-loader" style="display:none"><i class="fa-solid fa-spinner fa-spin"></i> Generating code...</div>
+    <div class="prog-loader-skel" id="prog-loader-skel">
+      <div class="skel-notebook">
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel-title-block">
+            <div class="skel skel-line w60"></div>
+            <div class="skel skel-line w80"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel skel-line w40"></div>
+          <div class="skel-code-block">
+            <div class="skel skel-line w90"></div>
+            <div class="skel skel-line w70"></div>
+            <div class="skel skel-line w50"></div>
+            <div class="skel skel-line w80"></div>
+            <div class="skel skel-line w30"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel-title-block">
+            <div class="skel skel-line w50"></div>
+            <div class="skel skel-line w70"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel skel-line w40"></div>
+          <div class="skel-code-block">
+            <div class="skel skel-line w85"></div>
+            <div class="skel skel-line w60"></div>
+            <div class="skel skel-line w75"></div>
+            <div class="skel skel-line w45"></div>
+            <div class="skel skel-line w90"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel-title-block">
+            <div class="skel skel-line w55"></div>
+            <div class="skel skel-line w65"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel skel-line w35"></div>
+          <div class="skel-code-block">
+            <div class="skel skel-line w80"></div>
+            <div class="skel skel-line w55"></div>
+            <div class="skel skel-line w70"></div>
+            <div class="skel skel-line w40"></div>
+            <div class="skel skel-line w65"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel-title-block">
+            <div class="skel skel-line w45"></div>
+            <div class="skel skel-line w75"></div>
+          </div>
+        </div>
+        <div class="skel-cell">
+          <div class="skel skel-prompt"></div>
+          <div class="skel skel-line w35"></div>
+          <div class="skel-code-block">
+            <div class="skel skel-line w70"></div>
+            <div class="skel skel-line w85"></div>
+            <div class="skel skel-line w50"></div>
+            <div class="skel skel-line w60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="notebook-wrap" id="notebook-cells"></div>
   </div>
 </div>
@@ -2805,6 +2946,7 @@ window.addEventListener('load', () => {
     }
   }, 2000);
   setTimeout(updateLoginUI, 100);
+  setTimeout(initUpdateSystem, 500);
 });
 
 function toggleSidebar(){
@@ -2951,6 +3093,99 @@ function toggleTheme(){
 }
 
 // ═══════════════════════════════════════
+// SKELETON LOADER
+// ═══════════════════════════════════════
+function showSkel(){document.getElementById('prog-loader-skel').classList.add('prog-loader-skel-show')}
+function hideSkel(){document.getElementById('prog-loader-skel').classList.remove('prog-loader-skel-show')}
+
+// ═══════════════════════════════════════
+// UPDATE / CHANGELOG SYSTEM
+// ═══════════════════════════════════════
+const APP_VERSION = '2.33';
+const CHANGELOG = [
+  {version:'2.33', changes:[
+    {text:'Skeleton loading effect for code generation panel',tag:'new'},
+    {text:'Auto-update notification when website changes',tag:'new'},
+    {text:'Changelog modal on first visit with updates list',tag:'new'},
+    {text:'Character-by-character typewriter animation for code blocks',tag:'upd'},
+    {text:'Improved programming section with shimmer skeleton placeholders',tag:'upd'}
+  ]},
+  {version:'2.32', changes:[
+    {text:'Fitness dashboard with workout tracking and calendar',tag:'new'},
+    {text:'Fintech dashboard with revenue charts and transactions',tag:'new'},
+    {text:'Dashboard customization with drag-and-drop charts',tag:'new'},
+    {text:'Excel-style formatting toolbar with conditional formatting',tag:'new'},
+    {text:'Export to CSV, JSON, Excel from formatter',tag:'new'},
+    {text:'Auto-sum, sort, filter for formatted tables',tag:'new'},
+    {text:'Light/dark theme toggle',tag:'upd'},
+    {text:'Responsive mobile layout with bottom navigation',tag:'upd'},
+    {text:'Performance improvements and bug fixes',tag:'fix'}
+  ]},
+  {version:'2.31', changes:[
+    {text:'Chatbot assistant with image recognition',tag:'new'},
+    {text:'Machine Learning panel with feature engineering',tag:'new'},
+    {text:'PCA, feature importance, train/test split',tag:'new'},
+    {text:'User login/signup with local storage',tag:'new'},
+    {text:'PDF/DOCX report generation',tag:'new'},
+    {text:'Data cleaning studio with outlier detection',tag:'new'},
+    {text:'Correlation heatmaps and EDA tools',tag:'new'},
+    {text:'Multiple chart types (bar, line, pie, scatter, etc.)',tag:'new'}
+  ]}
+];
+
+function initUpdateSystem(){
+  const visited = localStorage.getItem('tsDataVisited');
+  const lastVer = localStorage.getItem('tsDataVersion');
+  const badge = document.getElementById('update-badge');
+  const newChanges = CHANGELOG[0].changes.filter(c=>c.tag==='new').length;
+
+  if(!visited){
+    localStorage.setItem('tsDataVisited', 'true');
+    localStorage.setItem('tsDataVersion', APP_VERSION);
+    setTimeout(()=>showChangelog(true), 1000);
+    badge.style.display = 'flex';
+    badge.textContent = CHANGELOG[0].changes.length;
+    return;
+  }
+
+  if(lastVer !== APP_VERSION){
+    localStorage.setItem('tsDataVersion', APP_VERSION);
+    badge.style.display = 'flex';
+    badge.textContent = newChanges > 0 ? newChanges : '!';
+    setTimeout(()=>showChangelog(true), 1000);
+  }
+}
+
+function showChangelog(auto){
+  const modal = document.getElementById('changelog-modal');
+  const list = document.getElementById('changelog-list');
+  list.innerHTML = '';
+  let first = true;
+  for(const ver of CHANGELOG){
+    const items = ver.changes.map(c=>{
+      const tagClass = c.tag==='new'?'cl-tag-new':c.tag==='fix'?'cl-tag-fix':'cl-tag-upd';
+      const tagLabel = c.tag==='new'?'New':c.tag==='fix'?'Fix':'Update';
+      return '<div class="changelog-item"><span class="cl-version">v'+ver.version+'</span><span class="cl-text">'+c.text+'<span class="cl-tag '+tagClass+'">'+tagLabel+'</span></span></div>';
+    }).join('');
+    list.innerHTML += items;
+    first = false;
+  }
+  modal.style.display = 'flex';
+}
+
+function hideChangelog(){
+  document.getElementById('changelog-modal').style.display = 'none';
+  document.getElementById('update-badge').style.display = 'none';
+}
+
+function checkForUpdates(){
+  const lastVer = localStorage.getItem('tsDataVersion');
+  if(lastVer && lastVer !== APP_VERSION){
+    document.getElementById('update-badge').style.display = 'flex';
+  }
+}
+
+// ═══════════════════════════════════════
 // PROGRAMMING PANEL — Python Code Gen
 // ═══════════════════════════════════════
 function escAttr(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -3082,8 +3317,10 @@ function renderProgramming(){
   const cells = document.getElementById('notebook-cells');
   loader.classList.remove('prog-loader-hidden');
   cells.style.display = 'none';
+  showSkel();
 
   setTimeout(() => {
+  hideSkel();
   nbCellId = 0;
   const numCols = getNumericCols();
   const catCols = getCatCols();
@@ -3284,6 +3521,17 @@ function switchProgLib(id){
   if(el) el.classList.add('prog-lib-active');
   const tab = document.querySelector('.prog-lib-tab[data-lib="'+id+'"]');
   if(tab) tab.classList.add('active');
+  const cellsContainer = document.getElementById('notebook-cells');
+
+  // Flash skeleton briefly then animate
+  const oldDisplay = cellsContainer.style.display;
+  cellsContainer.style.display = 'none';
+  showSkel();
+
+  setTimeout(() => {
+  hideSkel();
+  cellsContainer.style.display = oldDisplay;
+
   const mdCells = (el||document).querySelectorAll('.nb-cell-md');
   mdCells.forEach((md,i)=>{ md.classList.remove('reveal'); void md.offsetWidth; md.classList.add('reveal'); md.style.animationDelay=(i*50)+'ms'; });
   const codeBlocks = (el||document).querySelectorAll('.nb-cell .nb-code pre code');
@@ -3301,6 +3549,7 @@ function switchProgLib(id){
       progTypeIntervals.push(iv);
     }, i * 60);
   });
+  }, 300);
 }
 
 function setProgFormat(fmt){
