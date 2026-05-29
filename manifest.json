@@ -1,0 +1,20 @@
+{
+  "name": "TS Data",
+  "short_name": "TS Data",
+  "description": "Professional Data Analysis Platform — work offline with full Python-grade analytics in your browser",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "any",
+  "categories": ["productivity", "utilities", "data"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
