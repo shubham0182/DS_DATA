@@ -196,6 +196,8 @@ nav{
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .chat-msg .chat-img{max-width:100%;border-radius:6px;margin-top:4px;border:1px solid var(--border);display:block}
 
+
+
 /* ─── Touch feedback ─── */
 *{-webkit-tap-highlight-color:transparent}
 button:active,.btn:active,.sidebar-item:active,.close-btn:active,.theme-toggle:active,.chat-toggle:active,.sidebar-toggle-btn:active,.upload-btn:active,.inner-tab:active,.su-dl-btn:active,.push-notif-act-btn:active{transform:scale(.97);opacity:.85}
@@ -230,12 +232,9 @@ button:active,.btn:active,.sidebar-item:active,.close-btn:active,.theme-toggle:a
 .sidebar-item:hover{background:var(--bg3);color:var(--text)}
 .sidebar-item.active{background:rgba(var(--accent-rgb),0.1);color:var(--accent)}
 .sidebar-item .icon{font-size:.95rem;width:18px;text-align:center;flex-shrink:0}
-.content{flex:1;overflow-y:auto;padding:1.5rem}
-.sidebar-overlay{display:none}
-
-/* ─── PANELS ─── */
+.content{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column}
 .panel{display:none}
-.panel.active{display:block; animation: fadeUp .35s ease forwards;}
+.panel.active{display:block; animation: fadeUp .35s ease forwards; flex-shrink:0}
 
 /* ─── UPLOAD ZONE ─── */
 .upload-zone{
@@ -343,12 +342,8 @@ select:focus,input:focus{border-color:var(--accent)}
 /* ─── SLIDERS ─── */
 /* ─── FONT SIZE RANGE (formatting ribbon) ─── */
 .fmt-size-wrap{display:inline-flex;align-items:center;gap:4px;padding:0 4px}
-.fmt-size-range{-webkit-appearance:none;appearance:none;width:52px;height:4px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));outline:none;cursor:pointer;margin:0;transition:background .15s}
-.fmt-size-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.2),0 1px 4px rgba(0,0,0,.3);transition:all .2s cubic-bezier(.34,1.56,.64,1);margin-top:-5px}
-.fmt-size-range::-webkit-slider-thumb:hover{transform:scale(1.2);box-shadow:0 0 0 2px var(--bg2),0 0 0 5px rgba(var(--accent-rgb),.15)}
-.fmt-size-range::-moz-range-track{height:4px;border-radius:2px;background:linear-gradient(to right,var(--accent) var(--pct,0%),var(--bg3) var(--pct,0%));border:none}
-.fmt-size-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;box-shadow:0 0 0 2px var(--bg2),0 0 0 3px rgba(var(--accent-rgb),.2)}
-.fmt-size-val{font-size:.7rem;font-weight:700;font-family:var(--mono);color:var(--text2);min-width:16px;text-align:center;line-height:1}
+.fmt-size-input{width:36px;height:26px;border-radius:5px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:.7rem;font-family:var(--sans);font-weight:600;text-align:center;outline:none;transition:border-color .12s}
+.fmt-size-input:focus{border-color:var(--accent)}
 
 /* ─── MODERN RANGE INPUT ─── */
 input[type=range]{
@@ -625,7 +620,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .sidebar-overlay{ display:none !important }
 
   .main{ padding-bottom:56px; padding-top:56px; flex-direction:column; overflow:hidden; height:100dvh; min-height:0 }
-  .content{ padding:.65rem; flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; width:100%; min-height:0 }
+  .content{ padding:.65rem; flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; width:100%; min-height:0; display:flex; flex-direction:column }
 
   .cards-row{ grid-template-columns:1fr 1fr; gap:.6rem }
   .charts-grid, .cleaning-ops, .eda-grid, .ml-grid{ grid-template-columns:1fr; gap:.6rem }
@@ -703,6 +698,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .conf-cell{ padding:.4rem; font-size:.78rem }
 
   select, input, button, textarea{ font-size:16px }
+
 }
 
 /* Very small screens <480px — single column, tighter */
@@ -720,7 +716,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .sidebar-item .icon{ font-size:1rem }
   .sidebar-item span:not(.icon){ display:none }
   .main{ padding-bottom:50px; padding-top:46px; flex-direction:column; overflow:hidden; height:100dvh; min-height:0 }
-  .content{ padding:.4rem; flex:1 1 auto; overflow-y:auto; width:100% }
+  .content{ padding:.4rem; flex:1 1 auto; overflow-y:auto; width:100%; display:flex; flex-direction:column }
 
   .cards-row{ grid-template-columns:1fr; gap:.5rem }
   .kpi-grid{ grid-template-columns:1fr; gap:.4rem }
@@ -736,8 +732,6 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .btn{ font-size:.7rem; padding:.25rem .5rem }
   .inner-tab{ font-size:.7rem; padding:.25rem .5rem }
 
-  .chart-card{ padding:.55rem }
-  .chart-body{ height:140px }
   .modal-box{ padding:.75rem; max-width:96% }
   .table-wrap table{ min-width:360px }
 }
@@ -916,6 +910,12 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .settings-update-item .su-version{font-weight:700;color:var(--accent);white-space:nowrap;min-width:40px;font-family:var(--mono);font-size:.72rem}
 .settings-update-item .su-text{color:var(--text2)}
 .settings-update-item .su-tag{font-size:.58rem;padding:1px 5px;border-radius:3px;font-weight:600;margin-left:4px;white-space:nowrap}
+.guide-item{display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;border-radius:8px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--card)}
+.guide-item:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),0.05)}
+.guide-item .guide-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:var(--bg3)}
+.guide-item .guide-info{flex:1;min-width:0}
+.guide-item .guide-name{font-size:.82rem;font-weight:600;color:var(--text)}
+.guide-item .guide-desc{font-size:.72rem;color:var(--text2);line-height:1.4;margin-top:1px}
 .su-tag-new{background:rgba(var(--success-rgb),0.15);color:var(--tag-success)}
 .su-tag-fix{background:rgba(var(--warning-rgb),0.15);color:var(--tag-warning)}
 .su-tag-upd{background:rgba(var(--info-rgb),0.15);color:var(--tag-info)}
@@ -1058,6 +1058,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 .fmt-bar-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
 .fmt-sec{display:flex;flex-direction:column;align-items:center;padding:2px 8px;flex-shrink:0;gap:2px}
 .fmt-sec-label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;font-weight:700;text-align:center;width:100%;padding-bottom:1px}
+.fmt-sec-label i{font-size:.85rem;display:block}
 .fmt-sec-body{display:flex;align-items:center;gap:2px}
 .fmt-bar-div{width:1px;background:var(--border);align-self:stretch;margin:4px 2px;flex-shrink:0}
 /* Toolbar button */
@@ -1257,8 +1258,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-b-label{padding:0 7px;font-size:.68rem}
   .fmt-sel{max-width:66px;font-size:.68rem}
   .fmt-sel.sz{max-width:36px}
-  .fmt-size-range{width:40px}
-  .fmt-size-val{font-size:.65rem;min-width:14px}
+  .fmt-size-input{width:32px;height:24px;font-size:.65rem}
   .fmt-color-pick{width:20px;height:20px;font-size:.65rem}
   .fmt-bar-div{display:none}
 }
@@ -1276,8 +1276,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-b-label{padding:0 8px;font-size:.68rem}
   .fmt-sel{max-width:74px;font-size:.7rem;height:24px}
   .fmt-sel.sz{max-width:40px}
-  .fmt-size-range{width:48px}
-  .fmt-size-val{font-size:.68rem}
+  .fmt-size-input{width:36px;height:24px;font-size:.68rem}
   .fmt-color-pick{width:20px;height:20px}
   /* Chips */
   .fmt-chips{padding:.2rem .3rem;gap:3px}
@@ -1314,8 +1313,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
   .fmt-sel{max-width:58px;font-size:.65rem;height:22px}
   .fmt-sel.sz{max-width:32px}
   .fmt-color-pick{width:18px;height:18px;font-size:.6rem}
-  .fmt-size-range{width:36px}
-  .fmt-size-val{font-size:.6rem;min-width:12px}
+  .fmt-size-input{width:28px;height:20px;font-size:.6rem}
   .fmt-upload-zone{padding:1rem .5rem;gap:5px}
   .fmt-upload-icon{font-size:1.3rem}
   .fmt-upload-title{font-size:.75rem}
@@ -1564,6 +1562,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
           <div style="font-size:1.1rem;font-weight:700">TS Data</div>
           <div style="font-size:.78rem;color:var(--text3)">Version 2.33</div>
           <div style="font-size:.75rem;color:var(--text3);margin-top:.3rem">by shub</div>
+          <button class="btn btn-sm" style="margin-top:.75rem;border-color:var(--accent);color:var(--accent)" onclick="openGuide()"><i class="fa-solid fa-compass"></i> Guide</button>
         </div>
         <div class="settings-section">
           <div class="settings-section-title"><i class="fa-solid fa-calendar"></i> Last Update</div>
@@ -1598,6 +1597,22 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- GUIDE MODAL -->
+<div id="guide-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeGuide()">
+  <div class="modal-box" style="max-width:540px;padding:0;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)">
+      <div style="font-size:1rem;font-weight:700;display:flex;align-items:center;gap:.5rem">
+        <i class="fa-solid fa-compass" style="color:var(--accent)"></i> Website Guide
+      </div>
+      <button class="close-btn" onclick="closeGuide()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div style="max-height:420px;overflow-y:auto;padding:.75rem 1.1rem 1.1rem">
+      <div style="font-size:.8rem;color:var(--text2);margin-bottom:.75rem">Tap any section below to learn what it does:</div>
+      <div style="display:flex;flex-direction:column;gap:4px" id="guide-list"></div>
+    </div>
   </div>
 </div>
 
@@ -1648,11 +1663,11 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 <!-- CHATBOT -->
 <div class="chat-panel" id="chatPanel">
   <div class="chat-hdr">
-    <span><i class="fas fa-robot"></i> TS Data Assistant</span>
+    <span><i class="fas fa-robot"></i> TS Data Assistant <span style="font-size:.6rem;color:var(--text3);font-weight:400;margin-left:4px" id="chatOnlineStatus"></span></span>
     <button class="close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div class="chat-msgs" id="chatMsgs">
-    <div class="chat-msg bot"><i class="fas fa-hand-wave"></i> Hi! I'm your <strong>TS Data Assistant</strong>. I can analyze your data, answer website questions, and even create charts!<br><br>Try: <em>"show me stats"</em>, <em>"create a bar chart"</em>, <em>"what is TS Data"</em>, or type <strong>help</strong><br><br><span style="font-size:.78rem;color:var(--text2)"><i class="fas fa-graduation-cap"></i> You can teach me new things: <strong>teach "topic" info here</strong></span><div style="font-size:.65rem;color:var(--text3);margin-top:4px">Just now</div></div>
+    <div class="chat-msg bot"><i class="fas fa-hand-wave"></i> Hi! I'm your <strong>TS Data Assistant</strong>. I can analyze your data, answer website questions, and even create charts!<br><br>Try: <em>"show me stats"</em>, <em>"create a bar chart"</em>, <em>"what is TS Data"</em>, or type <strong>help</strong><br><br><span style="font-size:.78rem;color:var(--text2)"><i class="fas fa-graduation-cap"></i> You can teach me new things: <strong>teach "topic" info here</strong></span><br><br><span style="font-size:.72rem;color:var(--text3)"><i class="fas fa-wifi-slash"></i> Offline: only 5 messages allowed. <strong>Connect to internet</strong> for unlimited chat.</span><div style="font-size:.65rem;color:var(--text3);margin-top:4px">Just now</div></div>
   </div>
   <div class="chat-input-wrap">
     <input type="file" id="chatImageInput" accept="image/*" style="display:none" onchange="handleChatImage(this)">
@@ -1688,6 +1703,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
     <div class="sidebar-label">Programming</div>
     <div class="sidebar-item" onclick="switchPanel('programming')"><span class="icon"><i class="fa-solid fa-code"></i></span> Programming</div>
   </div>
+
 
   <div class="sidebar-section">
     <div class="sidebar-label">Export</div>
@@ -2021,7 +2037,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
       <div class="fmt-bar-inner">
         <!-- Font -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Font</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-font"></i></span>
           <div class="fmt-sec-body">
             <select id="exFont" class="fmt-sel" onchange="excelApplyFont()">
               <option value="'Outfit',sans-serif">Outfit</option>
@@ -2032,9 +2048,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
               <option value="'Courier New',monospace">Courier New</option>
             </select>
             <div class="fmt-size-wrap">
-              <input type="range" id="exSize" class="fmt-size-range" min="8" max="36" value="11" step="1" style="--pct:12%"
-                oninput="this.style.setProperty('--pct',((this.value-8)/28*100)+'%');document.getElementById('exSizeVal').textContent=this.value;excelApplyFont()"/>
-              <span id="exSizeVal" class="fmt-size-val">11</span>
+              <input type="text" id="exSize" class="fmt-size-input" value="11" inputmode="numeric" oninput="excelApplyFont()"/>
             </div>
             <button class="fmt-b active" id="exBold" onclick="excelToggleBold()" title="Bold (Ctrl+B)"><i class="fa-solid fa-bold"></i></button>
             <button class="fmt-b" id="exItalic" onclick="excelToggleItalic()" title="Italic (Ctrl+I)"><i class="fa-solid fa-italic"></i></button>
@@ -2055,7 +2069,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
         <!-- Alignment -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Align</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-align-justify"></i></span>
           <div class="fmt-sec-body">
             <button class="fmt-b active" id="exAlignLeft" onclick="excelSetAlign('left')" title="Align left"><i class="fa-solid fa-align-left"></i></button>
             <button class="fmt-b" id="exAlignCenter" onclick="excelSetAlign('center')" title="Center"><i class="fa-solid fa-align-center"></i></button>
@@ -2069,7 +2083,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
         <!-- Number -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Number</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-hashtag"></i></span>
           <div class="fmt-sec-body">
             <select id="exNumFormat" class="fmt-sel" onchange="excelNumFormat(this.value)">
               <option value="general">General</option>
@@ -2093,7 +2107,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
         <!-- Styles -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Styles</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-paintbrush"></i></span>
           <div class="fmt-sec-body">
             <div class="fmt-dd-wrap">
               <button class="fmt-b" onclick="excelToggleDropdown('ddCondFormat',this)" title="Conditional formatting"><i class="fa-solid fa-palette"></i><i class="fa-solid fa-caret-down" style="font-size:.5rem;margin-left:1px"></i></button>
@@ -2111,7 +2125,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
         <!-- Data cleaning -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Clean</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-broom"></i></span>
           <div class="fmt-sec-body">
             <button class="fmt-b" onclick="excelRemoveEmpty()" title="Remove empty rows"><i class="fa-solid fa-trash-can"></i></button>
             <button class="fmt-b" onclick="excelRemoveDupes()" title="Remove duplicates"><i class="fa-solid fa-copy"></i></button>
@@ -2124,7 +2138,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 
         <!-- Tools -->
         <div class="fmt-sec">
-          <span class="fmt-sec-label">Tools</span>
+          <span class="fmt-sec-label"><i class="fa-solid fa-gear"></i></span>
           <div class="fmt-sec-body">
             <button class="fmt-b" onclick="excelAutoSum()" title="AutoSum"><i class="fa-solid fa-sigma"></i></button>
             <button class="fmt-b" onclick="excelSort('asc')" title="Sort A→Z"><i class="fa-solid fa-arrow-up-a-z"></i></button>
@@ -3243,6 +3257,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{
 </div> <!-- /dash-content -->
 </div>
 
+
 </div> <!-- /content -->
 </div> <!-- /main -->
 
@@ -3396,6 +3411,75 @@ function updateLoginUI(){
     btn.onclick=()=>{openSettingsModal('account');};
   }
 }
+
+// ── Guide Modal ──────────────────────────────────────────────────────
+const GUIDE_ITEMS = [
+  { icon: 'fa-upload',       name: 'Upload / Load',      panel: 'upload',       detail: 'Upload CSV, Excel, or JSON files by dragging & dropping them onto the upload zone or clicking "Browse File". After loading, you\'ll see stats cards and a data preview table. You can also load sample datasets with one click.' },
+  { icon: 'fa-broom',        name: 'Data Cleaning',      panel: 'clean',        detail: 'Clean your data using the tabs at the top: <b>Basic</b> (remove duplicates, fix missing values, rename columns), <b>Advanced</b> (outlier detection with Z-score/IQR, log transform), <b>Encoding</b> (label/one-hot encoding, normalize/standardize), and <b>Text</b> (lowercase, remove punctuation/stopwords). Click "Auto-Clean All" for quick fixes.' },
+  { icon: 'fa-palette',      name: 'Formatting',         panel: 'formatting',   detail: 'Apply visual formatting to your data table. Use color scales, conditional formatting rules, and text styling to make your dataset easier to read and present.' },
+  { icon: 'fa-chart-line',   name: 'EDA',                panel: 'eda',          detail: 'Explore your data with four tabs: <b>Stats</b> (overview cards + per-column deep statistics), <b>Distribution</b> (histograms with adjustable bins), <b>Correlation</b> (heatmap with auto-generated insights), and <b>Trends</b> (line charts over row index, category-wise bar analysis).' },
+  { icon: 'fa-chart-bar',    name: 'Visualizations',     panel: 'viz',          detail: 'Create 15+ chart types across three tabs: <b>Essential</b> (bar, line, pie, histogram, scatter, area), <b>Advanced</b> (heatmap, box plot, bubble, doughnut, radar, KDE), and <b>Interactive</b> (filterable charts with search). Select X/Y axes and download any chart as PNG.' },
+  { icon: 'fa-rocket',       name: 'Dashboard',          panel: 'dashboard',    detail: 'Get a bird\'s-eye view of your data with KPI cards showing top numeric columns, AI-generated insights, distribution charts, category analysis, trend lines, and a Data Quality Score. Export the full dashboard or individual sections to PDF/DOCX/Excel.' },
+  { icon: 'fa-robot',        name: 'ML Ready',           panel: 'ml',           detail: 'Prepare data for machine learning: select features by variance threshold, generate polynomial features, split into train/test sets, and run simulated model evaluation. View accuracy, precision, recall, F1, ROC-AUC, confusion matrix, and PCA explained variance.' },
+  { icon: 'fa-code',         name: 'Programming',        panel: 'programming',  detail: 'Auto-generate Python code organized by library: pandas (wrangling), numpy (numerical), matplotlib/seaborn (visualization), scipy (statistics), and scikit-learn (ML). Copy individual blocks, copy all code, download as .py or .ipynb notebook.' },
+  { icon: 'fa-file-export',  name: 'Report',             panel: null,           detail: 'Generate professional reports in PDF or DOCX format. Choose between a Code Report (Python documentation) or a Dataset Report (analysis summary with charts). Reports include 15+ sections with your data and visualizations.' }
+];
+function openGuide(){
+  const modal=document.getElementById('guide-modal');
+  modal.style.display='flex';
+  const list=document.getElementById('guide-list');
+  if(list.children.length) return;
+  let html='';
+  for(const item of GUIDE_ITEMS){
+    const clickAction=item.panel ? `navigateGuide('${item.panel}')` : 'closeGuide()';
+    html+='<div class="guide-item" onclick="'+clickAction+'">'+
+      '<div class="guide-icon"><i class="fa-solid '+item.icon+'"></i></div>'+
+      '<div class="guide-info"><div class="guide-name">'+item.name+'</div><div class="guide-desc">'+item.desc+'</div></div>'+
+    '</div>';
+  }
+  list.innerHTML=html;
+}
+function closeGuide(){
+  document.getElementById('guide-modal').style.display='none';
+}
+function navigateGuide(panel){
+  closeGuide();
+  const item=GUIDE_ITEMS.find(i=>i.panel===panel);
+  if(!item) return;
+  if(panel==='dashboard' && !workingData.length){
+    showToast('Upload data first to use the Dashboard','var(--warning)');
+    return;
+  }
+  switchPanel(panel);
+  const existing=document.getElementById('guide-explanation');
+  if(existing) existing.remove();
+  const content=document.getElementById('main-content');
+  const div=document.createElement('div');
+  div.id='guide-explanation';
+  div.innerHTML='<div style="display:flex;align-items:flex-start;gap:.65rem;padding:.85rem 1rem;border-radius:10px;border:1px solid var(--accent);background:rgba(var(--accent-rgb),0.06);margin-bottom:1rem;position:relative">'+
+    '<div style="width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--accent);color:var(--accent-text);font-size:1rem"><i class="fa-solid '+item.icon+'"></i></div>'+
+    '<div style="flex:1;min-width:0"><div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.3rem">'+item.name+'</div>'+
+    '<div style="font-size:.78rem;color:var(--text2);line-height:1.6">'+item.detail+'</div>'+
+    '<div style="display:flex;align-items:center;gap:.5rem;margin-top:.6rem">'+
+      '<button style="padding:.3rem .85rem;border-radius:6px;border:none;background:var(--accent);color:var(--accent-text);font-size:.76rem;font-weight:600;cursor:pointer;font-family:var(--sans)" onclick="dismissGuide()">Got it</button>'+
+    '</div></div>'+
+    '<button style="background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;position:absolute;top:.5rem;right:.5rem" onclick="dismissGuide()" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>'+
+  '</div>';
+  content.insertBefore(div, content.firstChild);
+}
+function dismissGuide(){
+  const el=document.getElementById('guide-explanation');
+  if(el) el.remove();
+}
+
+// ── Data Chat ────────────────────────────────────────────────────────
+let DChatCtx = []; // context memory: [{role, intent, params, result}]
+let DChatChartIdx = 0;
+
+const DC_LANG = {
+  hi: { summary:'सारांश', top:'सबसे ऊपर', highest:'सबसे अधिक', lowest:'सबसे कम', trend:'प्रवृत्ति', compare:'तुलना', predict:'भविष्यवाणी', forecast:'पूर्वानुमान', average:'औसत', total:'कुल', count:'गिनती', anomalies:'विसंगति', filter:'फ़िल्टर', group:'समूह', sort:'क्रमबद्ध', by:'द्वारा', show:'दिखाएँ', revenue:'राजस्व', sales:'बिक्री', profit:'लाभ' },
+  gu: { summary:'સારાંશ', top:'સૌથી ઉપર', highest:'સૌથી વધુ', lowest:'સૌથી ઓછું', trend:'વલણ', compare:'સરખામણી', predict:'આગાહી', forecast:'પૂર્વાનુમાન', average:'સરેરાશ', total:'કુલ', count:'ગણતરી', anomalies:'વિસંગતતા', filter:'ફિલ્ટર', group:'જૂથ', sort:'ક્રમ', by:'દ્વારા', show:'બતાવો', revenue:'આવક', sales:'વેચાણ', profit:'નફો' }
+};
 
 // ── Export Modal ──────────────────────────────────────────────────────
 function showExportModal(){
@@ -4741,6 +4825,8 @@ function switchPanel(name){
   if(name==='eda'&&workingData.length) setTimeout(renderEDA,50);
   if(name==='ml'&&workingData.length) setTimeout(renderML,50);
   if(name==='programming'&&workingData.length) setTimeout(renderProgramming,50);
+
+
   if(name==='dashboard'){
     if(!dashCharts.length) initDefaultDashCharts();
     if(workingData.length) setTimeout(renderDashboard,50);
@@ -6320,6 +6406,7 @@ const websiteInfo = {
   tagline: 'Professional Data Analysis Platform',
   version: 'v2.32',
   author: 'Shub (shubham)',
+  authorBio: 'Shub is a passionate developer who built TS Data as a fully client-side data analysis platform. No server, no backend — everything runs in your browser. With expertise in data analytics and web development, Shub created TS Data to provide Python-grade analytics accessible to everyone directly in the browser.',
   description: 'TS Data is a fully client-side data analysis tool. No server, no backend — everything runs in your browser. Upload, clean, visualize, and export data with Python-grade analytics.',
   panels: {
     upload: {
@@ -6420,7 +6507,7 @@ function initKnowledgeBase(){
     'shortcuts|tips|quick': Object.entries(websiteInfo.shortcuts).map(([k,v]) => '<strong>' + k + ':</strong> ' + v).join('<br><br>'),
     'sidebar|navigation|panel|section': websiteInfo.shortcuts['sidebar toggle'] + '<br><br>' + websiteInfo.shortcuts['chat toggle'],
     'version|release|update|changelog': 'TS Data ' + websiteInfo.version + ' — Built by ' + websiteInfo.author + '. Latest features include enhanced chatbot, comprehensive data cleaning, 15+ chart types, ML preprocessing, Python code generation, dashboard with AI insights, and PDF/DOCX report exports.',
-    'author|creator|who made|developer': 'TS Data was created by <strong>' + websiteInfo.author + '</strong>. It\'s a fully client-side data analysis platform — no server, no backend, everything runs in your browser.'
+    'author|creator|who made|developer': 'TS Data was created by <strong>' + websiteInfo.author + '</strong>. ' + websiteInfo.authorBio + ' The platform is built entirely with vanilla JavaScript — no frameworks, no server, everything runs in your browser.'
   };
 }
 
@@ -6503,18 +6590,16 @@ function handleKnowledgeCommand(q, words, lq){
 // ═══════════════════════════════════════
 let chatOpen = false;
 let chatState = { mode:'normal', chartType:'', chartX:'', chartY:'' };
+let offlineChatCount = 0;
 const CHART_TYPES = ['Bar','Line','Pie','Scatter','Histogram','Area','Doughnut'];
 function toggleChat(){
   chatOpen = !chatOpen;
   document.getElementById('chatPanel').classList.toggle('open', chatOpen);
   document.getElementById('chatToggle').classList.toggle('active', chatOpen);
   document.getElementById('chatOverlay').classList.toggle('active', chatOpen);
-  if(chatOpen){
-    setTimeout(()=>document.getElementById('chatInput').focus(),100);
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+  if(chatOpen) setTimeout(()=>document.getElementById('chatInput').focus(), 200);
+  const status = document.getElementById('chatOnlineStatus');
+  if(status) status.textContent = navigator.onLine ? '● Online' : '○ Offline (5 msgs)';
 }
 function addChatMsg(text, sender){
   const msgs = document.getElementById('chatMsgs');
@@ -6669,6 +6754,13 @@ function sendChat(){
   const input = document.getElementById('chatInput');
   const q = input.value.trim();
   if(!q) return;
+  if(!navigator.onLine){
+    offlineChatCount++;
+    if(offlineChatCount > 5){
+      addChatMsg('Sorry, first connect to the internet. You can only send 5 messages offline.', 'bot');
+      return;
+    }
+  }
   addChatMsg(q, 'user');
   input.value = '';
   if(chatState.mode !== 'normal'){
@@ -7124,11 +7216,19 @@ function processChatQuery(q){
   else if(/bye|goodbye|see you|cya|exit|quit|done/i.test(lq)){
     reply = 'Catch you later! Come back anytime if you need help with your data.';
   }
-  // About
+  // About the assistant
   else if(/who are you|what are you|about|your name|tell me about yourself/i.test(lq)){
     reply = 'I\'m the <strong>TS Data Assistant</strong> — basically your data-sidekick built right into this tool. Ask me about your dataset: stats, columns, quality scores, correlations, whatever you\'re curious about. I\'m here to help!<br><br>';
     reply += 'I also know all about this <strong>website</strong> — ask me about panels, features, shortcuts, or anything else. And if I don\'t know something, you can <strong>teach</strong> me!<br><br>';
     reply += 'Try: <em>"what panels exist"</em>, <em>"features"</em>, or <em>teach "mytopic" my info here</em>';
+  }
+  // About the creator / author
+  else if(/creator|who (made|built|created|developed)|about (shub|shubham|the maker|the developer|the author)|shub|shubham/i.test(lq)){
+    reply = '<strong>TS Data</strong> was created by <strong>Shub (shubham)</strong>.<br><br>';
+    reply += websiteInfo.authorBio + '<br><br>';
+    reply += '<i class="fa-solid fa-code"></i> Built with vanilla JavaScript, Chart.js, PapaParse, and lots of passion.<br>';
+    reply += '<i class="fa-solid fa-server"></i> Zero server dependencies — everything runs 100% in your browser.<br>';
+    reply += '<i class="fa-solid fa-heart"></i> Made for data enthusiasts who need powerful analytics without the setup.';
   }
   // Unknown query — check knowledge base
   else {
@@ -7917,10 +8017,8 @@ function excelSyncToolbar(){
   excelSyncColorPickers();
   const ff = document.getElementById('exFont');
   const fs = document.getElementById('exSize');
-  const fv = document.getElementById('exSizeVal');
   if(ff) ff.value = excelState.fontFamily;
-  if(fs){ fs.value = excelState.fontSize; fs.style.setProperty('--pct',((excelState.fontSize-8)/28*100)+'%'); }
-  if(fv) fv.textContent = excelState.fontSize;
+  if(fs) fs.value = excelState.fontSize;
 }
 
 function excelSyncActiveButtons(){
@@ -8104,7 +8202,7 @@ function excelRenderFmtChips(){
   if(nfVal!=='general') chips.push({icon:'<i class="fa-solid fa-hashtag"></i>',label:nfVal});
   const alVal = ci!=null ? resolveFmt('align',ci) : excelState.align;
   if(alVal!=='left') chips.push({icon:'<i class="fa-solid fa-align-'+alVal+'"></i>',label:alVal});
-  el.innerHTML=chips.length?`<span class="fmt-chips-label">${ci!=null?'Col:':'Global'}</span>${chips.map(c=>`<span class="fmt-chip">${c.icon} ${c.label}</span>`).join('')}`:'';
+  el.innerHTML=chips.length?`<span class="fmt-chips-label">${ci!=null?'Col:':'Global'}</span>${chips.map(c=>`<span class="fmt-chip">${c.icon}</span>`).join('')}`:'';
 }
 
 function excelSelectCol(idx){
@@ -8804,6 +8902,8 @@ function switchPanel(name){
   if(name==='eda'&&workingData.length) setTimeout(renderEDA,50);
   if(name==='ml'&&workingData.length) setTimeout(renderML,50);
   if(name==='programming'&&workingData.length) setTimeout(renderProgramming,50);
+
+
   if(name==='dashboard'){
     if(!dashCharts.length) initDefaultDashCharts();
     if(workingData.length) setTimeout(() => switchDashMode(dashMode), 50);
@@ -9569,11 +9669,34 @@ function renderFeatToggles(){
 document.addEventListener('DOMContentLoaded',()=>{
   switchPanel('upload');
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').then((reg) => {
+      function startPromoTimer() {
+        if (Notification.permission === 'granted') {
+          reg.active?.postMessage('start-promo');
+        }
+      }
+      if (Notification.permission === 'granted') {
+        startPromoTimer();
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission();
+      }
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        startPromoTimer();
+      }
+      window.addEventListener('appinstalled', () => {
+        if (Notification.permission === 'granted') {
+          startPromoTimer();
+        } else {
+          Notification.requestPermission().then((p) => { if (p === 'granted') startPromoTimer(); });
+        }
+      });
+    }).catch(() => {});
   }
   renderFeatToggles();
   applyFeatState();
   initPushNotifs();
+  window.addEventListener('online', () => { offlineChatCount = 0; const s=document.getElementById('chatOnlineStatus'); if(s) s.textContent='● Online'; });
+  window.addEventListener('offline', () => { const s=document.getElementById('chatOnlineStatus'); if(s) s.textContent='○ Offline (5 msgs)'; });
 });
 </script>
 
